@@ -9,7 +9,7 @@ namespace The_Occasion.Models.PoemViewModels
 {
     public class SinglePoemViewModel
     {
-       public Poem poem { get; set; }
+       public Poem Poem { get; set; }
 
         public SinglePoemViewModel(ApplicationDbContext ctx)
         {

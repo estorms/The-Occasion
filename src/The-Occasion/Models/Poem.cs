@@ -20,6 +20,9 @@ namespace The_Occasion.Models
         [Display(Name ="Author")]
         public string Author { get; set; }
 
+        [Display(Name ="Collection")]
+        public string Collection { get; set; }
+
         [Required]
         [Display(Name = "Date Published")]
         public int PubDate { get; set; }
@@ -27,8 +30,6 @@ namespace The_Occasion.Models
         [Display(Name ="Form")]
         public int FormId { get; set; }
         public Form Form { get; set; }
-
-        [Display(Name = "Mood")]
 
         public int MoodId { get; set; }
         public Mood Mood { get; set; }
@@ -38,7 +39,6 @@ namespace The_Occasion.Models
         public Topic Topic { get; set; }
 
         public string Lines { get; set; }
-
         public ICollection<UserSelection> UserSelections { get; set; }
 
         
