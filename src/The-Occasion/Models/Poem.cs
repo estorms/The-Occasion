@@ -37,7 +37,7 @@ namespace The_Occasion.Models
         public int TopicId { get; set; }
         public Topic Topic { get; set; }
 
-        public Dictionary<int, string>Lines { get; set; }
+        public string Lines { get; set; }
 
         public ICollection<UserSelection> UserSelections { get; set; }
 
