@@ -31,20 +31,19 @@ namespace The_Occasion.Controllers
 
         public async Task<IActionResult> Poem([FromRoute]int? id)
         {
-            //throw a 404(NotFound) error if method is called w/o id in route
             if (id == null)
             {
                 return NotFound();
             }
 
-            // Create a new instance of the SinglePoemViewModel and pass it the existing BangazonContext (current db session) as an argument in order to extract the product whose id matches the argument passed in¸
+    
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
             model.Poem = SinglePoem;
-            string [] linesArray = Regex.Split(SinglePoem.Lines, "@@").Where(s => s != string.Empty).ToArray();
-            model.LinesArray = linesArray;
+            string lineString = SinglePoem.Lines;
+            var splitStrings = Regex.Split(lineString, "@@");
+            model.LinesArray = splitStrings;
 
-            // If no matching product found, return 404 error
             if (model.Poem == null)
             {
                 return NotFound();
