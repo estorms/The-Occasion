@@ -23,5 +23,17 @@ else
 <div class="row">
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Author)</div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Title)</div>
-    <div class="col-md-3">@Html.DisplayFor(model => model.Poem.PubDate)</div>
+    <div class="col-md-3"</div>
+    <div class="row">
+
+
+        <div class="col-md-12">@Html.DisplayFor(model => model.Poem.Lines)</div>
+    </div>
+        <div class="row">
+             @foreach (var item in Model.LinesArray)
+             {
+                <div class="col-md-3">@Html.DisplayFor(modelItem => item)</div>
+             }       
+
+    }
 </div>

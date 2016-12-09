@@ -11,6 +11,8 @@ namespace The_Occasion.Models.PoemViewModels
     {
        public Poem Poem { get; set; }
 
+        public Array LinesArray { get; set; }
+
         public SinglePoemViewModel(ApplicationDbContext ctx)
         {
             var context = ctx;

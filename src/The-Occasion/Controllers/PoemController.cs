@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
@@ -38,7 +39,10 @@ namespace The_Occasion.Controllers
 
             // Create a new instance of the SinglePoemViewModel and pass it the existing BangazonContext (current db session) as an argument in order to extract the product whose id matches the argument passed in¸
             SinglePoemViewModel model = new SinglePoemViewModel(context);
-            model.Poem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            model.Poem = SinglePoem;
+            string [] linesArray = Regex.Split(SinglePoem.Lines, "@@").Where(s => s != string.Empty).ToArray();
+            model.LinesArray = linesArray;
 
             // If no matching product found, return 404 error
             if (model.Poem == null)
