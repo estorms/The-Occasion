@@ -126,7 +126,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
-        //
+        
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -134,12 +134,11 @@ namespace The_Occasion.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction("AllPoems", "Poem");
         }
 
-        //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
+
+       [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
@@ -459,10 +458,10 @@ namespace The_Occasion.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction("AllPoems", "Poem");
             }
         }
 
-        #endregion
-    }
+    #endregion
+}
 }

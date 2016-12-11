@@ -1,8 +1,39 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model The_Occasion.Models.HomeViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Welcome to The Occasion";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div class="FindAPoem text-center">
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="AllPoems" id="AllPoems">Read a Poem</a>
+</div>
+
+@foreach (var form in Model.Forms)
+{
+    <div class="row formsList">
+        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => form.FormName)</h3></div>
+    </div>
+}
+
+@foreach (var topic in Model.Topics)
+{
+    <div class="row topicsList">
+        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => topic.TopicName)</h3></div>
+    </div>
+
+}
+
+@foreach (var mood in Model.Moods)
+{
+    <div class="row moodsList">
+        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => mood.MoodName)</h3></div>
+    </div>
+
+}
+<div class="FindAPoem text-center">
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="AllPoems" id="AllPoems">Make a Poem</a></div>
+
+
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -106,4 +137,4 @@
             <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
         </ul>
     </div>
-</div>
+</div>*@
