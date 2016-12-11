@@ -1,0 +1,21 @@
+﻿@model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
+@{
+    ViewData["Title"] = "Poems By Type";
+}
+
+<h2 class="top-buffer">@ViewData["Title"]</h2>
+
+@foreach (var poem in Model.AllPoems)
+{
+
+    <div class="row moodRow">
+        <div class="col-md-6">@Html.DisplayFor(modelItem => poem.Title)</div>
+
+        @*   <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+            <div class="col-md-2">
+            </div>*@
+    </div>
+}

@@ -25,10 +25,11 @@ namespace The_Occasion.Controllers
         public async Task <IActionResult> Index()
         {
             HomeViewModel model = new HomeViewModel(context);
-            model.Forms = await context.Form.ToListAsync();
-            model.Moods = await context.Mood.ToListAsync();
-            model.Topics = await context.Topic.ToListAsync();
+            model.Form = await context.Form.ToListAsync();
+            model.Mood = await context.Mood.ToListAsync();
+            model.Topic = await context.Topic.ToListAsync();
             return View(model);
+
         }
 
         public IActionResult About()

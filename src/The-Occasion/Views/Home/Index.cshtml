@@ -4,32 +4,27 @@
 }
 
 <div class="FindAPoem text-center">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="AllPoems" id="AllPoems">Read a Poem</a>
+    <a class="btn btn-danger" id="findButton">Find a Poem</a>
 </div>
 
-@foreach (var form in Model.Forms)
-{
-    <div class="row formsList">
-        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => form.FormName)</h3></div>
+<div class="form-group hidden findselect" id="formselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Forms.FormId", @Model.FormId)
     </div>
-}
-
-@foreach (var topic in Model.Topics)
-{
-    <div class="row topicsList">
-        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => topic.TopicName)</h3></div>
+</div>
+<div class="form-group hidden findselect" id="moodselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Moods.MoodId", @Model.MoodId)
     </div>
-
-}
-
-@foreach (var mood in Model.Moods)
-{
-    <div class="row moodsList">
-        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => mood.MoodName)</h3></div>
+</div>
+<div class="form-group hidden findselect" id="topicselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Topics.TopicId", @Model.TopicId)
     </div>
+</div>
 
-}
-<div class="FindAPoem text-center">
+
+<div class="MakeAPoem text-center">
     <a class="btn btn-danger" asp-controller="Poem" asp-action="AllPoems" id="AllPoems">Make a Poem</a></div>
 
 

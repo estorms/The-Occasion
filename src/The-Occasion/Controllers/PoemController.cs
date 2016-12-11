@@ -29,6 +29,40 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        
+       public async Task<IActionResult>AllPoems()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task <IActionResult> Mood([FromRoute] int? id)
+        { 
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).ToListAsync();
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Form([FromRoute] int? id)
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.FormId == id).ToListAsync();
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Topic([FromRoute] int? id)
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
+            return View(model);
+
+        }
         public async Task<IActionResult> Poem([FromRoute]int? id)
         {
             if (id == null)
@@ -49,13 +83,6 @@ namespace The_Occasion.Controllers
                 return NotFound();
             }
 
-            return View(model);
-        }
-
-       public async Task<IActionResult>AllPoems()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
             return View(model);
         }
 
