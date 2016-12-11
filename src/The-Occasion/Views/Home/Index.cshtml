@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model The_Occasion.Models.HomeViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Welcome to The Occasion";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div class="FindAPoem text-center">
+    <a class="btn btn-danger" id="findButton">Find a Poem</a>
+</div>
+
+<div class="form-group hidden findselect" id="formselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Forms.FormId", @Model.FormId)
+    </div>
+</div>
+<div class="form-group hidden findselect" id="moodselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Moods.MoodId", @Model.MoodId)
+    </div>
+</div>
+<div class="form-group hidden findselect" id="topicselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Topics.TopicId", @Model.TopicId)
+    </div>
+</div>
+
+
+<div class="MakeAPoem text-center">
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="AllPoems" id="AllPoems">Make a Poem</a></div>
+
+
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -106,4 +132,4 @@
             <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
         </ul>
     </div>
-</div>
+</div>*@

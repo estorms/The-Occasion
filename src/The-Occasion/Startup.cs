@@ -86,13 +86,13 @@ namespace The_Occasion
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
-            DatabaseInitializer.Initialize(app.ApplicationServices);
+            //DatabaseInitializer.Initialize(app.ApplicationServices);
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
             });
         }
     }

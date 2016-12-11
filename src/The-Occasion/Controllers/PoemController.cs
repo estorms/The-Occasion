@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
@@ -28,19 +29,55 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        
+       public async Task<IActionResult>AllPoems()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task <IActionResult> Mood([FromRoute] int? id)
+        { 
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).ToListAsync();
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Form([FromRoute] int? id)
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.FormId == id).ToListAsync();
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Topic([FromRoute] int? id)
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
+            return View(model);
+
+        }
         public async Task<IActionResult> Poem([FromRoute]int? id)
         {
-            //throw a 404(NotFound) error if method is called w/o id in route
             if (id == null)
             {
                 return NotFound();
             }
 
-            // Create a new instance of the SinglePoemViewModel and pass it the existing BangazonContext (current db session) as an argument in order to extract the product whose id matches the argument passed in¸
+    
             SinglePoemViewModel model = new SinglePoemViewModel(context);
-            model.Poem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            model.Poem = SinglePoem;
+            string lineString = SinglePoem.Lines;
+            var splitStrings = Regex.Split(lineString, "@@");
+            model.LinesArray = splitStrings;
 
-            // If no matching product found, return 404 error
             if (model.Poem == null)
             {
                 return NotFound();
@@ -49,5 +86,32 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Sentiment()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
+
+        public async Task<IActionResult> Whimsy()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
+
+        public async Task<IActionResult> Arcana()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
+
+        public async Task<IActionResult> ItRains()
+        {
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems = await context.Poem.ToListAsync();
+            return View(model);
+        }
     }
 }
