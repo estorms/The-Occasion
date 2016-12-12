@@ -13,5 +13,7 @@ namespace The_Occasion.Models.PoemViewModels
         {
             var context = ctx;
         }
+
+        //public IEnumerable<Array>PoemLines { get; set; }
     }
 }
