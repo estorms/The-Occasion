@@ -8,11 +8,10 @@
 @foreach (var poem in Model.AllPoems)
 {
 
-    <div class="row moodRow">
-        <div class="col-md-6">@Html.DisplayFor(modelItem => poem.Title)</div>
-
-        @*   <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+    <div class="row poemrow">
+        <div class="col-md-12">@Html.DisplayFor(modelItem => poem.Title)</div>
+        <div class="col-md-12"><a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Author)</a></div>
+        @*<div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
             <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
             <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
             <div class="col-md-2">
