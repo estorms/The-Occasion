@@ -9,17 +9,26 @@
         $("hereBePoems").empty();
     });
 
-    $("#Save").on("click", function (e) {
-        console.log("s clicked");
+    $("#SaveBored").on("click", function (e) {
+        console.log("save button clicked clicked");
         $.ajax({
-            url: `Poem/Save/${$(this).val()}`,
+            url: `Poem/SaveBored/${$(this).val()}`,
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-        console.log("result", result);
         });
     });
 
+    $("#Save").on("click", function (e) {
+        console.log("save button clicked clicked");
+        console.log("this.value", $(this).val());
+        $.ajax({
+            url: `/Poem/Save/${$(this).val()}`,
+            method: "POST",
+            contentType: 'application/json; charset=utf-8'
+        }).done((result) => {
+        });
+    });
     $("#bored").on("click", function (e) {
         console.log("bored button clicked");
         $.ajax({
