@@ -29,6 +29,10 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
 
         public async Task<IActionResult> AllPoems()
         {
@@ -87,7 +91,6 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
-
         [HttpGet]
 
         public async Task<IActionResult>Bored()
@@ -103,6 +106,21 @@ namespace The_Occasion.Controllers
             model.LinesArray = splitStrings;
             return View(model);
             
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Save([FromRoute] int id)
+        {
+            
+            var user = GetCurrentUserAsync();
+            UserSelection userSelection = new UserSelection();
+            userSelection.ApplicationUserId = user.Id;
+            userSelection.PoemId = id;
+            context.UserSelection.Add(userSelection);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+           
         }
     }
 }
