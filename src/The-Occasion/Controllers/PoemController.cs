@@ -113,9 +113,9 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Save([FromRoute] int id)
         {
             
-            var user = GetCurrentUserAsync();
+            var user = await GetCurrentUserAsync();
             UserSelection userSelection = new UserSelection();
-            userSelection.ApplicationUserId = user.Id;
+            userSelection.User = user;
             userSelection.PoemId = id;
             context.UserSelection.Add(userSelection);
             await context.SaveChangesAsync();

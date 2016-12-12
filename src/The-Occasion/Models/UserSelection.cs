@@ -11,10 +11,7 @@ namespace The_Occasion.Models
     [Key]
 
     public int UserSelectionId { get; set; }
-
-    public int ApplicationUserId { get; set; }
-    public ApplicationUser User { get; set; }
-
+    public virtual ApplicationUser User { get; set; }
     public int PoemId { get; set; }
     public Poem Poem { get; set; }
     }
