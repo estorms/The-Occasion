@@ -42,7 +42,7 @@ namespace The_Occasion.Controllers
         public async Task <IActionResult> Mood([FromRoute] int? id)
         { 
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).ToListAsync();
+            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
 
         }
@@ -51,7 +51,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Form([FromRoute] int? id)
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.Where(p => p.FormId == id).ToListAsync();
+            model.AllPoems = await context.Poem.Where(p => p.FormId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
 
         }
@@ -60,10 +60,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Topic([FromRoute] int? id)
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            var poemsById = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
-            model.AllPoems = poemsById.GroupBy(x => x.Title)
-                         .Select(x => x.First())
-                         .ToList();
+            model.AllPoems = await context.Poem.Where(p => p.TopicId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
 
             return View(model);
 
