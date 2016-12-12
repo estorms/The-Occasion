@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+
 using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
@@ -31,9 +32,9 @@ namespace The_Occasion.Controllers
 
         
        public async Task<IActionResult>AllPoems()
-        {
+        { 
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
+            model.AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
         }
 
