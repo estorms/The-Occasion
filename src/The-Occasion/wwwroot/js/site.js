@@ -3,18 +3,22 @@
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
         $(".findselect").removeClass("hidden");
-        //$("#findButton").addClass("hidden");
+        $("#findButton").addClass("hidden");
+        $("#bored").addClass("hidden");
+        $("#makePoem").addClass("hidden");
         $("hereBePoems").empty();
     });
 
     $("#bored").on("click", function (e) {
         console.log("bored button clicked");
-
         $.ajax({
             url: `Poem/Bored/`,
             method: "GET"
         }).done((result) => {
             console.log("result", result);
+            $("#findButton").addClass("hidden");
+            $("#bored").addClass("hidden");
+            $("#makePoem").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
         });

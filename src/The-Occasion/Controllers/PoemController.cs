@@ -102,14 +102,7 @@ namespace The_Occasion.Controllers
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
             return View(model);
-
-            //call all poems of the particular topic/mood/form id, passed in from route
-            //save those filtered poems in a local var
-            //gather their count
-            //randomize the selection based on the count
-            //pass the selected poem into the single poem view model
-
-
+            
         }
     }
 }
