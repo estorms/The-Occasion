@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-
 using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
@@ -88,32 +87,32 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Sentiment()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
+    //    public async Task<IActionResult> Sentiment()
+    //    {
+    //        AllPoemsViewModel model = new AllPoemsViewModel(context);
+    //        model.AllPoems = await context.Poem.ToListAsync();
+    //        return View(model);
+    //    }
 
-        public async Task<IActionResult> Whimsy()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
+    //    public async Task<IActionResult> Whimsy()
+    //    {
+    //        AllPoemsViewModel model = new AllPoemsViewModel(context);
+    //        model.AllPoems = await context.Poem.ToListAsync();
+    //        return View(model);
+    //    }
 
-        public async Task<IActionResult> Arcana()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
+    //    public async Task<IActionResult> Arcana()
+    //    {
+    //        AllPoemsViewModel model = new AllPoemsViewModel(context);
+    //        model.AllPoems = await context.Poem.ToListAsync();
+    //        return View(model);
+    //    }
 
-        public async Task<IActionResult> ItRains()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
-    }
+    //    public async Task<IActionResult> ItRains()
+    //    {
+    //        AllPoemsViewModel model = new AllPoemsViewModel(context);
+    //        model.AllPoems = await context.Poem.ToListAsync();
+    //        return View(model);
+    //    }
+    //}
 }
