@@ -1,17 +1,16 @@
 ﻿@model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
 @{
-    ViewData["Title"] = "Mood Poems";
+    ViewData["Title"] = "Poems By Topic";
 }
 
 <h2 class="top-buffer">@ViewData["Title"]</h2>
 
-
-   @foreach (var poem in Model.AllPoems)
-   {
+@foreach (var poem in Model.AllPoems)
+{
 
     <div class="row poemrow">
         <a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a><div>
             @Html.DisplayFor(modelItem => poem.Author)
     </div>
 </div>
-   }
+}

@@ -16,7 +16,7 @@ using The_Occasion.Models.PoemViewModels;
 namespace The_Occasion.Controllers
 {
     [Authorize]
-    public class PoemController: Controller
+    public class PoemController : Controller
     {
 
         private readonly UserManager<ApplicationUser> _userManager;
@@ -29,19 +29,19 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
-        
-       public async Task<IActionResult>AllPoems()
+
+        public async Task<IActionResult> AllPoems()
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
+            model.AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
         }
 
         [HttpGet]
-        public async Task <IActionResult> Mood([FromRoute] int? id)
-        { 
+        public async Task<IActionResult> Mood([FromRoute] int? id)
+        {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).ToListAsync();
+            model.AllPoems = await context.Poem.Where(p => p.MoodId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
 
         }
@@ -50,7 +50,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Form([FromRoute] int? id)
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.Where(p => p.FormId == id).ToListAsync();
+            model.AllPoems = await context.Poem.Where(p => p.FormId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             return View(model);
 
         }
@@ -59,10 +59,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Topic([FromRoute] int? id)
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            var poemsById = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
-            model.AllPoems = poemsById.GroupBy(x => x.Title)
-                         .Select(x => x.First())
-                         .ToList();
+            model.AllPoems = await context.Poem.Where(p => p.TopicId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
 
             return View(model);
 
@@ -74,7 +71,7 @@ namespace The_Occasion.Controllers
                 return NotFound();
             }
 
-    
+
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
             model.Poem = SinglePoem;
@@ -90,32 +87,29 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Sentiment()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
 
-        public async Task<IActionResult> Whimsy()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
+        [HttpGet]
 
-        public async Task<IActionResult> Arcana()
+        public async Task<IActionResult>Bored()
         {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
-            return View(model);
-        }
 
-        public async Task<IActionResult> ItRains()
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.ToListAsync();
+            var AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+            SinglePoemViewModel model = new SinglePoemViewModel(context);
+            Random random = new Random();
+            int r = random.Next(AllPoems.Count);
+            model.Poem = AllPoems[r];
+            string lineString = model.Poem.Lines;
+            var splitStrings = Regex.Split(lineString, "@@");
+            model.LinesArray = splitStrings;
             return View(model);
+
+            //call all poems of the particular topic/mood/form id, passed in from route
+            //save those filtered poems in a local var
+            //gather their count
+            //randomize the selection based on the count
+            //pass the selected poem into the single poem view model
+
+
         }
     }
 }
