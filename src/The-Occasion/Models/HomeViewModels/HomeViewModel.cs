@@ -31,15 +31,15 @@ namespace The_Occasion.Models.HomeViewModels
                                     }).ToList();
             this.FormId.Insert(0, new SelectListItem
             {
-                Text = "See All Poems of One Form",
+                Text = "Browse By Form",
                 Value = "0"
             });
 
-            this.FormId.Insert(5, new SelectListItem
-            {
-                Text = "Surprise Me",
-                Value = "5"
-            });
+            //this.FormId.Insert(5, new SelectListItem
+            //{
+            //    Text = "Surprise Me",
+            //    Value = "5"
+            //});
 
 
             this.MoodId = ctx.Mood
@@ -53,15 +53,15 @@ namespace The_Occasion.Models.HomeViewModels
 
             this.MoodId.Insert(0, new SelectListItem
             {
-                Text = "See all Poems for Your Mood",
+                Text = "Browse By Mood",
                 Value = "0"
             });
 
-            this.MoodId.Insert(5, new SelectListItem
-            {
-                Text = "Surprise Me",
-                Value = "5"
-            });
+            //this.MoodId.Insert(5, new SelectListItem
+            //{
+            //    Text = "Surprise Me",
+            //    Value = "5"
+            //});
 
 
 
@@ -75,15 +75,15 @@ namespace The_Occasion.Models.HomeViewModels
                                     }).ToList();
             this.TopicId.Insert(0, new SelectListItem
             {
-                Text = "See All Poems on a Topic",
+                Text = "Browse By Topic",
                 Value = "0"
             });
 
-            this.TopicId.Insert(5, new SelectListItem
-            {
-                Text = "Surprise Me",
-                Value = "5"
-            });
+            //this.TopicId.Insert(5, new SelectListItem
+            //{
+            //    Text = "Surprise Me",
+            //    Value = "5"
+            //});
         }
 
     }
