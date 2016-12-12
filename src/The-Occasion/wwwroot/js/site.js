@@ -3,18 +3,32 @@
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
         $(".findselect").removeClass("hidden");
-        //$("#findButton").addClass("hidden");
+        $("#findButton").addClass("hidden");
+        $("#bored").addClass("hidden");
+        $("#makePoem").addClass("hidden");
         $("hereBePoems").empty();
+    });
+
+    $("#Save").on("click", function (e) {
+        console.log("s clicked");
+        $.ajax({
+            url: `Poem/Save/${$(this).val()}`,
+        method: "POST",
+        contentType: 'application/json; charset=utf-8'
+        }).done((result) => {
+        console.log("result", result);
+        });
     });
 
     $("#bored").on("click", function (e) {
         console.log("bored button clicked");
-
         $.ajax({
             url: `Poem/Bored/`,
             method: "GET"
         }).done((result) => {
-            console.log("result", result);
+            $("#findButton").addClass("hidden");
+            $("#bored").addClass("hidden");
+            $("#makePoem").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
         });

@@ -29,6 +29,10 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
 
         public async Task<IActionResult> AllPoems()
         {
@@ -87,7 +91,6 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
-
         [HttpGet]
 
         public async Task<IActionResult>Bored()
@@ -102,14 +105,22 @@ namespace The_Occasion.Controllers
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
             return View(model);
+            
+        }
 
-            //call all poems of the particular topic/mood/form id, passed in from route
-            //save those filtered poems in a local var
-            //gather their count
-            //randomize the selection based on the count
-            //pass the selected poem into the single poem view model
+        [HttpPost]
 
-
+        public async Task<IActionResult> Save([FromRoute] int id)
+        {
+            
+            var user = GetCurrentUserAsync();
+            UserSelection userSelection = new UserSelection();
+            userSelection.ApplicationUserId = user.Id;
+            userSelection.PoemId = id;
+            context.UserSelection.Add(userSelection);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+           
         }
     }
 }
