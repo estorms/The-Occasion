@@ -68,6 +68,8 @@ namespace The_Occasion.Controllers
             return View(model);
 
         }
+
+        [HttpGet]
         public async Task<IActionResult> Poem([FromRoute]int? id)
         {
             if (id == null)
@@ -92,7 +94,6 @@ namespace The_Occasion.Controllers
         }
 
         [HttpGet]
-
         public async Task<IActionResult>Bored()
         {
 
@@ -109,18 +110,31 @@ namespace The_Occasion.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Save([FromRoute] int id)
         {
             
-            var user = GetCurrentUserAsync();
+            var user = await GetCurrentUserAsync();
             UserSelection userSelection = new UserSelection();
-            userSelection.ApplicationUserId = user.Id;
+            userSelection.User = user;
             userSelection.PoemId = id;
             context.UserSelection.Add(userSelection);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
            
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveBored([FromRoute] int id)
+        {
+
+            var user = await GetCurrentUserAsync();
+            UserSelection userSelection = new UserSelection();
+            userSelection.User = user;
+            userSelection.PoemId = id;
+            context.UserSelection.Add(userSelection);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }
