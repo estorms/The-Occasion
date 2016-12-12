@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-The_Occasion-5d983b92-0b79-4a2f-b514-4fdaa3755ba3",
 
   "dependencies": {
@@ -41,10 +41,11 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Microsoft.EntityFrameworkCore": "1.0.1"
   },
 
   "tools": {

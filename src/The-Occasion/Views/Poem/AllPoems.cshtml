@@ -5,16 +5,19 @@
 
 <h2 class="top-buffer">@ViewData["Title"]</h2>
 
+    <div class="row poemrow">
 @foreach (var poem in Model.AllPoems) { 
       
-    <div class="row productRow">
-        <div class="col-md-6">@Html.DisplayFor(modelItem => poem.Title)</div>
+        
+        <div class="col-md-6">
+        <a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem=> poem.Title)</a></div>
+        
+        <div class="col-md-6">@Html.DisplayFor(modelItem => poem.Author)</div>
+        @*<div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>*@
+      
     
-     @*   <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-        <div class="col-md-2">
-        </div>*@
-    </div>
+    
 }
+       </div>

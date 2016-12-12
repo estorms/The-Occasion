@@ -29,6 +29,18 @@ namespace The_Occasion.Models.HomeViewModels
                                         Text = li.FormName,
                                         Value = li.FormId.ToString()
                                     }).ToList();
+            this.FormId.Insert(0, new SelectListItem
+            {
+                Text = "Choose Your Form...",
+                Value = "0"
+            });
+
+            //this.TopicId.Insert(4, new SelectListItem
+            //{
+            //    Text = "Surprise Me",
+            //    Value = "4"
+            //});
+
 
 
             this.MoodId = ctx.Mood
@@ -40,6 +52,19 @@ namespace The_Occasion.Models.HomeViewModels
                                         Value = li.MoodId.ToString()
                                     }).ToList();
 
+            this.MoodId.Insert(0, new SelectListItem
+            {
+                Text = "See all Poems for Your Mood...",
+                Value = "0"
+            });
+
+            //this.MoodId.Insert(4, new SelectListItem
+            //{ 
+            //    Text="Surprise Me",
+            //    Value="4"
+            //});
+
+
 
             this.TopicId = ctx.Topic
                                     .OrderBy(t => t.TopicName)
@@ -49,6 +74,17 @@ namespace The_Occasion.Models.HomeViewModels
                                         Text = li.TopicName,
                                         Value = li.TopicId.ToString()
                                     }).ToList();
+            this.TopicId.Insert(0, new SelectListItem
+            {
+                Text = "Choose Your Topic...",
+                Value = "0"
+            });
+
+            //this.TopicId.Insert(4, new SelectListItem
+            //{
+            //    Text = "Surprise Me",
+            //    Value = "1"
+            //});
         }
 
     }

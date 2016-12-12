@@ -59,7 +59,11 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> Topic([FromRoute] int? id)
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
-            model.AllPoems = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
+            var poemsById = await context.Poem.Where(p => p.TopicId == id).ToListAsync();
+            model.AllPoems = poemsById.GroupBy(x => x.Title)
+                         .Select(x => x.First())
+                         .ToList();
+
             return View(model);
 
         }
