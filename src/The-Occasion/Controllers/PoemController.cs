@@ -117,6 +117,24 @@ namespace The_Occasion.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> SavedPoem([FromRoute]int? id)
+        {
+
+            SinglePoemViewModel model = new SinglePoemViewModel(context);
+            Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            model.Poem = SinglePoem;
+            string lineString = SinglePoem.Lines;
+            var splitStrings = Regex.Split(lineString, "@@");
+            model.LinesArray = splitStrings;
+
+            if (model.Poem == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+        [HttpGet]
         public async Task<IActionResult>Bored()
         {
 
