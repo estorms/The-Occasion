@@ -56,17 +56,17 @@ namespace The_Occasion.Controllers
             //grab all of the poems from the database
             var Poems = await context.Poem.ToListAsync();
             //match user selection poem id's with poem ideas and add each poem to the view model
-            foreach (var p in Poems)
+            foreach (var u in userSelections)
             {
-                foreach (var u in userSelections)
+            foreach (var p in Poems)
                 {
                     if (p.PoemId == u.PoemId)
                     {
-                       model.AllPoems.ToList().Add(p);
+                        model.AllPoems.ToList().Add(p);
                     }
                 }
             }
-
+            model.AllPoems.ToAsyncEnumerable();
             return View(model);
         }
         [HttpGet]
