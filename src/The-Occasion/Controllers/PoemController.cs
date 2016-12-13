@@ -42,13 +42,8 @@ namespace The_Occasion.Controllers
         }
 
         public async Task<IActionResult> MyPoems()
-        {
-            //    AllPoemsViewModel model = new AllPoemsViewModel(context);
-            //    model.AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
-            //    return View(model);
-            //}
-
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
+        { 
+            UserSelectionViewModel model = new UserSelectionViewModel(context);
             //identify the current user, which will be coerced to the userId
             var user = await GetCurrentUserAsync();
             //identify all of the user selections by the user Id
@@ -62,13 +57,13 @@ namespace The_Occasion.Controllers
                 {
                     if (p.PoemId == u.PoemId)
                     {
-                        model.AllPoems.ToList().Add(p);
+                        model.UserPoems.Add(p);
                     }
                 }
             }
-            model.AllPoems.ToAsyncEnumerable();
             return View(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> Mood([FromRoute] int? id)
         {
