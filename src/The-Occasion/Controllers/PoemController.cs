@@ -41,6 +41,34 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> MyPoems()
+        {
+            //    AllPoemsViewModel model = new AllPoemsViewModel(context);
+            //    model.AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+            //    return View(model);
+            //}
+
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            //identify the current user, which will be coerced to the userId
+            var user = await GetCurrentUserAsync();
+            //identify all of the user selections by the user Id
+            var userSelections = await context.UserSelection.Where(u => u.User == user).ToListAsync();
+            //grab all of the poems from the database
+            var Poems = await context.Poem.ToListAsync();
+            //match user selection poem id's with poem ideas and add each poem to the view model
+            foreach (var p in Poems)
+            {
+                foreach (var u in userSelections)
+                {
+                    if (p.PoemId == u.PoemId)
+                    {
+                       model.AllPoems.ToList().Add(p);
+                    }
+                }
+            }
+
+            return View(model);
+        }
         [HttpGet]
         public async Task<IActionResult> Mood([FromRoute] int? id)
         {
@@ -137,30 +165,6 @@ namespace The_Occasion.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<IActionResult> MyPoems([FromBody] int id)
-        {
-            AllPoemsViewModel model = new AllPoemsViewModel(context);
-            //identify the current user, which will be coerced to the userId
-            var user = await GetCurrentUserAsync();
-            //identify all of the user selections by the user Id
-            var userSelections = await context.UserSelection.Where(u => u.User == user).ToListAsync();
-            //grab all of the poems from the database
-            var Poems = await context.Poem.ToListAsync();
-            //match user selection poem id's with poem ideas and add each poem to the view model
-            foreach(var p in Poems)
-            {
-                foreach (var u in userSelections) {
-                    if (p.PoemId == u.PoemId)
-                    {
-                        model.AllPoems.ToList().Add(p);
-                    }
-                }
-            }
-            
-            return View(model);
-       
-            
-        }
+        
     }
 }

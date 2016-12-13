@@ -6,7 +6,8 @@
         $("#findButton").addClass("hidden");
         $("#bored").addClass("hidden");
         $("#makePoem").addClass("hidden");
-        $("hereBePoems").empty();
+        $("#myPoems").addClass("hidden");
+        $("#hereBePoems").empty();
     });
 
     $("#SaveBored").on("click", function (e) {
@@ -38,10 +39,26 @@
             $("#findButton").addClass("hidden");
             $("#bored").addClass("hidden");
             $("#makePoem").addClass("hidden");
+            $("#myPoems").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
         });
     });
+
+    //$("#myPoems").on("click", function (e) {
+    //    console.log("my poems button clicked");
+    //    //$.ajax({
+    //    //    url: `Poem/MyPoems/`,
+    //    //    method: "GET"
+    //    //}).done((result) => {
+    //        $("#findButton").addClass("hidden");
+    //        $("#bored").addClass("hidden");
+    //        $("#makePoem").addClass("hidden");
+    //        $("#myPoems").addClass("hidden");
+    //        //$("#hereBePoems").empty();
+    //        //$("#hereBePoems").append(result);
+    //    //});
+    //});
 
     $("#Forms_FormId").on("change", function (e) {
         console.log("form selected, this is its value", $(this).val());
