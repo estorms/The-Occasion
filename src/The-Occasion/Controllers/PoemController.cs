@@ -146,6 +146,15 @@ namespace The_Occasion.Controllers
            
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id).SingleOrDefaultAsync();
+            context.UserSelection.Remove(selectionToDelete);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
