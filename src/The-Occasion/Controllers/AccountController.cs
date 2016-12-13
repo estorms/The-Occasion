@@ -134,7 +134,7 @@ namespace The_Occasion.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction("AllPoems", "Poem");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -458,7 +458,7 @@ namespace The_Occasion.Controllers
             }
             else
             {
-                return RedirectToAction("AllPoems", "Poem");
+                return RedirectToAction("Index", "Home");
             }
         }
 
