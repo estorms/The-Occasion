@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +14,8 @@ namespace The_Occasion.Models.PoemViewModels
         {
             var context = ctx;
         }
+        public List <Poem>UserPoems { get; set; }
+
+        //public IEnumerable<Array>PoemLines { get; set; }
     }
 }

@@ -5,11 +5,11 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @{
-    ViewData["Title"] = "The Occasion Calling";
+    ViewData["Title"] = "The Occasion";
 }
 
 <h2>@Html.DisplayFor(model => model.Poem.Title)</h2>
-@if (@UserManager.GetUserName(User) != null)
+@*@if (@UserManager.GetUserName(User) != null)
 {
     <h3>
         Hello, @UserManager.GetUserName(User)!
@@ -18,7 +18,7 @@
 else
 {
     <h4>Login, please.</h4>
-}
+}*@
 
 <div class="row">
     <div class="favorite text-center">

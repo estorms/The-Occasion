@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
 using The_Occasion.Models.PoemViewModels;
-
+using Microsoft.Extensions.DependencyInjection;
 
 namespace The_Occasion.Controllers
 {
@@ -38,6 +38,29 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+            return View(model);
+        }
+
+        public async Task<IActionResult> MyPoems()
+        { 
+            UserSelectionViewModel model = new UserSelectionViewModel(context);
+            //identify the current user, which will be coerced to the userId
+            var user = await GetCurrentUserAsync();
+            //identify all of the user selections by the user Id
+            var userSelections = await context.UserSelection.Where(u => u.User == user).ToListAsync();
+            //grab all of the poems from the database
+            var Poems = await context.Poem.ToListAsync();
+            //match user selection poem id's with poem ideas and add each poem to the view model
+            foreach (var u in userSelections)
+            {
+            foreach (var p in Poems)
+                {
+                    if (p.PoemId == u.PoemId)
+                    {
+                        model.UserPoems.Add(p);
+                    }
+                }
+            }
             return View(model);
         }
 
@@ -136,5 +159,7 @@ namespace The_Occasion.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        
     }
 }
