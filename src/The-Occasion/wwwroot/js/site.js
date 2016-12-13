@@ -30,6 +30,17 @@
         }).done((result) => {
         });
     });
+    $("#Delete").on("click", function (e) {
+        console.log("delete button clicked");
+        $.ajax({
+            url: `/Poem/Delete/${$(this).val()}`,
+            method: "DELETE",
+            contentType: 'application/json; charset=utf-8'
+        }).done((result) => {
+           console.log(result)
+        });
+    });
+
     $("#bored").on("click", function (e) {
         console.log("bored button clicked");
         $.ajax({
