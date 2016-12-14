@@ -28,7 +28,8 @@
             method: "POST",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            $("#Save").addClass("hidden");
+            console.log("result", result);
+        $("#Save").addClass("hidden");
         });
     });
     $("#Delete").on("click", function (e) {
