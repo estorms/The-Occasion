@@ -226,9 +226,18 @@ namespace The_Occasion.Controllers
                     }
                                       
                 }
+                
+            Random random = new Random();
+         
+             var testArray = new string[14];
+            for (int i = 0; i < 14; i++)
+            {
+            int r = random.Next(SonnetLines.Count());
+                testArray[i] = SonnetLines[r];
+            }
 
-            model.LinesArray = SonnetLines.ToArray();
-
+            model.LinesArray = testArray;
+            
             return View(model);        
         }
 
