@@ -29,7 +29,8 @@
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
             console.log("result", result);
-        $("#Save").addClass("hidden");
+            $("#Save").addClass("hidden");
+            $("#Delete").removeClass("hidden");
         });
     });
     $("#Delete").on("click", function (e) {
@@ -39,7 +40,9 @@
             method: "DELETE",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-           console.log(result)
+            console.log(result)
+            $("#Delete").addClass("hidden");
+            $("#Save").removeClass("hidden");
         });
     });
 

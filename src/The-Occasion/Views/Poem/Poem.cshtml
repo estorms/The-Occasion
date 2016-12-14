@@ -23,7 +23,7 @@ else
 <div class="row">
     <div class="favorite text-center">
         <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId">Save to My Profile</button></div>
-        @*<div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId">Delete From My Profile</button></div>*@
+        <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="hidden">Delete From My Profile</button></div>
     </div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Author)</div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Title)</div>
