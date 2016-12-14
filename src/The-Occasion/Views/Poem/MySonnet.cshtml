@@ -1,0 +1,34 @@
+@model The_Occasion.Models.PoemViewModels.SinglePoemViewModel
+@using Microsoft.AspNetCore.Identity
+@using The_Occasion.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@*@{
+    ViewData["Title"] = "The Occasion";
+}
+
+<h2>@Html.DisplayFor(model => model.Poem.Title)</h2>
+
+<div class="row">
+    <div class="favorite text-center">
+        @if (UserManager.GetUserName(User) != null)
+        {
+            <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId">Save to My Profile</button></div>
+            <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="hidden">Delete From My Profile</button></div>
+        }
+        else
+        {
+            <a class="btn btn-danger" asp-controller="Account" asp-action="Register">Register & Save This Poem to Your Account</a>
+        }
+    </div>*@
+    <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Author)</div>
+    <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Title)</div>
+</div>
+<div class="row">
+    @foreach (var line in Model.LinesArray)
+    {
+        <div class="col-md-12">@line</div>
+    }
+
+</div>

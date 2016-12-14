@@ -180,7 +180,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
            
-            var user = await GetCurrentUserAsync();
+            var user = await GetCurrentUserAsync(); //qpwoeighqwe-234234
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
             userSelection.PoemId = id;
@@ -188,6 +188,48 @@ namespace The_Occasion.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
 
+        }
+
+        [Authorize]
+        [HttpGet]
+
+        public async Task<IActionResult> MySonnet()
+        {
+            //create a new instance of the single poem view model to hold the generated poem
+            //properties to include on single poem view model: 1.poem, 2. linesarray;
+
+            SinglePoemViewModel model = new SinglePoemViewModel(context);
+            //set some dummy properties on model.Poem so that View doesn't freak out
+
+            Poem mySonnet = new Poem();
+            mySonnet.Title = "Jessup Jefferson's Poem";
+            mySonnet.Author = "Jessup Rides";
+            model.Poem = mySonnet;
+
+
+            //get all the sonnets back from the database
+            var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
+
+            //define the user created sonnet as an array of 14 strings. Then, set this as the LinesArray property on the Single Poem View model
+
+            List<string> SonnetLines = new List<string>();
+
+          
+                //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+                foreach (var sonnet in sonnets)
+                {
+                    //this is an array of lines for each sonnet in the database
+                    var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
+                       foreach (var line in oneSonnetLinesArr)
+                    {
+                        SonnetLines.Add(line);
+                    }
+                                      
+                }
+
+            model.LinesArray = SonnetLines.ToArray();
+
+            return View(model);        
         }
 
         
