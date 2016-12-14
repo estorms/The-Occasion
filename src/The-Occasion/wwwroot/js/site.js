@@ -11,12 +11,14 @@
     });
 
     $("#SaveBored").on("click", function (e) {
-        console.log("save button clicked clicked");
+        console.log("save buttonbored clicked clicked");
         $.ajax({
             url: `Poem/SaveBored/${$(this).val()}`,
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
+            $("#DeleteBored").removeClass("hidden");
+            $("#SaveBored").addClass("hidden");
         });
     });
 

@@ -179,7 +179,7 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
-
+           
             var user = await GetCurrentUserAsync();
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
