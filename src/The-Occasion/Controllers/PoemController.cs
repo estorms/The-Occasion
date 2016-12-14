@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace The_Occasion.Controllers
 {
-    [Authorize]
+ 
     public class PoemController : Controller
     {
 
@@ -29,6 +29,7 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        [Authorize]
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
@@ -41,6 +42,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyPoems()
         { 
             UserSelectionViewModel model = new UserSelectionViewModel(context);
@@ -116,6 +118,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> SavedPoem([FromRoute]int? id)
         {
@@ -149,7 +152,7 @@ namespace The_Occasion.Controllers
             return View(model);
             
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Save([FromRoute] int id)
         {
@@ -163,7 +166,7 @@ namespace The_Occasion.Controllers
             return RedirectToAction("Index", "Home");
            
         }
-
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
@@ -172,7 +175,7 @@ namespace The_Occasion.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
