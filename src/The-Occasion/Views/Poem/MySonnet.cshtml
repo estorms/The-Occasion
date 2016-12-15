@@ -24,11 +24,14 @@
     </div>*@
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Author)</div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Title)</div>
-</div>
+
 <div class="row">
     @foreach (var line in Model.LinesArray)
     {
         <div class="col-md-3">@line</div>
     }
 
+</div>
+<div class="boredButton text-center">
+    <a class="btn btn-danger" id="SaveUserPoem">Save</a>
 </div>

@@ -205,8 +205,6 @@ namespace The_Occasion.Controllers
             mySonnet.Title = "Jessup Jefferson's Poem";
             mySonnet.Author = "Jessup Rides";
             model.Poem = mySonnet;
-     
-
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
 
