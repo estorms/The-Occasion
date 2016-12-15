@@ -71,6 +71,8 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.MoodId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+            var mood = await context.Mood.SingleOrDefaultAsync(m => m.MoodId == id);
+            model.MoodName = mood.MoodName;
             return View(model);
 
         }
@@ -80,6 +82,9 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.FormId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+        
+            var form = await context.Form.SingleOrDefaultAsync(f => f.FormId == id);
+            model.FormName = form.FormName;
             return View(model);
 
         }
@@ -89,7 +94,8 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.TopicId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
-
+            var topic = await context.Topic.SingleOrDefaultAsync(t => t.TopicId == id);
+            model.TopicName = topic.TopicName;
             return View(model);
 
         }
@@ -166,15 +172,30 @@ namespace The_Occasion.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
         [Authorize]
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id).SingleOrDefaultAsync();
+            var user = await GetCurrentUserAsync();
+            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
             context.UserSelection.Remove(selectionToDelete);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
+
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBored([FromRoute] int id)
+        {
+            var user = await GetCurrentUserAsync();
+            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
+            context.UserSelection.Remove(selectionToDelete);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
@@ -231,7 +252,7 @@ namespace The_Occasion.Controllers
 
             Poem mySonnet = new Poem();
 
-            mySonnet.Title = "Jessup Jefferson's Poem";
+            mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userName;
             mySonnet.Lines = UserSonnet.ToString();
 

@@ -15,9 +15,6 @@ namespace The_Occasion.Data
         {
         }
 
-//        public ApplicationDbContext() { 
-//}
-
         public DbSet<Poem> Poem { get; set; }
 
         public DbSet<Form> Form { get; set; }

@@ -12,6 +12,12 @@
 </div>
 
 <div class="form-group hidden findselect" id="formselect">
+
+<div class="form-group hidden findselect" id="allqualfiers">
+    <div class="col-md-10">
+        @Html.DropDownList("AllQualifiers", @Model.AllQualifiers)
+    </div>
+</div>
     <div class="col-md-10">
         @Html.DropDownList("Forms.FormId", @Model.FormId)
     </div>
@@ -23,18 +29,12 @@
     </div>
 </div>
 
-<div class="form-group hidden findselect" id="allqualfiers">
-    <div class="col-md-10">
-        @Html.DropDownList("AllQualifiers", @Model.AllQualifiers)
-    </div>
-</div>
 
 <div class="form-group hidden findselect" id="topicselect">
     <div class="col-md-10">
         @Html.DropDownList("Topics.TopicId", @Model.TopicId)
     </div>
 </div>
-
 @if (@UserManager.GetUserName(User) != null)
 {
 
@@ -42,12 +42,12 @@
     <a class="btn btn-danger" asp-controller="Poem" asp-action="MyPoems" id="myPoems">What Have I Done?</a>
 </div>
 <div class="boredButton text-center">
-    <a class="btn btn-danger" id="bored">Paralyzed by Ennui</a>
+    <a class="btn btn-danger" id="bored">I'm Paralyzed by Ennui</a>
 </div>
 
 
 <div class="MakeAPoem text-center">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="MySonnet" id="makePoem">Make a Sonnet</a>
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="MySonnet" id="makePoem">Generate a Sonnet</a>
 </div>
 
 }
