@@ -19,7 +19,8 @@
         }
         else
         {
-            <a class="btn btn-danger" asp-controller="Account" asp-action="Register">Register & Save This Poem to Your Account</a>
+            <a asp-controller="Account" asp-action="Register">Register</a><span> or </span> 
+                <a asp-controller="Account" asp-action="Login">Login</a><span> to Save This Poem to Your Account</span> 
         }
     </div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Poem.Author)</div>
