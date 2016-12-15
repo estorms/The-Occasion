@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace The_Occasion.Controllers
 {
- 
+
     public class PoemController : Controller
     {
 
@@ -44,7 +44,7 @@ namespace The_Occasion.Controllers
 
         [Authorize]
         public async Task<IActionResult> MyPoems()
-        { 
+        {
             UserSelectionViewModel model = new UserSelectionViewModel(context);
             //identify the current user, which will be coerced to the userId
             var user = await GetCurrentUserAsync();
@@ -55,7 +55,7 @@ namespace The_Occasion.Controllers
             //match user selection poem id's with poem ideas and add each poem to the view model
             foreach (var u in userSelections)
             {
-            foreach (var p in Poems)
+                foreach (var p in Poems)
                 {
                     if (p.PoemId == u.PoemId)
                     {
@@ -138,7 +138,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult>Bored()
+        public async Task<IActionResult> Bored()
         {
 
             var AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
@@ -150,13 +150,13 @@ namespace The_Occasion.Controllers
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
             return View(model);
-            
+
         }
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Save([FromRoute] int id)
         {
-            
+
             var user = await GetCurrentUserAsync();
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
@@ -164,7 +164,7 @@ namespace The_Occasion.Controllers
             context.UserSelection.Add(userSelection);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
-           
+
         }
         [Authorize]
         [HttpDelete]
@@ -179,7 +179,7 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
-           
+
             var user = await GetCurrentUserAsync(); //qpwoeighqwe-234234
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
@@ -205,42 +205,39 @@ namespace The_Occasion.Controllers
             mySonnet.Title = "Jessup Jefferson's Poem";
             mySonnet.Author = "Jessup Rides";
             model.Poem = mySonnet;
-
+     
 
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
 
-            //define the user created sonnet as an array of 14 strings. Then, set this as the LinesArray property on the Single Poem View model
-
             List<string> SonnetLines = new List<string>();
 
-          
-                //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
-                foreach (var sonnet in sonnets)
-                {
-                    //this is an array of lines for each sonnet in the database
-                    var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
-                       foreach (var line in oneSonnetLinesArr)
-                    {
-                        SonnetLines.Add(line);
-                    }
-                                      
-                }
-                
-            Random random = new Random();
-         
-             var testArray = new string[14];
-            for (int i = 0; i < 14; i++)
+
+            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+            foreach (var sonnet in sonnets)
             {
-            int r = random.Next(SonnetLines.Count());
-                testArray[i] = SonnetLines[r];
+                var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
+                foreach (var line in oneSonnetLinesArr)
+                {
+                    SonnetLines.Add(line);
+                }
+
             }
 
-            model.LinesArray = testArray;
-            
-            return View(model);        
+            Random random = new Random();
+
+            var UserSonnet = new string[14];
+            for (int i = 0; i < 14; i++)
+            {
+                int r = random.Next(SonnetLines.Count());
+                UserSonnet[i] = SonnetLines[r];
+            }
+
+            model.LinesArray = UserSonnet;
+
+            return View(model);
         }
 
-        
+
     }
 }
