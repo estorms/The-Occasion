@@ -1,0 +1,19 @@
+@model The_Occasion.Models.PoemViewModels.SinglePoemViewModel
+@using Microsoft.AspNetCore.Identity
+@using The_Occasion.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+    <div class="col-md-3">Author: @Html.DisplayFor(model => model.Poem.Author)'s Computer</div>
+    <div class="col-md-3">Title: @Html.DisplayFor(model => model.Poem.Title)</div>
+
+<div class="row">
+    @foreach (var line in Model.LinesArray)
+    {
+        <div class="col-md-12">@line</div>
+    }
+
+</div>
+<div class="saveUserButton text-center">
+    <a class="btn btn-danger" id="SaveUserPoem" value="@Model.Poem">Save</a>
+</div>

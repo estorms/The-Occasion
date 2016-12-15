@@ -11,12 +11,14 @@
     });
 
     $("#SaveBored").on("click", function (e) {
-        console.log("save button clicked clicked");
+        console.log("save buttonbored clicked clicked");
         $.ajax({
             url: `Poem/SaveBored/${$(this).val()}`,
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
+            $("#DeleteBored").removeClass("hidden");
+            $("#SaveBored").addClass("hidden");
         });
     });
 
@@ -28,9 +30,12 @@
             method: "POST",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
+            console.log("result", result);
             $("#Save").addClass("hidden");
+            $("#Delete").removeClass("hidden");
         });
     });
+
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
@@ -38,10 +43,24 @@
             method: "DELETE",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-           console.log(result)
+            console.log(result)
+            $("#Delete").addClass("hidden");
+            $("#Save").removeClass("hidden");
         });
     });
 
+        $("#DeleteBored").on("click", function (e) {
+        console.log("delete bored button clicked");
+        $.ajax({
+            url: `/Poem/Delete/${$(this).val()}`,
+            method: "DELETE",
+            contentType: 'application/json; charset=utf-8'
+        }).done((result) => {
+            console.log(result)
+            $("#Delete").addClass("hidden");
+            $("#Save").removeClass("hidden");
+        });
+    });
     $("#bored").on("click", function (e) {
         console.log("bored button clicked");
         $.ajax({
@@ -57,20 +76,6 @@
         });
     });
 
-    //$("#myPoems").on("click", function (e) {
-    //    console.log("my poems button clicked");
-    //    //$.ajax({
-    //    //    url: `Poem/MyPoems/`,
-    //    //    method: "GET"
-    //    //}).done((result) => {
-    //        $("#findButton").addClass("hidden");
-    //        $("#bored").addClass("hidden");
-    //        $("#makePoem").addClass("hidden");
-    //        $("#myPoems").addClass("hidden");
-    //        //$("#hereBePoems").empty();
-    //        //$("#hereBePoems").append(result);
-    //    //});
-    //});
 
     $("#Forms_FormId").on("change", function (e) {
         console.log("form selected, this is its value", $(this).val());
@@ -82,6 +87,7 @@
             }).done((result) => {
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
+                $(".findselect").addClass("hidden");
             });
     });
 
@@ -94,6 +100,7 @@
             }).done((result) => {
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
+                $(".findselect").addClass("hidden");
             });
     });
 
@@ -106,5 +113,6 @@
             }).done((result) => {
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
+                $(".findselect").addClass("hidden");
             });
     });

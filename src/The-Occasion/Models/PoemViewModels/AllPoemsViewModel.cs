@@ -16,6 +16,11 @@ namespace The_Occasion.Models.PoemViewModels
         }
         public List <Poem>UserPoems { get; set; }
 
-        //public IEnumerable<Array>PoemLines { get; set; }
+        public string FormName { get; set; }
+
+        public string MoodName { get; set; }
+
+        public string TopicName { get; set; }
+
     }
 }

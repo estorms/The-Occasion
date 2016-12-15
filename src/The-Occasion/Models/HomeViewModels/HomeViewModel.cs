@@ -16,6 +16,7 @@ namespace The_Occasion.Models.HomeViewModels
         public List<SelectListItem> FormId { get; set; }
         public List<SelectListItem> MoodId { get; set; }
         public List<SelectListItem> TopicId { get; set; }
+        public List<SelectListItem> AllQualifiers = new List<SelectListItem>();
 
         public HomeViewModel(ApplicationDbContext ctx)
         {
@@ -35,13 +36,6 @@ namespace The_Occasion.Models.HomeViewModels
                 Value = "0"
             });
 
-            //this.FormId.Insert(5, new SelectListItem
-            //{
-            //    Text = "Surprise Me",
-            //    Value = "5"
-            //});
-
-
             this.MoodId = ctx.Mood
                                     .OrderBy(m => m.MoodName)
                                     .AsEnumerable()
@@ -57,14 +51,6 @@ namespace The_Occasion.Models.HomeViewModels
                 Value = "0"
             });
 
-            //this.MoodId.Insert(5, new SelectListItem
-            //{
-            //    Text = "Surprise Me",
-            //    Value = "5"
-            //});
-
-
-
             this.TopicId = ctx.Topic
                                     .OrderBy(t => t.TopicName)
                                     .AsEnumerable()
@@ -79,12 +65,11 @@ namespace The_Occasion.Models.HomeViewModels
                 Value = "0"
             });
 
-            //this.TopicId.Insert(5, new SelectListItem
-            //{
-            //    Text = "Surprise Me",
-            //    Value = "5"
-            //});
+            this.AllQualifiers.Insert(0, new SelectListItem { Text = "Curate Your Choice", Value = "0" });
+            this.AllQualifiers.InsertRange(1, TopicId);
+            this.AllQualifiers.InsertRange(4, MoodId);
+            this.AllQualifiers.InsertRange(8, FormId);
         }
-
+        
     }
 }

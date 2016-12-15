@@ -1,9 +1,5 @@
 ﻿@model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
-@{
-    ViewData["Title"] = "Mood Poems";
-}
-
-<h2 class="top-buffer">@ViewData["Title"]</h2>
+<h3>@Model.MoodName Poems</h3> 
 
 
    @foreach (var poem in Model.AllPoems)

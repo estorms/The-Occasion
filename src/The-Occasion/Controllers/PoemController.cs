@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace The_Occasion.Controllers
 {
-    [Authorize]
+
     public class PoemController : Controller
     {
 
@@ -29,6 +29,7 @@ namespace The_Occasion.Controllers
             context = ctx;
         }
 
+        [Authorize]
         private Task<ApplicationUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
@@ -41,8 +42,9 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyPoems()
-        { 
+        {
             UserSelectionViewModel model = new UserSelectionViewModel(context);
             //identify the current user, which will be coerced to the userId
             var user = await GetCurrentUserAsync();
@@ -53,7 +55,7 @@ namespace The_Occasion.Controllers
             //match user selection poem id's with poem ideas and add each poem to the view model
             foreach (var u in userSelections)
             {
-            foreach (var p in Poems)
+                foreach (var p in Poems)
                 {
                     if (p.PoemId == u.PoemId)
                     {
@@ -69,6 +71,8 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.MoodId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+            var mood = await context.Mood.SingleOrDefaultAsync(m => m.MoodId == id);
+            model.MoodName = mood.MoodName;
             return View(model);
 
         }
@@ -78,6 +82,9 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.FormId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
+        
+            var form = await context.Form.SingleOrDefaultAsync(f => f.FormId == id);
+            model.FormName = form.FormName;
             return View(model);
 
         }
@@ -87,7 +94,8 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.TopicId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
-
+            var topic = await context.Topic.SingleOrDefaultAsync(t => t.TopicId == id);
+            model.TopicName = topic.TopicName;
             return View(model);
 
         }
@@ -116,6 +124,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> SavedPoem([FromRoute]int? id)
         {
@@ -135,7 +144,7 @@ namespace The_Occasion.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult>Bored()
+        public async Task<IActionResult> Bored()
         {
 
             var AllPoems = await context.Poem.GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
@@ -147,13 +156,13 @@ namespace The_Occasion.Controllers
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
             return View(model);
-            
-        }
 
+        }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Save([FromRoute] int id)
         {
-            
+
             var user = await GetCurrentUserAsync();
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
@@ -161,23 +170,38 @@ namespace The_Occasion.Controllers
             context.UserSelection.Add(userSelection);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
-           
+
         }
 
+        [Authorize]
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id).SingleOrDefaultAsync();
+            var user = await GetCurrentUserAsync();
+            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
             context.UserSelection.Remove(selectionToDelete);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
 
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBored([FromRoute] int id)
+        {
+            var user = await GetCurrentUserAsync();
+            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
+            context.UserSelection.Remove(selectionToDelete);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
 
-            var user = await GetCurrentUserAsync();
+            var user = await GetCurrentUserAsync(); //qpwoeighqwe-234234
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
             userSelection.PoemId = id;
@@ -187,6 +211,66 @@ namespace The_Occasion.Controllers
 
         }
 
-        
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MySonnet()
+        {
+            //create a new instance of the single poem view model to hold the generated poem
+            //properties to include on single poem view model: 1.poem, 2. linesarray;
+
+            SinglePoemViewModel model = new SinglePoemViewModel(context);
+            var user = await GetCurrentUserAsync();
+            var userName = user.UserName;
+           
+            //set some dummy properties on model.Poem so that View doesn't freak out
+
+            //get all the sonnets back from the database
+            var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
+
+            List<string> SonnetLines = new List<string>();
+
+
+            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+            foreach (var sonnet in sonnets)
+            {
+                var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
+                foreach (var line in oneSonnetLinesArr)
+                {
+                    SonnetLines.Add(line);
+                }
+
+            }
+
+            Random random = new Random();
+       
+            var UserSonnet = new string[14];
+            for (int i = 0; i < 14; i++)
+            {
+                int r = random.Next(SonnetLines.Count());
+                UserSonnet[i] = SonnetLines[r];
+            }
+
+            Poem mySonnet = new Poem();
+
+            mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
+            mySonnet.Author = userName;
+            mySonnet.Lines = UserSonnet.ToString();
+
+            model.Poem = mySonnet;
+            model.LinesArray = UserSonnet;
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult>SaveUserPoem(Poem poem)
+        {
+
+            context.Poem.Add(poem);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
