@@ -192,13 +192,14 @@ namespace The_Occasion.Controllers
 
         [Authorize]
         [HttpGet]
-
         public async Task<IActionResult> MySonnet()
         {
             //create a new instance of the single poem view model to hold the generated poem
             //properties to include on single poem view model: 1.poem, 2. linesarray;
 
             SinglePoemViewModel model = new SinglePoemViewModel(context);
+            var user = await GetCurrentUserAsync();
+           
             //set some dummy properties on model.Poem so that View doesn't freak out
 
             Poem mySonnet = new Poem();
@@ -236,6 +237,15 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult>SaveUserPoem(Poem poem)
+        {
+
+            context.Poem.Add(poem);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }
