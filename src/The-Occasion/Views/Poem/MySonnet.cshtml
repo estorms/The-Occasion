@@ -28,10 +28,10 @@
 <div class="row">
     @foreach (var line in Model.LinesArray)
     {
-        <div class="col-md-3">@line</div>
+        <div class="col-md-12">@line</div>
     }
 
 </div>
-<div class="boredButton text-center">
-    <a class="btn btn-danger" id="SaveUserPoem">Save</a>
+<div class="saveUserButton text-center">
+    <a class="btn btn-danger" id="SaveUserPoem" value="@Model.Poem">Save</a>
 </div>

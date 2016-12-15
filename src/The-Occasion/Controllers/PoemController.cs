@@ -199,13 +199,10 @@ namespace The_Occasion.Controllers
 
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             var user = await GetCurrentUserAsync();
+            var userName = user.UserName;
            
             //set some dummy properties on model.Poem so that View doesn't freak out
 
-            Poem mySonnet = new Poem();
-            mySonnet.Title = "Jessup Jefferson's Poem";
-            mySonnet.Author = "Jessup Rides";
-            model.Poem = mySonnet;
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
 
@@ -224,7 +221,7 @@ namespace The_Occasion.Controllers
             }
 
             Random random = new Random();
-
+       
             var UserSonnet = new string[14];
             for (int i = 0; i < 14; i++)
             {
@@ -232,6 +229,13 @@ namespace The_Occasion.Controllers
                 UserSonnet[i] = SonnetLines[r];
             }
 
+            Poem mySonnet = new Poem();
+
+            mySonnet.Title = "Jessup Jefferson's Poem";
+            mySonnet.Author = userName;
+            mySonnet.Lines = UserSonnet.ToString();
+
+            model.Poem = mySonnet;
             model.LinesArray = UserSonnet;
 
             return View(model);
