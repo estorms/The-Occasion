@@ -9,69 +9,69 @@ namespace The_Occasion.Models
     public class BigOleListOfPoems
     {
         public Array PoemsArr = new Poem[] {
-         
+
             new Poem
             {
-                Title="Still I Rise",
-                Author="Maya Angelou",
-                FormId = 117,
+                Title="The New Colossus",
+                Author="Emma Lazarus",
+                FormId = 118,
                 MoodId = 113,
-                TopicId=115,
-                Lines="@@You may write me down in history@@With your bitter, twisted lies,@@You may trod me in the very dirt@@But still, like dust, I’ll rise.@@@@Does my sassiness upset you?@@Why are you beset with gloom?@@‘Cause I walk like I’ve got oil wells@@Pumping in my living room.@@@@Just like moons and like suns,@@With the certainty of tides,@@Just like hopes springing high,@@Still I’ll rise.@@@@Did you want to see me broken?@@Bowed head and lowered eyes?@@Shoulders falling down like teardrops,@@Weakened by my soulful cries?@@@@Does my haughtiness offend you?@@Don’t you take it awful hard@@‘Cause I laugh like I’ve got gold mines@@Diggin’ in my own backyard.@@@@You may shoot me with your words,@@You may cut me with your eyes,@@You may kill me with your hatefulness,@@But still, like air, I’ll rise.@@@@Does my sexiness upset you?@@Does it come as a surprise@@That I dance like I’ve got diamonds@@At the meeting of my thighs?@@@@Out of the huts of history’s shame@@I rise@@Up from a past that’s rooted in pain@@I rise@@I’m a black ocean, leaping and wide,@@Welling and swelling I bear in the tide.@@@@Leaving behind nights of terror and fear@@I rise@@Into a daybreak that’s wondrously clear@@I rise@@Bringing the gifts that my ancestors gave,@@I am the dream and the hope of the slave.@@I rise@@I rise@@I rise.@@@@"
+                TopicId = 115,
+                Lines = "Not like the brazen giant of Greek fame,@@With conquering limbs astride from land to land;@@Here at our sea-washed, sunset gates shall stand@@A mighty woman with a torch, whose flame@@Is the imprisoned lightning, and her name@@Mother of Exiles. From her beacon-hand@@Glows world-wide welcome; her mild eyes command@@The air-bridged harbor that twin cities frame.@@'Keep, ancient lands, your storied pomp!' cries she@@With silent lips. 'Give me your tired, your poor,@@Your huddled masses yearning to breathe free,@@The wretched refuse of your teeming shore.@@Send these, the homeless, tempest-tost to me,@@I lift my lamp beside the golden door!' "
             },
 
             new Poem
             {
-                Title="Acquainted With the Night",
-                Author="Robert Frost",
-                FormId = 117,
-                MoodId=116,
-                TopicId=115,
-                Lines="I have been one acquainted with the night.@@I have walked out in rain—and back in rain.@@I have outwalked the furthest city light.@@@@I have looked down the saddest city lane.@@I have passed by the watchman on his beat@@And dropped my eyes, unwilling to explain.@@@@I have stood still and stopped the sound of feet@@When far away an interrupted cry@@Came over houses from another street,@@@@But not to call me back or say good-bye;@@And further still at an unearthly height,@@One luminary clock against the sky@@@@Proclaimed the time was neither wrong nor right.@@I have been one acquainted with the night.@@"
+                Title="My Letters! all dead paper (Sonnet 28)",
+                Author="Elizabeth Barrett Browning",
+                FormId = 118,
+                MoodId = 113,
+                TopicId = 116,
+                Lines="My letters! all dead paper, mute and white!@@And yet they seem alive and quivering@@Against my tremulous hands which loose the string@@And let them drop down on my knee tonight.@@This said—he wished to have me in his sight@@Once, as a friend: this fixed a day in spring@@To come and touch my hand. . . a simple thing,@@Yes I wept for it—this . . . the paper’s light. . .@@Said, Dear, I love thee; and I sank and quailed@@As if God’s future thundered on my past.@@This said, I am thine—and so its ink has paled@@With lying at my heart that beat too fast.@@And this . . . 0 Love, thy words have ill availed@@If, what this said, I dared repeat at last!"
             },
 
             new Poem
             {
-                Title="An Electric Sign Goes Dark",
-                Author="Carl Sandburg",
-                FormId = 117,
-                MoodId=116,
-                TopicId=116,
-                Lines="Poland, France, Judea ran in her veins,@@Singing to Paris for bread, singing to Gotham in a fizz at the pop of a bottle’s cork.@@@@“Won’t you come and play wiz me” she sang … and “I just can’t make my eyes behave.”@@“Higgeldy-Piggeldy,” “Papa’s Wife,” “Follow Me” were plays.@@@@Did she wash her feet in a tub of milk? Was a strand of pearls sneaked from her trunk? The newspapers asked.@@Cigarettes, tulips, pacing horses, took her name.@@@@Twenty years old … thirty … forty …@@Forty-five and the doctors fathom nothing, the doctors quarrel, the doctors use silver tubes feeding twenty-four quarts of blood into the veins, the respects of a prize-fighter, a cab driver.@@And a little mouth moans: It is easy to die when they are dying so many grand deaths in France.@@@@A voice, a shape, gone.@@A baby bundle from Warsaw … legs, torso, head … on a hotel bed at The Savoy.@@The white chiselings of flesh that flung themselves in somersaults, straddles, for packed houses:@@A memory, a stage and footlights out, an electric sign on Broadway dark.@@@@She belonged to somebody, nobody.@@No one man owned her, no ten nor a thousand.@@She belonged to many thousand men, lovers of the white chiseling of arms and shoulders, the ivory of a laugh, the bells of song.@@@@Railroad brakemen taking trains across Nebraska prairies, lumbermen jaunting in pine and tamarack of the Northwest, stock ranchers in the middle west, mayors of southern cities@@Say to their pals and wives now: I see by the papers Anna Held is dead.@@@@--Carl Sandburg@@"
+                Author="Rainer Maria Rilke",
+                Title="Sonnet 6",
+                FormId=118,
+                MoodId=115,
+                TopicId=115,
+                Lines="Is he native to this realm? No,@@his wide nature grew out of both worlds.@@They more adeptly bend the willow’s branches@@who have experience of the willow’s roots.@@@@When you go to bed, don’t leave bread or milk@@on the table: it attracts the dead—@@But may he, this quiet conjurer, may he@@beneath the mildness of the eyelid@@@@mix their bright traces into every seen thing;@@and may the magic of earthsmoke and rue@@be as real for him as the clearest connection.@@@@Nothing can mar for him the authentic image;@@whether he wanders through houses or graves,@@let him praise signet ring, gold necklace, jar."
             },
-
-            //new Poem
-            //{
-            //    Title="Sonnet (Death, Be Ye Not Proud)",
-            //    Author="John Donne",
-            //    FormId=118,
-            //    MoodId=113,
-            //    TopicId=113,
-            //    Lines="Death, be not proud, though some have called thee@@Mighty and dreadful, for thou are not so;@@For those whom thou think’st thou dost overthrow@@Die not, poor Death, nor yet canst thou kill me.@@From rest and sleep, which but thy pictures be,@@Much pleasure; then from thee much more must flow,@@And soonest our best men with thee do go,@@Rest of their bones, and soul’s delivery.@@Thou’art slave to fate, chance, kings, and desperate men,@@And dost with poison, war, and sickness dwell,@@And poppy’or charms can make us sleep as well@@And better than thy stroke; why swell’st thou then?@@One short sleep past, we wake eternally,@@And death shall be no more; Death, thou shalt die.@@@@"
-            //},
-
-            //new Poem
-            //{
-            //    Title="Sonnet 53",
-            //    Author="William Shakespeare",
-            //    FormId=118,
-            //    MoodId=113,
-            //    TopicId=115,
-            //    Lines="What is your substance, whereof are you made,@@That millions of strange shadows on you tend?@@Since every one hath, every one, one shade,@@And you, but one, can every shadow lend.@@Describe Adonis, and the counterfeit@@Is poorly imitated after you;@@On Helen's cheek all art of beauty set,@@And you in Grecian tires are painted new.@@Speak of the spring and foison of the year:@@The one doth shadow of your beauty show,@@The other as your bounty doth appear;@@And you in every blessèd shape we know.@@    In all external grace you have some part,@@    But you like none, none you, for constant heart.@@@@"
-            //},
 
             new Poem
             {
-                Title="The Genius of the Crowd",
-                Author="Charles Bukowski",
-                FormId = 117,
+                Title="I Shall Forget You Presently",
+                Author="Edna St. Vincent Millay",
                 MoodId=116,
-                TopicId=115,
-                Lines="there is enough treachery, hatred violence absurdity in the average@@human being to supply any given army on any given day@@@@and the best at murder are those who preach against it@@and the best at hate are those who preach love@@and the best at war finally are those who preach peace@@@@those who preach god, need god@@those who preach peace do not have peace@@those who preach peace do not have love@@@@beware the preachers@@beware the knowers@@beware those who are always reading books@@beware those who either detest poverty@@or are proud of it@@beware those quick to praise@@for they need praise in return@@beware those who are quick to censor@@they are afraid of what they do not know@@beware those who seek constant crowds for@@they are nothing alone@@beware the average man the average woman@@beware their love, their love is average@@seeks average@@@@but there is genius in their hatred@@there is enough genius in their hatred to kill you@@to kill anybody@@not wanting solitude@@not understanding solitude@@they will attempt to destroy anything@@that differs from their own@@not being able to create art@@they will not understand art@@they will consider their failure as creators@@only as a failure of the world@@not being able to love fully@@they will believe your love incomplete@@and then they will hate you@@and their hatred will be perfect@@@@like a shining diamond@@like a knife@@like a mountain@@like a tiger@@like hemlock@@@@their finest art"
+                TopicId = 114,
+                FormId=118,
+                Lines="I shall forget you presently, my dear,@@So make the most of this, your little day,@@Your little month, your little half a year@@Ere I forget, or die, or move away,@@And we are done forever; by and by@@I shall forget you, as I said, but now,@@If you entreat me with your loveliest lie@@I will protest you with my favorite vow.@@I would indeed that love were longer-lived,@@And vows were not so brittle as they are,@@But so it is, and nature has contrived@@To struggle on without a break thus far,—@@Whether or not we find what we are seeking@@Is idle, biologically speaking."
+
+            },
+
+            new Poem
+            {
+                Title="Sunset",
+                Author="e.e. cummings",
+                FormId = 118,
+                MoodId = 113,
+                TopicId = 115,
+                Lines="Great carnal mountains crouching in the cloud@@That marrieth the young earth with a ring,@@Yet still its thoughts builds heavenward, whence spring@@Wee villages of vapor, sunset-proud.—@@And to the meanest door hastes one pure-browed@@White-fingered star, a little, childish thing,@@The busy needle of her light to bring,@@And stitch, and stitch, upon the dead day’s shroud.@@Poises the sun upon his west, a spark@@Superlative,—and dives beneath the world;@@From the day’s fillets Night shakes out her locks;@@List! One pure trembling drop of cadence purled—@@“Summer!”—a meek thrush whispers to the dark.@@Hark! the cold ripple sneering on the rocks!"
+
+            },
+
+            new Poem
+            {
+                Title="Sonnet",
+                Author="Alice Dunbar-Nelson",
+                FormId=118,
+                TopicId=114,
+                MoodId=113,
+                Lines="I had no thought of violets of late,      @@The wild, shy kind that spring beneath your feet@@In wistful April days, when lovers mate@@And wander through the fields in raptures sweet.@@The thought of violets meant florists’ shops,@@And bows and pins, and perfumed papers fine;@@And garish lights, and mincing little fops@@And cabarets and songs, and deadening wine. @@So far from sweet real things my thoughts had strayed, @@I had forgot wide fields, and clear brown streams;            @@The perfect loveliness that God has made,— @@Wild violets shy and Heaven-mounting dreams.@@And now—unwittingly, you’ve made me dream@@Of violets, and my soul’s forgotten gleam.    "
             }
-
-          
-        };
+            };
             public Array GetPoems () {
             return PoemsArr;
             }

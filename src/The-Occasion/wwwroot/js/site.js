@@ -43,7 +43,7 @@
             method: "DELETE",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            console.log(result)
+            console.log(result);
             $("#Delete").addClass("hidden");
             $("#Save").removeClass("hidden");
         });
@@ -56,9 +56,9 @@
             method: "DELETE",
             contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            console.log(result)
-            $("#Delete").addClass("hidden");
-            $("#Save").removeClass("hidden");
+            console.log(result);
+            $("#DeleteBored").addClass("hidden");
+            $("#SaveBored").removeClass("hidden");
         });
     });
     $("#bored").on("click", function (e) {

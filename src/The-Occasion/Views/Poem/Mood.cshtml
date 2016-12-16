@@ -5,7 +5,7 @@
    @foreach (var poem in Model.AllPoems)
    {
 
-    <div class="row poemrow">
+    <div class="row poemRow top-buffer">
         <a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a><div>
             @Html.DisplayFor(modelItem => poem.Author)
     </div>
