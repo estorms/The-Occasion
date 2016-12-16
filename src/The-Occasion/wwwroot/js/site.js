@@ -123,9 +123,11 @@
         console.log("mood selected, this is its value", $(this).val());
         var chosenMood = $(this).val();
             $.ajax({
-                url: `Poem/SaveUserSonnet`,
-                method: "POST"
+                url: `Poem/Mood/${chosenMood}`,
+                method: "GET"
             }).done((result) => {
-                console.log(result, "result");
+                $("#hereBePoems").empty();
+                $("#hereBePoems").append(result);
+                $(".findselect").addClass("hidden");
             });
     });
