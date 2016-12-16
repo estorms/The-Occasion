@@ -37,6 +37,19 @@
         });
     });
 
+ //$("#SaveUserSonnet").on("click", function (e) {
+ //       console.log("save usersonnet clicked");
+ //       $.ajax({
+ //           url: `/Poem/Save/${$(this).val()}`,
+ //           method: "POST",
+ //           contentType: 'application/json; charset=utf-8'
+ //       }).done((result) => {
+ //           console.log("result", result);
+ //           $("#Save").addClass("hidden");
+ //           $("#Delete").removeClass("hidden");
+ //       });
+ //   });
+
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
@@ -110,11 +123,9 @@
         console.log("mood selected, this is its value", $(this).val());
         var chosenMood = $(this).val();
             $.ajax({
-                url: `Poem/Mood/${chosenMood}`,
-                method: "GET"
+                url: `Poem/SaveUserSonnet`,
+                method: "POST"
             }).done((result) => {
-                $("#hereBePoems").empty();
-                $("#hereBePoems").append(result);
-                $(".findselect").addClass("hidden");
+                console.log(result, "result");
             });
     });

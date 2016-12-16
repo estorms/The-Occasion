@@ -222,15 +222,16 @@ namespace The_Occasion.Controllers
             var user = await GetCurrentUserAsync();
             var userName = user.UserName;
            
-            //set some dummy properties on model.Poem so that View doesn't freak out
 
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
 
+            //create a list of strings to hold all the individual lines of each sonnet
+
             List<string> SonnetLines = new List<string>();
 
 
-            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays and add the lines to the list of sonnet lines
             foreach (var sonnet in sonnets)
             {
                 var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
@@ -241,9 +242,13 @@ namespace The_Occasion.Controllers
 
             }
 
+            //create a new instance of the random class
             Random random = new Random();
        
+            //create a new array of strings to hold the user sonnet
             var UserSonnet = new string[14];
+            //cycle through the list of sonnet lines and insert them at random into the user sonnet array
+
             for (int i = 0; i < 14; i++)
             {
                 int r = random.Next(SonnetLines.Count());
@@ -255,6 +260,9 @@ namespace The_Occasion.Controllers
             mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userName;
             mySonnet.Lines = UserSonnet.ToString();
+            mySonnet.FormId = 118;
+            mySonnet.TopicId = 115;
+            mySonnet.MoodId = 115;
 
             model.Poem = mySonnet;
             model.LinesArray = UserSonnet;
@@ -315,7 +323,7 @@ namespace The_Occasion.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult>SaveUserPoem(Poem poem)
+        public async Task<IActionResult>SaveUserSonnet(Poem poem)
         {
 
             context.Poem.Add(poem);
