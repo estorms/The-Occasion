@@ -263,6 +263,57 @@ namespace The_Occasion.Controllers
         }
 
         [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MyHaiku()
+        {
+            //create a new instance of the single poem view model to hold the generated poem
+            //properties to include on single poem view model: 1.poem, 2. linesarray;
+
+            SinglePoemViewModel model = new SinglePoemViewModel(context);
+            var user = await GetCurrentUserAsync();
+            var userName = user.UserName;
+
+            //set some dummy properties on model.Poem so that View doesn't freak out
+
+            //get all the sonnets back from the database
+            var haikus = await context.Poem.Where(p => p.FormId == 120).ToListAsync();
+
+            List<string> HaikuLines = new List<string>();
+
+
+            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+            foreach (var haiku in haikus)
+            {
+                var haikuLinesArray = Regex.Split(haiku.Lines, "@@");
+                foreach (var line in haikuLinesArray)
+                {
+                    HaikuLines.Add(line);
+                }
+
+            }
+
+            Random random = new Random();
+
+            var userHaiku = new string[3];
+            for (int i = 0; i < 3; i++)
+            {
+                int r = random.Next(HaikuLines.Count());
+                userHaiku[i] = HaikuLines[r];
+            }
+
+            Poem myHaiku = new Poem();
+
+            myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
+            myHaiku.Author = userName;
+            myHaiku.Lines = userHaiku.ToString();
+
+            model.Poem = myHaiku;
+            model.LinesArray = userHaiku;
+
+            return View(model);
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult>SaveUserPoem(Poem poem)
         {

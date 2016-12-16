@@ -21,6 +21,27 @@ textarea {
     visibility: hidden;
 }
 
+.poemRow {
+    margin-top: 4%;
+}
+
+.homebutton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top-buffer {
+    margin-top: 4%;
+    margin-bottom: 10px
+}
+
+.author {
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

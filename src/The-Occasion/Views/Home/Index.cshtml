@@ -7,7 +7,7 @@
     ViewData["Title"] = "Welcome to The Occasion";
 }
 
-<div class="FindAPoem text-center">
+<div class="FindAPoem text-center homebutton">
     <a class="btn btn-danger" id="findButton">Find a Poem</a>
 </div>
 
@@ -38,17 +38,20 @@
 @if (@UserManager.GetUserName(User) != null)
 {
 
-<div class="WhatHaveIDone text-center">
+<div class="WhatHaveIDone text-center homebutton">
     <a class="btn btn-danger" asp-controller="Poem" asp-action="MyPoems" id="myPoems">What Have I Done?</a>
 </div>
-<div class="boredButton text-center">
+<div class="boredButton text-center homebutton">
     <a class="btn btn-danger" id="bored">I'm Paralyzed by Ennui</a>
 </div>
 
 
-<div class="MakeAPoem text-center">
+<div class="MakeAPoem text-center homebutton">
     <a class="btn btn-danger" asp-controller="Poem" asp-action="MySonnet" id="makePoem">Generate a Sonnet</a>
 </div>
 
+<div class="MakeAPoem text-center homebutton">
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="MyHaiku" id="makeHaiku">Generate a Haiku</a>
+</div>
 }
 <div id="hereBePoems"></div>
