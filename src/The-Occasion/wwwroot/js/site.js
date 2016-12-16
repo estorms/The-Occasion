@@ -6,6 +6,7 @@
         $("#findButton").addClass("hidden");
         $("#bored").addClass("hidden");
         $("#makePoem").addClass("hidden");
+        $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
     });
@@ -70,6 +71,7 @@
             $("#findButton").addClass("hidden");
             $("#bored").addClass("hidden");
             $("#makePoem").addClass("hidden");
+            $("#makeHaiku").addClass("hidden");
             $("#myPoems").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
