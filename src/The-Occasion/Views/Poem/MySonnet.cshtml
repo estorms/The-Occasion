@@ -4,22 +4,33 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+<form asp-action="SaveUserSonnet">
+    <div class="row poemRow top-buffer">
+        <div class="col-md-3 top-buffer" style="font-weight: bolder"><input class="form-control hidden" asp-for="Poem.Title">@Html.DisplayFor(model => model.Poem.Title)</div>
+    </div>
+    <div class="row">
+        <input class="form-control hidden" asp-for="Poem.Lines" />
+        <span class="hidden">@Model.Poem.Lines</span>
+        <input class="form-control hidden" asp-for="Poem.FormId" />
+        <span class="hidden">@Model.Poem.FormId</span>
+        <input class="form-control hidden" asp-for="Poem.MoodId" />
+        <span class="hidden">@Model.Poem.MoodId</span>
+        <input class="form-control hidden" asp-for="Poem.TopicId" /><span class="hidden">@Model.Poem.TopicId</span>
+        @foreach (var line in Model.LinesArray)
+        {
+            <div class="col-md-12">@line</div>
+        }
 
-<div class="row poemRow top-buffer">
-    <div class="col-md-3 top-buffer" style="font-weight: bolder">@Html.DisplayFor(model => model.Poem.Title)</div>
-</div>
-<div class="row">
-    @foreach (var line in Model.LinesArray)
-    {
-        <div class="col-md-12">@line</div>
-    }
-
-</div>
-<div class="row"></div>
-<div class="row">
-    <div class="col-md-3"><span style="font-style:italic; margin-top: 10px; display: inline-block"> Brought to you courtesy of @Html.DisplayFor(model => model.Poem.Author)'s computer</span></div>
+    </div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <input class="form-control hidden" asp-for="Poem.
+        Author" /><span style="font-style:italic; margin-top: 10px; display: inline-block"> Brought to you courtesy of @Html.DisplayFor(model => model.Poem.Author)'s computer</span>
+    </div>
     <div class="row poemRow"></div>
-<div class="saveUserButton text-center">
-    <input type="submit" class="btn btn-danger" id="SaveUserSonnet">
+    <div class="saveUserButton text-center">
+        <input type="submit" class="btn btn-danger" id="SaveUserSonnet">
+    </div>
 </div>
-</div>
+    </form>
