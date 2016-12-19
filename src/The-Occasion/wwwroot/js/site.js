@@ -1,8 +1,8 @@
 ﻿// Write your Javascript code.
 
-var mood;
-var form;
-var topic;
+var mood = null;
+var form = null;
+var topic = null;
 
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
@@ -56,13 +56,24 @@ var topic;
          form = $(this).val();
         console.log("form", form);
     });
-       
+
+    $("#CurateMe").on("click", function (e) {
+        console.log("curate me clicked");
+        console.log(mood + form + topic);
+        $.ajax({
+            url: `/Poem/Curate/${mood}/${topic}/${form}`,
+            method: "GET",
+        }).done((result) => {
+            console.log("result", result);
+            $("#hereBePickyPoems").append(result);
+        });
+    });
+
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
             url: `/Poem/Delete/${$(this).val()}`,
             method: "DELETE",
-            contentType: 'application/json; charset=utf-8'
         }).done((result) => {
             console.log(result);
             $("#Delete").addClass("hidden");
@@ -74,8 +85,7 @@ var topic;
         console.log("delete bored button clicked");
         $.ajax({
             url: `/Poem/Delete/${$(this).val()}`,
-            method: "DELETE",
-            contentType: 'application/json; charset=utf-8'
+            method: "DELETE"
         }).done((result) => {
             console.log(result);
             $("#DeleteBored").addClass("hidden");
