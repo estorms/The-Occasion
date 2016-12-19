@@ -6,6 +6,7 @@
         $("#findButton").addClass("hidden");
         $("#bored").addClass("hidden");
         $("#makePoem").addClass("hidden");
+        $("#curateview").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();

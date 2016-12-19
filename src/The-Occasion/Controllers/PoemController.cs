@@ -43,6 +43,12 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        public IActionResult Picky()
+        {
+            PickyPoemsViewModel model = new PickyPoemsViewModel(context);
+            return View(model);
+        }
+
         [Authorize]
         public async Task<IActionResult> MyPoems()
         {
