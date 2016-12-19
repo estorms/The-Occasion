@@ -1,5 +1,9 @@
 ﻿// Write your Javascript code.
 
+var mood;
+var form;
+var topic;
+
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
         $(".findselect").removeClass("hidden");
@@ -38,19 +42,21 @@
         });
     });
 
- //$("#SaveUserSonnet").on("click", function (e) {
- //       console.log("save usersonnet clicked");
- //       $.ajax({
- //           url: `/Poem/Save/${$(this).val()}`,
- //           method: "POST",
- //           contentType: 'application/json; charset=utf-8'
- //       }).done((result) => {
- //           console.log("result", result);
- //           $("#Save").addClass("hidden");
- //           $("#Delete").removeClass("hidden");
- //       });
- //   });
+    $("#Moods_Id").on("change", function (e) {
+         mood = $(this).val();
+        console.log("mood", mood);
+    });
 
+    $("#Topics_Id").on("change", function (e) {
+         topic = $(this).val();
+        console.log("topic", topic);
+    });
+  
+    $("#Forms_Id").on("change", function (e) {
+         form = $(this).val();
+        console.log("form", form);
+    });
+       
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
