@@ -43,6 +43,24 @@ namespace The_Occasion.Controllers
             return View(model);
         }
 
+        public IActionResult Picky()
+        {
+            PickyPoemsViewModel model = new PickyPoemsViewModel(context);
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpGet("/Poem/Curate/{moodId}/{topicId}/{formId}")]
+
+        public async Task<IActionResult> Curate([FromRoute]int moodId, [FromRoute]int topicId, [FromRoute]int formId)
+        {
+            var curatedPoems = await context.Poem.Where(p => p.MoodId == moodId && p.TopicId == topicId && p.FormId == formId).ToListAsync();
+            AllPoemsViewModel model = new AllPoemsViewModel(context);
+            model.AllPoems= curatedPoems;
+            return View(model);
+          
+        }
+
         [Authorize]
         public async Task<IActionResult> MyPoems()
         {

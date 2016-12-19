@@ -1,11 +1,16 @@
 ﻿// Write your Javascript code.
 
+var mood = null;
+var form = null;
+var topic = null;
+
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
         $(".findselect").removeClass("hidden");
         $("#findButton").addClass("hidden");
         $("#bored").addClass("hidden");
         $("#makePoem").addClass("hidden");
+        $("#curateview").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
@@ -37,25 +42,38 @@
         });
     });
 
- //$("#SaveUserSonnet").on("click", function (e) {
- //       console.log("save usersonnet clicked");
- //       $.ajax({
- //           url: `/Poem/Save/${$(this).val()}`,
- //           method: "POST",
- //           contentType: 'application/json; charset=utf-8'
- //       }).done((result) => {
- //           console.log("result", result);
- //           $("#Save").addClass("hidden");
- //           $("#Delete").removeClass("hidden");
- //       });
- //   });
+    $("#Moods_Id").on("change", function (e) {
+         mood = $(this).val();
+        console.log("mood", mood);
+    });
+
+    $("#Topics_Id").on("change", function (e) {
+         topic = $(this).val();
+        console.log("topic", topic);
+    });
+  
+    $("#Forms_Id").on("change", function (e) {
+         form = $(this).val();
+        console.log("form", form);
+    });
+
+    $("#CurateMe").on("click", function (e) {
+        console.log("curate me clicked");
+        console.log(mood + form + topic);
+        $.ajax({
+            url: `/Poem/Curate/${mood}/${topic}/${form}`,
+            method: "GET",
+        }).done((result) => {
+            console.log("result", result);
+            $("#hereBePickyPoems").append(result);
+        });
+    });
 
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
             url: `/Poem/Delete/${$(this).val()}`,
             method: "DELETE",
-            contentType: 'application/json; charset=utf-8'
         }).done((result) => {
             console.log(result);
             $("#Delete").addClass("hidden");
@@ -67,8 +85,7 @@
         console.log("delete bored button clicked");
         $.ajax({
             url: `/Poem/Delete/${$(this).val()}`,
-            method: "DELETE",
-            contentType: 'application/json; charset=utf-8'
+            method: "DELETE"
         }).done((result) => {
             console.log(result);
             $("#DeleteBored").addClass("hidden");
