@@ -270,7 +270,7 @@ namespace The_Occasion.Controllers
             Poem mySonnet = new Poem();
 
            mySonnet.Lines = stringbuilder.ToString();
-            mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
+            //mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userName;
             //mySonnet.Lines = UserSonnet.ToString();
             mySonnet.FormId = 118;
