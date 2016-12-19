@@ -12,6 +12,7 @@ using The_Occasion.Data;
 using The_Occasion.Models;
 using The_Occasion.Models.PoemViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 
 namespace The_Occasion.Controllers
 {
@@ -82,7 +83,7 @@ namespace The_Occasion.Controllers
         {
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.FormId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
-        
+
             var form = await context.Form.SingleOrDefaultAsync(f => f.FormId == id);
             model.FormName = form.FormName;
             return View(model);
@@ -221,18 +222,23 @@ namespace The_Occasion.Controllers
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             var user = await GetCurrentUserAsync();
             var userName = user.UserName;
-           
-            //set some dummy properties on model.Poem so that View doesn't freak out
+
 
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
 
+            //create a list of strings to hold all the individual lines of each sonnet
+
             List<string> SonnetLines = new List<string>();
 
 
-            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
+            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays and add the lines to the list of sonnet lines
             foreach (var sonnet in sonnets)
             {
+                if (sonnet.Lines == null)
+                {
+                    Console.WriteLine("Look at me");
+                }
                 var oneSonnetLinesArr = Regex.Split(sonnet.Lines, "@@");
                 foreach (var line in oneSonnetLinesArr)
                 {
@@ -241,20 +247,35 @@ namespace The_Occasion.Controllers
 
             }
 
+            //create a new instance of the random class
             Random random = new Random();
-       
+
+            //create a new array of strings to hold the user sonnet
             var UserSonnet = new string[14];
+            //cycle through the list of sonnet lines and insert them at random into the user sonnet array
+
             for (int i = 0; i < 14; i++)
             {
                 int r = random.Next(SonnetLines.Count());
                 UserSonnet[i] = SonnetLines[r];
             }
 
+            StringBuilder stringbuilder = new StringBuilder();
+            foreach(var line in UserSonnet)
+            {
+                stringbuilder.Append(line);
+                stringbuilder.Append("@@");
+            }
+
             Poem mySonnet = new Poem();
 
-            mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
+           mySonnet.Lines = stringbuilder.ToString();
+            //mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userName;
-            mySonnet.Lines = UserSonnet.ToString();
+            //mySonnet.Lines = UserSonnet.ToString();
+            mySonnet.FormId = 118;
+            mySonnet.TopicId = 115;
+            mySonnet.MoodId = 115;
 
             model.Poem = mySonnet;
             model.LinesArray = UserSonnet;
@@ -287,11 +308,13 @@ namespace The_Occasion.Controllers
                 var haikuLinesArray = Regex.Split(haiku.Lines, "@@");
                 foreach (var line in haikuLinesArray)
                 {
+                    //if line % 2 == 0 (second line of haiku), push it into a separate list. Otherwise, add it to haikulines (first and second lines). Need to be sure that all haikus have three lines, with appropriate syllabic distribution on each. Will also need to swap foreach for for loop so modulus is available ... or maybe not, because cycling through an array right here, so indexing will be automatic, in which case it's index 1 that I want!
                     HaikuLines.Add(line);
                 }
 
             }
 
+         
             Random random = new Random();
 
             var userHaiku = new string[3];
@@ -315,7 +338,7 @@ namespace The_Occasion.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult>SaveUserPoem(Poem poem)
+        public async Task<IActionResult> SaveUserSonnet(Poem poem)
         {
 
             context.Poem.Add(poem);

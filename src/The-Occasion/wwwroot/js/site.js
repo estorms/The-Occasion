@@ -37,6 +37,19 @@
         });
     });
 
+ //$("#SaveUserSonnet").on("click", function (e) {
+ //       console.log("save usersonnet clicked");
+ //       $.ajax({
+ //           url: `/Poem/Save/${$(this).val()}`,
+ //           method: "POST",
+ //           contentType: 'application/json; charset=utf-8'
+ //       }).done((result) => {
+ //           console.log("result", result);
+ //           $("#Save").addClass("hidden");
+ //           $("#Delete").removeClass("hidden");
+ //       });
+ //   });
+
     $("#Delete").on("click", function (e) {
         console.log("delete button clicked");
         $.ajax({
