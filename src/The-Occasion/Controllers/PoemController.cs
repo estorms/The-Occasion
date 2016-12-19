@@ -12,6 +12,7 @@ using The_Occasion.Data;
 using The_Occasion.Models;
 using The_Occasion.Models.PoemViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text;
 
 namespace The_Occasion.Controllers
 {
@@ -259,11 +260,19 @@ namespace The_Occasion.Controllers
                 UserSonnet[i] = SonnetLines[r];
             }
 
+            StringBuilder stringbuilder = new StringBuilder();
+            foreach(var line in UserSonnet)
+            {
+                stringbuilder.Append(line);
+                stringbuilder.Append("@@");
+            }
+
             Poem mySonnet = new Poem();
 
+           mySonnet.Lines = stringbuilder.ToString();
             mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userName;
-            mySonnet.Lines = UserSonnet.ToString();
+            //mySonnet.Lines = UserSonnet.ToString();
             mySonnet.FormId = 118;
             mySonnet.TopicId = 115;
             mySonnet.MoodId = 115;
