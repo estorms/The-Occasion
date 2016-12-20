@@ -10,15 +10,15 @@ namespace The_Occasion.Models
     {
         public Array PoemsArr = new Poem[] {
 
-            new Poem
-            {
-                Title="Haiku Ambulance",
-                Author="Richard Brautigan",
-                MoodId=114,
-                TopicId = 115,
-                FormId = 120,
-                Lines="A piece of green pepper @@Fell off the wooden salad @@Bowl: so what?"
-            }
+            //new Poem
+            //{
+            //    Title="Haiku Ambulance",
+            //    Author="Richard Brautigan",
+            //    MoodId=114,
+            //    TopicId = 115,
+            //    FormId = 120,
+            //    Lines="A piece of green pepper @@Fell off the wooden salad @@Bowl: so what?"
+            //}
 
             //new Poem
             //{
