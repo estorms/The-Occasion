@@ -358,7 +358,7 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveUserSonnet(Poem poem)
         {
-
+            var user = GetCurrentUserAsync();
             context.Poem.Add(poem);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
