@@ -315,41 +315,68 @@ namespace The_Occasion.Controllers
             //set some dummy properties on model.Poem so that View doesn't freak out
 
             //get all the sonnets back from the database
-            var haikus = await context.Poem.Where(p => p.FormId == 120).ToListAsync();
+            var haikus = await context.Poem.Where(p => p.FormId == 120 && p.Author != "Wallace Stevens").ToListAsync();
 
             List<string> HaikuLines = new List<string>();
+            List<string> HaikuSecondLines = new List<string>();
 
 
             //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
             foreach (var haiku in haikus)
             {
                 var haikuLinesArray = Regex.Split(haiku.Lines, "@@");
-                foreach (var line in haikuLinesArray)
+                for (int i = 0; i < haikuLinesArray.Length; i++)
                 {
-                    //if line % 2 == 0 (second line of haiku), push it into a separate list. Otherwise, add it to haikulines (first and second lines). Need to be sure that all haikus have three lines, with appropriate syllabic distribution on each. Will also need to swap foreach for for loop so modulus is available ... or maybe not, because cycling through an array right here, so indexing will be automatic, in which case it's index 1 that I want!
-                    HaikuLines.Add(line);
+                    if (i == 1)
+                    {
+                        HaikuSecondLines.Add(haikuLinesArray[i]);
+                    }
+                    else
+                    {
+                        HaikuLines.Add(haikuLinesArray[i]);
+                    }
                 }
 
             }
-
-         
             Random random = new Random();
 
             var userHaiku = new string[3];
+
             for (int i = 0; i < 3; i++)
             {
                 int r = random.Next(HaikuLines.Count());
+                //when trying to make userHaiku a list, instead of an array, throws index out of bounds exception right here.
                 userHaiku[i] = HaikuLines[r];
             }
 
+            //userHaiku = userHaiku.Where((source, index) => index != 1).ToArray();
+
+            model.Line1 = userHaiku[0];
+            model.Line3 = userHaiku[2];
+
+            int r2 = random.Next(HaikuSecondLines.Count());
+            model.Line2 = HaikuSecondLines[r2];
+
+            StringBuilder stringbuilder = new StringBuilder();
+            stringbuilder.Append(userHaiku[0]);
+            stringbuilder.Append("@@");
+            stringbuilder.Append(HaikuSecondLines[r2]);
+            stringbuilder.Append("@@");
+            stringbuilder.Append(userHaiku[2]);
+
+     
+
             Poem myHaiku = new Poem();
 
-            myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
+            //myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
             myHaiku.Author = userName;
-            myHaiku.Lines = userHaiku.ToString();
-
+            //need to convert the below to string with stringbuilder as in sonnet and make other changes to razor to allow saving
+            myHaiku.Lines = stringbuilder.ToString();
+            myHaiku.FormId = 120;
+            myHaiku.MoodId = 115;
+            myHaiku.TopicId = 115;
             model.Poem = myHaiku;
-            model.LinesArray = userHaiku;
+            //model.LinesArray = userHaiku;
 
             return View(model);
         }
@@ -358,11 +385,20 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveUserSonnet(Poem poem)
         {
-
+            var user = GetCurrentUserAsync();
             context.Poem.Add(poem);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> SaveUserHaiku(Poem poem)
+        {
+            var user = GetCurrentUserAsync();
+            context.Poem.Add(poem);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

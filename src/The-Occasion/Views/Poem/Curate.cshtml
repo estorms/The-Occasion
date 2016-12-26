@@ -3,9 +3,10 @@
     ViewData["Title"] = "Picky, Picky";
 }
 
-<h2 class="top-buffer">@ViewData["Title"]</h2>
 
 <div class="row poemrow">
+    @if (Model.AllPoems.Count() > 0) {
+<h2 class="top-buffer">@ViewData["Title"]</h2>
     @foreach (var poem in Model.AllPoems)
     {
 
@@ -15,11 +16,13 @@
         </div>
 
         <div class="col-md-6">@Html.DisplayFor(modelItem => poem.Author)</div>
-        @*<div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>
-            <div class="col-md-2">@Html.DisplayFor(modelItem => poem.TopicId)</div>*@
-
-
 
     }
+    }
+            else {
+            <div class="col-md-6">Too Picky</div>
+            }
+        
+
+    
 </div>

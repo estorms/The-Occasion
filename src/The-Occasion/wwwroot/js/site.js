@@ -65,6 +65,7 @@ var topic = null;
             method: "GET",
         }).done((result) => {
             console.log("result", result);
+            $("#hereBePickyPoems").html(" ");
             $("#hereBePickyPoems").append(result);
         });
     });
@@ -103,6 +104,7 @@ var topic = null;
             $("#makePoem").addClass("hidden");
             $("#makeHaiku").addClass("hidden");
             $("#myPoems").addClass("hidden");
+            $("#curateview").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
         });
