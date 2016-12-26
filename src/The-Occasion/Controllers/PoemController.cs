@@ -315,7 +315,7 @@ namespace The_Occasion.Controllers
             //set some dummy properties on model.Poem so that View doesn't freak out
 
             //get all the sonnets back from the database
-            var haikus = await context.Poem.Where(p => p.FormId == 120 && p.Author != "Wallace Stevens").ToListAsync();
+            var haikus = await context.Poem.Where(p => p.FormId == 120 && (p.Author == "Anselm Hollo" || p.Author =="Udiah (Witness to Yah)")).ToListAsync();
 
             List<string> HaikuLines = new List<string>();
             List<string> HaikuSecondLines = new List<string>();
@@ -385,7 +385,7 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveUserSonnet(Poem poem)
         {
-            var user = GetCurrentUserAsync();
+            //var user = GetCurrentUserAsync();
             context.Poem.Add(poem);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
@@ -395,7 +395,7 @@ namespace The_Occasion.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveUserHaiku(Poem poem)
         {
-            var user = GetCurrentUserAsync();
+            //var user = GetCurrentUserAsync();
             context.Poem.Add(poem);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
