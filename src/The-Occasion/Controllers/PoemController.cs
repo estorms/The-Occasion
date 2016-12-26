@@ -318,21 +318,32 @@ namespace The_Occasion.Controllers
             var haikus = await context.Poem.Where(p => p.FormId == 120).ToListAsync();
 
             List<string> HaikuLines = new List<string>();
+            List<string> HaikuSecondLines = new List<string>();
 
 
             //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
             foreach (var haiku in haikus)
             {
                 var haikuLinesArray = Regex.Split(haiku.Lines, "@@");
-                foreach (var line in haikuLinesArray)
+                for (int i = 0; i < haikuLinesArray.Length; i++)
                 {
-                    //if line % 2 == 0 (second line of haiku), push it into a separate list. Otherwise, add it to haikulines (first and second lines). Need to be sure that all haikus have three lines, with appropriate syllabic distribution on each. Will also need to swap foreach for for loop so modulus is available ... or maybe not, because cycling through an array right here, so indexing will be automatic, in which case it's index 1 that I want!
-                    HaikuLines.Add(line);
+                    if (i == 1)
+                    {
+                        //Console.WriteLine(haikuLinesArray[i]);
+                        HaikuSecondLines.Add(haikuLinesArray[i]);
+                    }
+                    else
+                    {
+                        HaikuLines.Add(haikuLinesArray[i]);
+                    }
                 }
 
-            }
 
-         
+
+
+
+
+            }
             Random random = new Random();
 
             var userHaiku = new string[3];
@@ -342,6 +353,8 @@ namespace The_Occasion.Controllers
                 userHaiku[i] = HaikuLines[r];
             }
 
+            userHaiku = userHaiku.Where((source, index) => index != 1).ToArray();
+            
             Poem myHaiku = new Poem();
 
             myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";

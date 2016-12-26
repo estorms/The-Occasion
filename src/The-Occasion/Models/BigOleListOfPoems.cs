@@ -9,308 +9,65 @@ namespace The_Occasion.Models
     public class BigOleListOfPoems
     {
         public Array PoemsArr = new Poem[] {
+            new Poem
+            {
+                Title="The Ghazal of What Hurt",
+                Author="Peter Cole",
+                FormId = 119,
+                TopicId=115,
+                MoodId=116,
+                Lines="Let them be, the battles you fought, in silence.@@Bury your shame, the worst you thought, in silence.@@@@At last my Beloved has haggled with death.@@‘One more day’ was the pearl she bought in silence.@@@@At night she heard the blacksmith hammering chains,@@at dawn the saw, the fretwork wrought in silence.@@@@‘The only wrong I’ve done is to live too long,'@@my Beloved’s eyes tell the court in silence.@@@@She’s as young as the month of Ordibehesht,@@month of my birth, spring’s mid-leap caught in silence.@@@@My Beloved, under the shade of a palm,@@was the girl, the mother I sought in silence.@@@@Loneliness is innumerate. Days slip by,@@suns rise that daylight moons distort in silence.@@@@The bell on her wrist was silent, her fingers@@ice cold as the julep she brought in silence.@@@@'Mimijune! Mimijune!' My Beloved’s voice@@climbs three steep notes for tears to thwart in silence.@@@@Three syllables of equal weight, equal stress,@@dropped in a well, keep falling short in silence."
+            },
 
-            //new Poem
-            //{
-            //    Title="Haiku Ambulance",
-            //    Author="Richard Brautigan",
-            //    MoodId=114,
-            //    TopicId = 115,
-            //    FormId = 120,
-            //    Lines="A piece of green pepper @@Fell off the wooden salad @@Bowl: so what?"
-            //}
+                new Poem
+            {
+                Title="America the Beautiful",
+                Author="Alicia Ostriker",
+                FormId = 119,
+                TopicId=114,
+                MoodId=113,
+                Lines="Do you remember our earnestness our sincerity@@in first grade when we learned to sing America@@The Beautiful along with the Star-Spangled Banner@@and say the Pledge of Allegiance to America@@We put our hands over our first grade hearts@@we felt proud to be citizens of America@@I said One Nation Invisible until corrected@@maybe I was right about America@@School days school days dear old Golden Rule Days@@when we learned how to behave in America@@What to wear, how to smoke, how to despise our parents@@who didn’t understand us or America@@Only later learning the Banner and the Beautiful@@live on opposite sides of the street in America@@Only later discovering the Nation is divisible@@by money by power by color by gender by sex America@@We comprehend it now this land is two lands@@one triumphant bully one still hopeful America@@Imagining amber waves of grain blowing in the wind@@purple mountains and no homeless in America@@Sometimes I still put my hand tenderly on my heart@@somehow or other still carried away by America@@"
+            },
 
-            //new Poem
-            //{
-            //    Title="The New Colossus",
-            //    Author="Emma Lazarus",
-            //    FormId = 118,
-            //    MoodId = 113,
-            //    TopicId = 115,
-            //    Lines = "Not like the brazen giant of Greek fame,@@With conquering limbs astride from land to land;@@Here at our sea-washed, sunset gates shall stand@@A mighty woman with a torch, whose flame@@Is the imprisoned lightning, and her name@@Mother of Exiles. From her beacon-hand@@Glows world-wide welcome; her mild eyes command@@The air-bridged harbor that twin cities frame.@@'Keep, ancient lands, your storied pomp!' cries she@@With silent lips. 'Give me your tired, your poor,@@Your huddled masses yearning to breathe free,@@The wretched refuse of your teeming shore.@@Send these, the homeless, tempest-tost to me,@@I lift my lamp beside the golden door!' "
-            //},
+                    new Poem
+            {
+                Title="All Other Loves",
+                Author="Karen Winterburn",
+                FormId = 119,
+                TopicId=114,
+                MoodId=116,
+                Lines="The Infant Warrior sings in every tongue, inflames all other loves.@@Beware ravishings of the swaddled One who contains all other loves.@@@@When did my desire turn on me with its green hunger, its hollow teeth?@@My craving craves me back: pinched and jealous god who slays all other loves.@@@@Poplars glint and shimmy in their spangled chorus line. They shiver, swept@@by gusty fingers of a flirting sylph who disdains all other loves.@@@@I abandon my mandrake garden. Now cankered roots poison the ground.@@Juicy djinn's eggs, stolen for my silver bowl, red-stain all other loves.@@@@Moses said. Moses said. He's dead. All the Earth is Egypt in the egg.@@O Exodus hatched from the plagues of those gods, unchain all other loves.@@@@Language ladled into Karen like alphabet soup from deep Word wells:@@bright clad children queue to crazy-quilt the looped refrain, 'all other loves'."
+            },
 
-            //new Poem
-            //{
-            //    Title="My Letters! all dead paper (Sonnet 28)",
-            //    Author="Elizabeth Barrett Browning",
-            //    FormId = 118,
-            //    MoodId = 113,
-            //    TopicId = 116,
-            //    Lines="My letters! all dead paper, mute and white!@@And yet they seem alive and quivering@@Against my tremulous hands which loose the string@@And let them drop down on my knee tonight.@@This said—he wished to have me in his sight@@Once, as a friend: this fixed a day in spring@@To come and touch my hand. . . a simple thing,@@Yes I wept for it—this . . . the paper’s light. . .@@Said, Dear, I love thee; and I sank and quailed@@As if God’s future thundered on my past.@@This said, I am thine—and so its ink has paled@@With lying at my heart that beat too fast.@@And this . . . 0 Love, thy words have ill availed@@If, what this said, I dared repeat at last!"
-            //},
+                    new Poem
+                    {
+                        Title="Ghazal Upon Hearing of a Mutual Friend's Death",
+                        Author="Beatriz F. Fernandez",
+                        FormId = 119,
+                        TopicId = 113,
+                        MoodId = 116,
+                        Lines = "I went back to that pier today where we three met last time—@@sipped beer at the Sleepy Pelican— still there after all this time.@@Back then the chance to leave the island arrived as a godsend,@@but we swore we’d return and reunite in ten years’ time.@@How could we have guessed whose star would later ascend,@@or foreseen who’d first meet with the freak accidents time@@would send? He never made it past forty, he wasn’t able to pretend,@@like us, that each birthday meant we’d somehow trumped time’s@@stratagems. How did you hear, how were you able to fend@@off your own mind’s terrible questions, knowing all the time@@that no one loved him the way we did, half-brother, half-friend,@@and no one’s around to remember him with, not this time.@@Could I swallow the words that ended our friendship, make amends?@@Though I know mere words won’t reverse the tides of time,@@if I could get word back to you, what message would I send?@@Something only you would understand, as you did, once upon a time.@@Just remember me the way bees remember, my old friend,@@and bring her back home who once gave you joy, now lost in time.@@"
+                    },
 
-            //new Poem
-            //{
-            //    Author="Rainer Maria Rilke",
-            //    Title="Sonnet 6",
-            //    FormId=118,
-            //    MoodId=115,
-            //    TopicId=115,
-            //    Lines="Is he native to this realm? No,@@his wide nature grew out of both worlds.@@They more adeptly bend the willow’s branches@@who have experience of the willow’s roots.@@@@When you go to bed, don’t leave bread or milk@@on the table: it attracts the dead—@@But may he, this quiet conjurer, may he@@beneath the mildness of the eyelid@@@@mix their bright traces into every seen thing;@@and may the magic of earthsmoke and rue@@be as real for him as the clearest connection.@@@@Nothing can mar for him the authentic image;@@whether he wanders through houses or graves,@@let him praise signet ring, gold necklace, jar."
-            //},
+                       new Poem
+                    {
+                        Title="Ghazal Upon Hearing of a Mutual Friend's Death",
+                        Author="Beatriz F. Fernandez",
+                        FormId = 119,
+                        TopicId = 113,
+                        MoodId = 113,
+                        Lines = "I went back to that pier today where we three met last time—@@sipped beer at the Sleepy Pelican— still there after all this time.@@Back then the chance to leave the island arrived as a godsend,@@but we swore we’d return and reunite in ten years’ time.@@How could we have guessed whose star would later ascend,@@or foreseen who’d first meet with the freak accidents time@@would send? He never made it past forty, he wasn’t able to pretend,@@like us, that each birthday meant we’d somehow trumped time’s@@stratagems. How did you hear, how were you able to fend@@off your own mind’s terrible questions, knowing all the time@@that no one loved him the way we did, half-brother, half-friend,@@and no one’s around to remember him with, not this time.@@Could I swallow the words that ended our friendship, make amends?@@Though I know mere words won’t reverse the tides of time,@@if I could get word back to you, what message would I send?@@Something only you would understand, as you did, once upon a time.@@Just remember me the way bees remember, my old friend,@@and bring her back home who once gave you joy, now lost in time.@@"
+                    },
 
-            //new Poem
-            //{
-            //    Title="I Shall Forget You Presently",
-            //    Author="Edna St. Vincent Millay",
-            //    MoodId=116,
-            //    TopicId = 114,
-            //    FormId=118,
-            ////    Lines="I shall forget you presently, my dear,@@So make the most of this, your little day,@@Your little month, your little half a year@@Ere I forget, or die, or move away,@@And we are done forever; by and by@@I shall forget you, as I said, but now,@@If you entreat me with your loveliest lie@@I will protest you with my favorite vow.@@I would indeed that love were longer-lived,@@And vows were not so brittle as they are,@@But so it is, and nature has contrived@@To struggle on without a break thus far,—@@Whether or not we find what we are seeking@@Is idle, biologically speaking."
-
-            ////},
-
-            ////new Poem
-            ////{
-            ////    Title="Sunset",
-            ////    Author="e.e. cummings",
-            ////    FormId = 118,
-            ////    MoodId = 113,
-            ////    TopicId = 115,
-            ////    Lines="Great carnal mountains crouching in the cloud@@That marrieth the young earth with a ring,@@Yet still its thoughts builds heavenward, whence spring@@Wee villages of vapor, sunset-proud.—@@And to the meanest door hastes one pure-browed@@White-fingered star, a little, childish thing,@@The busy needle of her light to bring,@@And stitch, and stitch, upon the dead day’s shroud.@@Poises the sun upon his west, a spark@@Superlative,—and dives beneath the world;@@From the day’s fillets Night shakes out her locks;@@List! One pure trembling drop of cadence purled—@@“Summer!”—a meek thrush whispers to the dark.@@Hark! the cold ripple sneering on the rocks!"
-
-            ////},
-
-            ////new Poem
-            ////{
-            ////    Title="Sonnet",
-            ////    Author="Alice Dunbar-Nelson",
-            ////    FormId=118,
-            ////    TopicId=114,
-            ////    MoodId=113,
-            ////    Lines="I had no thought of violets of late,      @@The wild, shy kind that spring beneath your feet@@In wistful April days, when lovers mate@@And wander through the fields in raptures sweet.@@The thought of violets meant florists’ shops,@@And bows and pins, and perfumed papers fine;@@And garish lights, and mincing little fops@@And cabarets and songs, and deadening wine. @@So far from sweet real things my thoughts had strayed, @@I had forgot wide fields, and clear brown streams;            @@The perfect loveliness that God has made,— @@Wild violets shy and Heaven-mounting dreams.@@And now—unwittingly, you’ve made me dream@@Of violets, and my soul’s forgotten gleam.    "
-            ////}
-            
-
-            //new Poem
-            //{
-            //Title="13 Ways of Looking at a Blackbird (I)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="Among twenty snowy mountains,@@The only moving thing@@Was the eye of the blackbird."
-
-
-            //},
-
-            // new Poem {
-            //Title="13 Ways of Looking at a Blackbird (II)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="I was of three minds,@@Like a tree@@In which there are three blackbirds."
-
-
-            //},
-
-            //new Poem    {
-            //Title="13 Ways of Looking at a Blackbird (III)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="The blackbird whirled in the autumn winds.@@It was a small part of the pantomime."
-
-
-            //},
-
-
-            // new Poem {
-            //Title="13 Ways of Looking at a Blackbird (IV)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="A man and a woman@@Are one.@@A man and a woman and a blackbird@@Are one."
-
-
-            //},
-
-
-            // new Poem {
-            //Title="13 Ways of Looking at a Blackbird (V)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="I do not know which to prefer,@@The beauty of inflections@@Or the beauty of innuendoes,@@The blackbird whistling@@Or just after."
-
-
-            //},
-
-
-            // new Poem {
-            //Title="13 Ways of Looking at a Blackbird (VI)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="Icicles filled the long window@@With barbaric glass.@@The shadow of the blackbird@@Crossed it, to and fro.@@The mood@@Traced in the shadow@@An indecipherable cause."
-
-
-            //},
-            //   new Poem {
-            //Title="13 Ways of Looking at a Blackbird (VII)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="O thin men of Haddam,@@Why do you imagine golden birds?@@Do you not see how the blackbird@@Walks around the feet@@Of the women about you?"
-
-
-            //},
-            //     new Poem {
-            //Title="13 Ways of Looking at a Blackbird (VIII)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="I know noble accents@@And lucid, inescapable rhythms;@@But I know, too,@@That the blackbird is involved@@In what I know."
-
-
-            //},
-            //       new Poem {
-            //Title="13 Ways of Looking at a Blackbird (IX)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="When the blackbird flew out of sight,@@It marked the edge@@Of one of many circles."
-
-
-            //},
-            //         new Poem {
-            //Title="13 Ways of Looking at a Blackbird (XIII)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="It was evening all afternoon.@@It was snowing@@And it was going to snow.@@The blackbird sat@@In the cedar-limbs."
-
-
-            //},
-            //           new Poem {
-            //Title="13 Ways of Looking at a Blackbird (XI)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="He rode over Connecticut@@In a glass coach.@@Once, a fear pierced him,@@In that he mistook@@The shadow of his equipage@@For blackbirds."
-
-
-            //},
-            //             new Poem {
-            //Title="13 Ways of Looking at a Blackbird (XII)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="The river is moving.@@The blackbird must be flying."
-
-
-            //},
-            //               new Poem {
-            //Title="13 Ways of Looking at a Blackbird (X)",
-            //Author="Wallace Stevens",
-            //FormId = 120,
-            //MoodId = 115,
-            //TopicId = 116,
-            //Lines="At the sight of blackbirds@@Flying in a green light,@@Even the bawds of euphony@@Would cry out sharply."
-
-
-            //},
-
-            //new Poem
-            //{
-            //    Title="Haiku (Clever)",
-            //    Author="Thomas Shavor",
-            //    FormId = 120,
-            //    MoodId = 114,
-            //    TopicId= 115,
-            //    Lines="You have just started@@reading the clever haiku@@that you just finished!"
-            //},
-
-            //new Poem
-            //{
-            //    Title = "In a Station of the Metro",
-            //    Author="Ezra Pound",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 115,
-            //    Lines="The apparition of these faces in the crowd;@@Petals on a wet, black bough."
-            //},
-
-            //new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt I)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 115,
-            //    Lines= "wind rain you and me@@went looking for a new house@@o the grass grows loud"
-            //},
-
-            //   new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt II)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 115,
-            //    Lines= "viewing the dragon@@there they ride slim through my dream@@Carpaccio’s pair"
-
-
-            //},
-            //      new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt III)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 114,
-            //    Lines= "wind rain you and me@@went looking for a new house@@o the grass grows loud"
-            //},
-            //         new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt IV)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 114,
-            //    Lines= "slow bloom inside you@@the mnemonics of loving@@incessant chatter"
-            //},
-            //            new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt V)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 114,
-            //    TopicId = 114,
-            //    Lines= "@@far shore Ferris wheel@@turning glowing humming love@@in our lit-up heads"
-            //},
-            //               new Poem
-            //{
-            //    Title="5 & 7 & 5 (Excerpt VI)",
-            //    Author="Anselm Hollo",
-            //    FormId = 120,
-            //    MoodId = 115,
-            //    TopicId = 115,
-            //    Lines= "switch them to sleep now@@the flying foxes swarm out@@great   it’s flurry time"
-
-            //},
-
-            //               new Poem
-            //               {
-            //                   Author="Yosa Buson",
-            //                   Title="The Light of a Candle",
-            //                   FormId = 120,
-            //                   MoodId = 113,
-            //                   TopicId = 115,
-            //                   Lines="The light of a candle@@  is transferred to another candle—@@spring twilight."
-            //               }
+                       new Poem
+                       {
+                           Author="Sherman Alexie",
+                           Title="Powwow Ghazal",
+                           TopicId=115,
+                           MoodId=113,
+                           FormId = 119,
+                           Lines="Can you hear the drums? Can you hear the drums?@@Tonight, the reservation is aflame with drums.@@Who’s that drum group? They’re good, but they’re kids.@@They have no idea how their lives will change with drums.@@And what about those drummers? O, they’re old school.@@They’re everybody’s elders. They’ve gone gray with drums.@@O, listen to that singer! He’s equal parts joy and hurt.@@His hands and vocal cords are bloodstained with drums.@@Damn, look at that fancy dancer spin in circles.@@She’s weeping! The girl is going insane with drums.@@Who’s the head man dancer? He’s been sober for ten years.@@Now he only gets drunk, stoned, and dazed with drums.@@Who’s the head woman dancer? That’s a grandmother.@@She speaks in sermons. She offers us grace with drums.@@That jingle dancer, ah, she’s a reservation beauty.@@Talk to her, cousin, because you can get laid with drums.@@That nostalgic Indian is wearing blue suede shoes.@@He’s the Indian Elvis, mixing his pomade with drums.@@Hey, look at that tribal cop with a shiny badge and gun.@@She wants to solve a crime. She’s Sam Spade with drums.@@But don’t forget that powwows can be dangerous, too.@@You better duck or get punched in the face with drums.@@Do you have a question? It can be answered here.@@There is nothing that can’t be explained with drums.@@No, I’m lying. Indians are glorious deceivers.@@We love to obscure, obfuscate, and exaggerate with drums.@@During powwow, even God wants to sing and dance,@@So God makes thunder, lightning, and rain with drums.@@Nobody has gone to bed yet. We’ve been awake for days.@@I sometimes think that every Indian is made with drums."
+                       }
             };
             public Array GetPoems () {
             return PoemsArr;
