@@ -315,7 +315,7 @@ namespace The_Occasion.Controllers
             //set some dummy properties on model.Poem so that View doesn't freak out
 
             //get all the sonnets back from the database
-            var haikus = await context.Poem.Where(p => p.FormId == 120).ToListAsync();
+            var haikus = await context.Poem.Where(p => p.FormId == 120 && p.Author != "Wallace Stevens").ToListAsync();
 
             List<string> HaikuLines = new List<string>();
             List<string> HaikuSecondLines = new List<string>();
@@ -329,7 +329,6 @@ namespace The_Occasion.Controllers
                 {
                     if (i == 1)
                     {
-                        //Console.WriteLine(haikuLinesArray[i]);
                         HaikuSecondLines.Add(haikuLinesArray[i]);
                     }
                     else
@@ -338,31 +337,46 @@ namespace The_Occasion.Controllers
                     }
                 }
 
-
-
-
-
-
             }
             Random random = new Random();
 
             var userHaiku = new string[3];
+
             for (int i = 0; i < 3; i++)
             {
                 int r = random.Next(HaikuLines.Count());
+                //when trying to make userHaiku a list, instead of an array, throws index out of bounds exception right here.
                 userHaiku[i] = HaikuLines[r];
             }
 
-            userHaiku = userHaiku.Where((source, index) => index != 1).ToArray();
-            
+            //userHaiku = userHaiku.Where((source, index) => index != 1).ToArray();
+
+            model.Line1 = userHaiku[0];
+            model.Line3 = userHaiku[2];
+
+            int r2 = random.Next(HaikuSecondLines.Count());
+            model.Line2 = HaikuSecondLines[r2];
+
+            StringBuilder stringbuilder = new StringBuilder();
+            stringbuilder.Append(userHaiku[0]);
+            stringbuilder.Append("@@");
+            stringbuilder.Append(HaikuSecondLines[r2]);
+            stringbuilder.Append("@@");
+            stringbuilder.Append(userHaiku[2]);
+
+     
+
             Poem myHaiku = new Poem();
 
-            myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
+            //myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
             myHaiku.Author = userName;
-            myHaiku.Lines = userHaiku.ToString();
-
+            //need to convert the below to string with stringbuilder as in sonnet and make other changes to razor to allow saving
+            myHaiku.Lines = stringbuilder.ToString();
+            myHaiku.FormId = 120;
+            myHaiku.MoodId = 115;
+            myHaiku.TopicId = 115;
             model.Poem = myHaiku;
-            model.LinesArray = userHaiku;
+            //model.LinesArray = userHaiku;
 
             return View(model);
         }
@@ -377,5 +391,14 @@ namespace The_Occasion.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> SaveUserHaiku(Poem poem)
+        {
+            var user = GetCurrentUserAsync();
+            context.Poem.Add(poem);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
