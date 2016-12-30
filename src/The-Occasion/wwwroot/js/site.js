@@ -148,5 +148,9 @@ var topic = null;
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-            });
+                $("#myPoems").addClass("hidden");
+            });   
     });
+
+
+  

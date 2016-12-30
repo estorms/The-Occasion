@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: lightgrey;
 }
 
 /* Wrapping element */
@@ -21,9 +22,11 @@ textarea {
     visibility: hidden;
 }
 
+
 .poemRow {
     margin-top: 4%;
 }
+
 
 .homebutton {
     margin-top: 10px;
@@ -34,7 +37,9 @@ textarea {
     margin-top: 4%;
     margin-bottom: 10px
 }
-
+.tooltip > .tooltip-inner {
+    background-color: black;
+}
 .author {
     font-style: italic;
     margin-top: 10px;
