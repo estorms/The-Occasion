@@ -8,17 +8,7 @@
     ViewData["Title"] = "The Occasion";
 }
 
-<h2>@Html.DisplayFor(model => model.Poem.Title)</h2>
-@*@if (@UserManager.GetUserName(User) != null)
-    {
-        <h3>
-            Hello, @UserManager.GetUserName(User)!
-        </h3>
-    }
-    else
-    {
-        <h4>Login, please.</h4>
-    }*@
+<h3>@Html.DisplayFor(model => model.Poem.Title)</h3>
 
 <div class="row">
     @foreach (var line in Model.LinesArray)

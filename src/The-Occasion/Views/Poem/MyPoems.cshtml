@@ -2,8 +2,7 @@
 @{
     ViewData["Title"] = "Your Favorite Poems";
 }
-<h2 class="top-buffer">@ViewData["Title"]</h2>
-
+<h3 class="top-buffer">@ViewData["Title"]</h3>
 <div class="row poemRow top-buffer">
         <div class="col-md-6">Poems You Like</div>
     @foreach (var poem in Model.UserLikedPoems)
