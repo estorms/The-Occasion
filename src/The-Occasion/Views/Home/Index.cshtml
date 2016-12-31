@@ -8,7 +8,7 @@
 }
 
 <div class="FindAPoem text-center homebutton">
-    <a class="btn btn-danger t-tip" id="findButton" data-toggle="tooltip" data-placement="right" title="Click here to browse poems by form, topic, or mood!">Find a Poem</a>
+    <a class="btn btn-danger" id="findButton" data-title="Click here to browse poems by form, topic, or mood!">Find a Poem</a>
 </div>
 
 
@@ -36,21 +36,21 @@
 {
 
 <div class="WhatHaveIDone text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="MyPoems" id="myPoems data-toggle="tooltip" data-placement="right" title="Click to see all your saved poems!">What Have I Done?</a>
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="MyPoems" id="myPoems"  data-title="Click to see all your saved poems!">What Have I Done?</a>
 </div>
 <div class="boredButton text-center homebutton">
-    <a class="btn btn-danger" id="bored" data-toggle="tooltip" data-placement="right" title="That's sad. Let us choose a poem for you.">I'm Paralyzed by Ennui</a>
+    <a class="btn btn-danger" id="bored" data-title="That's sad. Let us choose a poem for you.">I'm Paralyzed by Ennui</a>
 </div>
 <div class="CurateView text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="Picky" id="curateview" data-toggle="tooltip" data-placement="right" title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
+    <a class="btn btn-danger" asp-controller="Poem" asp-action="Picky" id="curateview" data-title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
 </div>
 
 <div class="MakeAPoem text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="MySonnet" id="makePoem" data-toggle="tooltip" data-placement="right" title="It's possible your computer writes better poetry than you do. We'll build you a sonnet.'">Generate a Sonnet</a>
+    <a class="btn btn-danger" asp-controller="Sonnet" asp-action="MySonnet" id="makePoem" data-title="It's possible your computer writes better poetry than you do. We'll build you a sonnet.">Generate a Sonnet</a>
 </div>
 
 <div class="MakeAPoem text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="MyHaiku" id="makeHaiku" data-toggle="tooltip" data-placement="right" title="Feeling obscure but uncreative, are we?">Generate a Haiku</a>
+    <a class="btn btn-danger" asp-controller="Haiku" asp-action="MyHaiku" id="makeHaiku" data-title="Feeling obscure but uncreative, are we?">Generate a Haiku</a>
 </div>
 }
 <div id="hereBePoems"></div>
