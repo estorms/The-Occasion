@@ -120,10 +120,17 @@ namespace TheOccasion_Controllers
         [HttpPost]
         public async Task<IActionResult> SaveUserHaiku(Poem poem)
         {
-            //var user = GetCurrentUserAsync();
             context.Poem.Add(poem);
+            await context.SaveChangesAsync();
+            var user = await GetCurrentUserAsync();
+            UserSelection userselection = new UserSelection();
+            userselection.User = user;
+            var newhaiku = await context.Poem.OrderByDescending(p => p.PoemId).FirstOrDefaultAsync();
+            userselection.PoemId = newhaiku.PoemId;
+            context.UserSelection.Add(userselection);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
     }
 }
+
