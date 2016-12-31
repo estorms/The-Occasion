@@ -2,13 +2,23 @@
 @{
     ViewData["Title"] = "Your Favorite Poems";
 }
-
 <h2 class="top-buffer">@ViewData["Title"]</h2>
 
 <div class="row poemRow top-buffer">
-    @foreach (var poem in Model.UserPoems)
+        <div class="col-md-6">Poems You Like</div>
+    @foreach (var poem in Model.UserLikedPoems)
     {
 
+        <div class="col-md-6">
+            <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
+        </div>
+
+        <div class="col-md-6 author">@Html.DisplayFor(modelItem => poem.Author)</div>
+    }
+
+        <div class="col-md-6">Poems Your Computer Wrote For You</div>
+    @foreach (var poem in Model.UserGeneratedPoems)
+    {
 
         <div class="col-md-6">
             <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>

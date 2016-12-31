@@ -13,5 +13,9 @@ namespace The_Occasion.Models.PoemViewModels
             var context = ctx;
         }
         public List<Poem> UserPoems = new List<Poem>();
+
+        public List<Poem> UserGeneratedPoems = new List<Poem>();
+
+        public List<Poem> UserLikedPoems = new List<Poem>();
     }
 }

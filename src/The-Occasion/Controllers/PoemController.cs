@@ -68,6 +68,7 @@ namespace The_Occasion.Controllers
             //identify the current user, which will be coerced to the userId
             var user = await GetCurrentUserAsync();
             //identify all of the user selections by the user Id
+            var userName = user.UserName;
             var userSelections = await context.UserSelection.Where(u => u.User == user).ToListAsync();
             //grab all of the poems from the database
             var Poems = await context.Poem.ToListAsync();
@@ -80,6 +81,19 @@ namespace The_Occasion.Controllers
                     {
                         model.UserPoems.Add(p);
                     }
+                }
+            }
+
+            foreach(var poem in model.UserPoems)
+            {
+                if (poem.Author == userName)
+                {
+                    model.UserGeneratedPoems.Add(poem);
+                }
+
+                else
+                {
+                    model.UserLikedPoems.Add(poem);
                 }
             }
             return View(model);
