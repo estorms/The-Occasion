@@ -130,10 +130,17 @@ namespace The_Occasion.Controllers
         [HttpGet]
         public async Task<IActionResult> Topic([FromRoute] int? id)
         {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             AllPoemsViewModel model = new AllPoemsViewModel(context);
             model.AllPoems = await context.Poem.Where(p => p.TopicId == id).GroupBy(p => p.Title).Select(p => p.FirstOrDefault()).ToListAsync();
             var topic = await context.Topic.SingleOrDefaultAsync(t => t.TopicId == id);
             model.TopicName = topic.TopicName;
+
             return View(model);
 
         }
@@ -149,10 +156,12 @@ namespace The_Occasion.Controllers
 
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            Author poemAuthor = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstAsync();
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
+            model.Author = poemAuthor;
 
             if (model.Poem == null)
             {

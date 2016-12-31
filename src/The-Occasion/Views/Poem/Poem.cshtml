@@ -13,7 +13,7 @@
 <div class="row poemRow">
     <div class="favorite text-center">
     <div class="col-md-12 author">@Html.DisplayFor(model => model.Poem.Author)</div>
- 
+<div class="col-md-12">@Html.DisplayFor(model => model.Author.Bio)</div> 
     </div>
         <div class="row">
              @foreach (var line in Model.LinesArray)
