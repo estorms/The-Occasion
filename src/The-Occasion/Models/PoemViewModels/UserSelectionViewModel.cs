@@ -14,7 +14,9 @@ namespace The_Occasion.Models.PoemViewModels
         }
         public List<Poem> UserPoems = new List<Poem>();
 
-        public List<Poem> UserGeneratedPoems = new List<Poem>();
+        public List<Poem> UserGeneratedHaikus = new List<Poem>();
+
+        public List<Poem> UserGeneratedSonnets = new List<Poem>();
 
         public List<Poem> UserLikedPoems = new List<Poem>();
     }

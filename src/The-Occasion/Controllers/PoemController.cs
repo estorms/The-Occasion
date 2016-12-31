@@ -86,9 +86,14 @@ namespace The_Occasion.Controllers
 
             foreach(var poem in model.UserPoems)
             {
-                if (poem.Author == userName)
+                if (poem.Author == userName && poem.FormId == 120)
                 {
-                    model.UserGeneratedPoems.Add(poem);
+                    model.UserGeneratedHaikus.Add(poem);
+                }
+
+                else if (poem.Author == userName && poem.FormId == 118)
+                {
+                    model.UserGeneratedSonnets.Add(poem);
                 }
 
                 else
