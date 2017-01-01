@@ -23,6 +23,8 @@ namespace The_Occasion.Data
 
         public DbSet<Topic> Topic { get; set; }
 
+        public DbSet<Author> Author { get; set; }
+
         public DbSet<UserSelection> UserSelection { get; set;  }
 
         protected override void OnModelCreating(ModelBuilder builder)

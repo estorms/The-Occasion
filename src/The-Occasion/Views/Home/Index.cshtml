@@ -6,32 +6,11 @@
 @{
     ViewData["Title"] = "Welcome to The Occasion";
 }
-
+<div class="row">
 <div class="FindAPoem text-center homebutton">
     <a class="btn btn-danger" id="findButton" data-title="Click here to browse poems by form, topic, or mood!">Find a Poem</a>
 </div>
 
-
-<div class="form-group hidden findselect" id="formselect">
-
-
-    <div class="col-md-10">
-        @Html.DropDownList("Forms.FormId", @Model.FormId)
-    </div>
-</div>
-
-<div class="form-group hidden findselect" id="moodselect">
-    <div class="col-md-10">
-        @Html.DropDownList("Moods.MoodId", @Model.MoodId)
-    </div>
-</div>
-
-
-<div class="form-group hidden findselect" id="topicselect">
-    <div class="col-md-10">
-        @Html.DropDownList("Topics.TopicId", @Model.TopicId)
-    </div>
-</div>
 @if (@UserManager.GetUserName(User) != null)
 {
 
@@ -53,4 +32,28 @@
     <a class="btn btn-danger" asp-controller="Haiku" asp-action="MyHaiku" id="makeHaiku" data-title="Feeling obscure but uncreative, are we?">Generate a Haiku</a>
 </div>
 }
+<div class="row">
 <div id="hereBePoems"></div>
+</div>
+
+<div class="form-group hidden findselect" id="formselect">
+
+
+    <div class="col-md-10">
+        @Html.DropDownList("Forms.FormId", @Model.FormId)
+    </div>
+</div>
+
+<div class="form-group hidden findselect" id="moodselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Moods.MoodId", @Model.MoodId)
+    </div>
+</div>
+
+
+<div class="form-group hidden findselect" id="topicselect">
+    <div class="col-md-10">
+        @Html.DropDownList("Topics.TopicId", @Model.TopicId)
+    </div>
+</div>
+</div>

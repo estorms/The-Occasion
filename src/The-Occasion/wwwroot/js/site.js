@@ -1,8 +1,9 @@
 ﻿// Write your Javascript code.
 
-var mood = null;
-var form = null;
-var topic = null;
+var images = ['birds1.jpg', 'birds2.jpg', 'birds3.jpg', 'birds4.jpg', 'birds5.jpg', 'birds6.jpg'];
+var splashImg = images[Math.floor(Math.random() * images.length)];
+$("body").css({ "background-image": `url(/images/${splashImg})` });
+
 
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
@@ -14,6 +15,8 @@ var topic = null;
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
+        $("html").addClass("full-height");
+        
     });
 
     $("#SaveBored").on("click", function (e) {
@@ -39,6 +42,7 @@ var topic = null;
             console.log("result", result);
             $("#Save").addClass("hidden");
             $("#Delete").removeClass("hidden");
+           
         });
     });
 
@@ -67,6 +71,11 @@ var topic = null;
             console.log("result", result);
             $("#hereBePickyPoems").html(" ");
             $("#hereBePickyPoems").append(result);
+            $("#CurateMe").addClass("hidden");
+            $("#Moods_Id").addClass("hidden");
+            $("#Topics_Id").addClass("hidden");
+            $("#Forms_Id").addClass("hidden");
+            $("#hereBePoems").empty();
         });
     });
 
@@ -122,6 +131,8 @@ var topic = null;
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });
     });
 
@@ -135,6 +146,9 @@ var topic = null;
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
+                //$("html").removeClass("full-height");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });
     });
 
@@ -149,8 +163,17 @@ var topic = null;
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });   
     });
 
+    $("#curateview").on("click", function (e) {
+        $("html").addClass("full-height");
+    })
+
+ 
+   
 
   
+          
