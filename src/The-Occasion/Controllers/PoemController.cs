@@ -24,6 +24,11 @@ namespace The_Occasion.Controllers
 
         private ApplicationDbContext context;
 
+        private bool _authorExists (string name)
+        {
+            return context.Author.Count(a => a.Name == name) > 0;
+        }
+
         public PoemController(ApplicationDbContext ctx, UserManager<ApplicationUser> user)
         {
             _userManager = user;
@@ -155,31 +160,41 @@ namespace The_Occasion.Controllers
             
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
-            Author poemAuthor = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstAsync();
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
-            model.Author = poemAuthor;
 
-            //below simply matches poems from the poem table to authors from the author table ... it's practice in using join/in/on/equals/select syntax, but there's a more efficient method available. Right here you're deliberately choosing excess logic for the exercise. You could do this more readily simply by querying the poem table in the database by the name of the author already established above
+            if (_authorExists(SinglePoem.Author))
+            {
+                Author poemAuthor = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstAsync();
+                model.Author = poemAuthor;
+            }
+
+            else
+            {
+                model.Author = null;
+            };
+
+            //List<Poem> Excess = new List<Poem>();
+
+            //below simply matches poems from the poem table to authors from the author table ... it's practice in using join/in/on/equals/select syntax, but there's a more efficient method available. Right here you're deliberately choosing excess logic for the exercise. You do this more readily by querying the poem table in the database by the name of the author already established above
 
             //var collectedworks = await (from poem in context.Poem join author in context.Author on poem.Author equals author.Name select poem).ToListAsync();
 
-           model.OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
-           var copyWorks = model.OtherWorks;
+           //model.OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
 
-            for (var z = 0; z < model.OtherWorks.Count; z++)
-            {
-                for (var y = 0; y < copyWorks.Count; y++)
-                {
+           // for (var z = 0; z < model.OtherWorks.Count(); z++)
+           // {
+           //     for (var y = 0; y < model.OtherWorks.Count(); y++)
+           //     {
 
-                    if (model.OtherWorks[z].Title == copyWorks[y].Title)
-                    {
-                        model.OtherWorks.Remove(model.OtherWorks[z]);
-                    }
-                }
-            }
+           //         if (model.OtherWorks[z].Title == model.OtherWorks[y].Title)
+           //         {
+           //             model.OtherWorks.Remove(model.OtherWorks[z]);
+           //         }
+           //     }
+           // }
             return View(model);
         }
 
