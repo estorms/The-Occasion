@@ -178,23 +178,23 @@ namespace The_Occasion.Controllers
 
             //List<Poem> Excess = new List<Poem>();
 
-            //below simply matches poems from the poem table to authors from the author table ... it's practice in using join/in/on/equals/select syntax, but there's a more efficient method available. Right here you're deliberately choosing excess logic for the exercise. You do this more readily by querying the poem table in the database by the name of the author already established above
+            //below simply matches poems from the poem table to authors from the author table...it's practice in using join/in/on/equals/select syntax, but there's a more efficient method available. Right here you're deliberately choosing excess logic for the exercise. You do this more readily by querying the poem table in the database by the name of the author already established above
 
             //var collectedworks = await (from poem in context.Poem join author in context.Author on poem.Author equals author.Name select poem).ToListAsync();
 
-           //model.OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
+            model.OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
 
-           // for (var z = 0; z < model.OtherWorks.Count(); z++)
-           // {
-           //     for (var y = 0; y < model.OtherWorks.Count(); y++)
-           //     {
+            for (var z = 0; z < model.OtherWorks.Count(); z++)
+            {
+                for (var y = 0; y < model.OtherWorks.Count(); y++)
+                {
 
-           //         if (model.OtherWorks[z].Title == model.OtherWorks[y].Title)
-           //         {
-           //             model.OtherWorks.Remove(model.OtherWorks[z]);
-           //         }
-           //     }
-           // }
+                    if (model.OtherWorks[z].Title == model.OtherWorks[y].Title)
+                    {
+                        model.OtherWorks.Remove(model.OtherWorks[z]);
+                    }
+                }
+            }
             return View(model);
         }
 

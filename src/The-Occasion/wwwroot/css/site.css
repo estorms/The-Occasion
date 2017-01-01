@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* Wrapping element */
@@ -26,6 +29,10 @@ textarea {
     margin-top: 4%;
 }
 
+.btn {
+    margin-bottom: 1vh;
+}
+
 
 .homebutton {
     margin-top: 10px;
@@ -37,16 +44,18 @@ textarea {
     margin-bottom: 10px
 }
 a:hover {
-  color: white;
+  color: orangered;
   position: relative;
+  text-decoration: none;
 }
 
 a[data-title]:hover:after {
   content: attr(data-title);
-  padding: 2px 2px;
+  padding: 4px 4px;
   color: #333;
   position: absolute;
-  left: 0;
+  font-size: xx-small;
+  left: 10vh;
   top: 100%;
   z-index: 10;
   white-space: nowrap;
