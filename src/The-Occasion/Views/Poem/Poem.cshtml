@@ -15,6 +15,23 @@
     <div class="col-md-12 author">@Html.DisplayFor(model => model.Poem.Author)</div>
 <div class="col-md-12">@Html.DisplayFor(model => model.Author.Bio)</div> 
     </div>
+    <div class="col-lg-12">Other Works By This Author</div>
+
+    @if(Model.OtherWorks.Count == 0)
+    {
+        <div>No Other Works By this Poet Appear in The Database</div>
+    }
+
+    else {
+    
+        @foreach (var poem in Model.OtherWorks)
+    {
+        <div class="col-lg-12"><a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a></div>
+    }
+
+    }
+
+
         <div class="row">
              @foreach (var line in Model.LinesArray)
              {
