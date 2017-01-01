@@ -6,21 +6,21 @@
 @{
     ViewData["Title"] = "Welcome to The Occasion";
 }
-
+<div class="row">
 <div class="form-group findselect" id="formCurateselect">
 
-    <div class="col-md-10">
+    <div class="col-md-12">
         @Html.DropDownList("Forms.Id", @Model.FormId)
     </div>
 </div>
 
 <div class="form-group findselect" id="moodCurateselect">
-    <div class="col-md-10">
+    <div class="col-md-12">
         @Html.DropDownList("Moods.Id", @Model.MoodId)
     </div>
 </div>
 <div class="form-group findselect" id="topicCurateselect">
-    <div class="col-md-10">
+    <div class="col-md-12">
         @Html.DropDownList("Topics.Id", @Model.TopicId)
     </div>
 </div>
@@ -29,3 +29,4 @@
     <a class="btn btn-danger" id="CurateMe">Hit Me</a>
 </div>
 <div id="hereBePickyPoems"></div>
+</div>

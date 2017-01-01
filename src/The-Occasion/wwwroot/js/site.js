@@ -14,8 +14,9 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
         $("#curateview").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
-        //$("#hereBePoems").empty();
-        //$("html").css({ "height": "100%" });
+        $("#hereBePoems").empty();
+        $("html").addClass("full-height");
+        
     });
 
     $("#SaveBored").on("click", function (e) {
@@ -41,6 +42,7 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
             console.log("result", result);
             $("#Save").addClass("hidden");
             $("#Delete").removeClass("hidden");
+           
         });
     });
 
@@ -73,6 +75,7 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
             $("#Moods_Id").addClass("hidden");
             $("#Topics_Id").addClass("hidden");
             $("#Forms_Id").addClass("hidden");
+            $("#hereBePoems").empty();
         });
     });
 
@@ -128,6 +131,8 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });
     });
 
@@ -141,6 +146,9 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
+                //$("html").removeClass("full-height");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });
     });
 
@@ -155,8 +163,17 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
+                $("body").css({ 'background-color': '#ffffff' });
+                $("body").css('background-image', 'none');
             });   
     });
 
+    $("#curateview").on("click", function (e) {
+        $("html").addClass("full-height");
+    })
+
+ 
+   
 
   
+          

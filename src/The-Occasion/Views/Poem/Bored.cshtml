@@ -9,7 +9,7 @@
 }
 
 <div class="row poemrow">
-    <div class="col-md-6 title">@Html.DisplayFor(model => model.Poem.Title)</div>
+    <h3 class="title">@Html.DisplayFor(model => model.Poem.Title)</h3>
 
     @foreach (var line in Model.LinesArray)
     {

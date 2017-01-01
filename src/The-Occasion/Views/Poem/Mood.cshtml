@@ -1,6 +1,6 @@
 ﻿@model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
-<div class="row">
-<h3>@Model.MoodName Poems</h3> 
+<div class="row poemrow">
+<h3>Poems for Your Mood: @Model.MoodName</h3> 
     </div>
 
    @foreach (var poem in Model.AllPoems)
