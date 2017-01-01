@@ -1,39 +1,37 @@
 @model The_Occasion.Models.PoemViewModels.UserSelectionViewModel
-@{
-    ViewData["Title"] = "Your Favorite Poems";
-}
-<h3 class="top-buffer">@ViewData["Title"]</h3>
+
 <div class="row poemRow top-buffer">
-        <div class="col-md-6">Poems You Like</div>
+    <h4>Poems You Like</h4>
     @foreach (var poem in Model.UserLikedPoems)
     {
 
-        <div class="col-md-6">
-            <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
+        <div class="col-md-12">
+            <span class="title"><a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a></span>
+            <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
         </div>
-
-        <div class="col-md-6 author">@Html.DisplayFor(modelItem => poem.Author)</div>
     }
 
-        <div class="col-md-6">Haikus Your Computer Wrote For You</div>
+    <h4>Haikus Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedHaikus)
     {
-
-        <div class="col-md-6">
+    <div class="col-md-12">
+        <span class="title">
             <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
-        </div>
+        </span>
 
-        <div class="col-md-6 author">@Html.DisplayFor(modelItem => poem.Author)</div>
+        <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
+        </div>
     }
 
-    <div class="col-md-6">Sonnets Your Computer Wrote For You</div>
+    <h4>Sonnets Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedSonnets)
     {
-
-        <div class="col-md-6">
+        <div class="col-md-12">
+        <span class="title">
             <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
-        </div>
-
-        <div class="col-md-6 author">@Html.DisplayFor(modelItem => poem.Author)</div>
+        </span>
+            
+        <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
+            </div>
     }
 </div>

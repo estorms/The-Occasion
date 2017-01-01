@@ -14,7 +14,8 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
         $("#curateview").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
-        $("#hereBePoems").empty();
+        //$("#hereBePoems").empty();
+        //$("html").css({ "height": "100%" });
     });
 
     $("#SaveBored").on("click", function (e) {
@@ -68,6 +69,10 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
             console.log("result", result);
             $("#hereBePickyPoems").html(" ");
             $("#hereBePickyPoems").append(result);
+            $("#CurateMe").addClass("hidden");
+            $("#Moods_Id").addClass("hidden");
+            $("#Topics_Id").addClass("hidden");
+            $("#Forms_Id").addClass("hidden");
         });
     });
 

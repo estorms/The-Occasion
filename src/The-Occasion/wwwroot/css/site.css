@@ -1,11 +1,11 @@
-﻿body {
+﻿
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -25,12 +25,16 @@ textarea {
 }
 
 
-.poemRow {
+.poemRow, .poemrow  {
     margin-top: 4%;
+    background-color: whitesmoke;
+    border-radius: 2px;
+    padding-left: 5px;
 }
 
 .btn {
     margin-bottom: 1vh;
+    margin-top: 1vh;
 }
 
 
@@ -74,15 +78,12 @@ a[data-title]:hover:after {
 }
 .author {
     font-style: italic;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
     text-align: left;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.title {
+    font-weight: bolder;
 }
 
 /* buttons and links extension to use brackets: [ click me ] */
@@ -97,18 +98,3 @@ a[data-title]:hover:after {
     padding-left: 0.5em;
 }
 
-.tooltip-inner { background-color:#8447cf;}
-
-/* Make .svg files in the carousel display properly in older browsers */
-/*.carousel-inner .item img[src$=".svg"]
-{
-    width: 100%;
-}*/
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
-}
