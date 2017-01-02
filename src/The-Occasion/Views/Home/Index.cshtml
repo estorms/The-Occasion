@@ -21,7 +21,7 @@
     <a class="btn btn-danger" id="bored" data-title="That's sad. Let us choose a poem for you.">I'm Paralyzed by Ennui</a>
 </div>
 <div class="CurateView text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Poem" asp-action="Picky" id="curateview" data-title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
+    <a class="btn btn-danger" id="curebutt" data-title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
 </div>
 
 <div class="MakeAPoem text-center homebutton">
@@ -36,7 +36,7 @@
 <div id="hereBePoems"></div>
 </div>
 
-<div class="form-group hidden findselect" id="formselect">
+<div class="form-group hidden findselect browse" id="formselect">
 
 
     <div class="col-md-10">
@@ -44,16 +44,43 @@
     </div>
 </div>
 
-<div class="form-group hidden findselect" id="moodselect">
+<div class="form-group hidden findselect browse" id="moodselect">
     <div class="col-md-10">
         @Html.DropDownList("Moods.MoodId", @Model.MoodId)
     </div>
 </div>
 
 
-<div class="form-group hidden findselect" id="topicselect">
+<div class="form-group hidden findselect browse" id="topicselect">
     <div class="col-md-10">
         @Html.DropDownList("Topics.TopicId", @Model.TopicId)
     </div>
 </div>
+
+    <div class="row">
+        <div class="form-group hidden findselect picky" id="formCurateselect">
+
+            <div class="col-md-10">
+                @Html.DropDownList("Forms.Id", @Model.FormId)
+            </div>
+        </div>
+
+        <div class="form-group hidden findselect picky" id="moodCurateselect">
+            <div class="col-md-10">
+                @Html.DropDownList("Moods.Id", @Model.MoodId)
+            </div>
+        </div>
+
+        <div class="form-group hidden findselect picky" id="topicCurateselect">
+            <div class="col-md-10">
+                @Html.DropDownList("Topics.Id", @Model.TopicId)
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a class="btn btn-danger hidden" id="CurateMe">Hit Me</a>
+        </div>
+
+        <div id="hereBePickyPoems"></div>
+    </div>
 </div>
