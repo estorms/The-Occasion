@@ -170,7 +170,7 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
 
     $("#curateview").on("click", function (e) {
         $("html").addClass("full-height");
-    })
+    });
 
  
    
