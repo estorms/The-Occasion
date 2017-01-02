@@ -7,14 +7,28 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
 
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");
-        $(".findselect").removeClass("hidden");
+        $(".browse").removeClass("hidden");
         $("#findButton").addClass("hidden");
         $("#bored").addClass("hidden");
         $("#makePoem").addClass("hidden");
-        $("#curateview").addClass("hidden");
+        $("#curebutt").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
+        $("html").addClass("full-height");    
+    });
+
+    $("#curebutt").on("click", function (e) {
+        //$("#hereBePoems").empty();
+    
+        $(".picky").removeClass("hidden");
+        $("#CurateMe").removeClass("hidden");
+        $("#findButton").addClass("hidden");
+        $("#bored").addClass("hidden");
+        $("#makePoem").addClass("hidden");
+        $("#curebutt").addClass("hidden");
+        $("#makeHaiku").addClass("hidden");
+        $("#myPoems").addClass("hidden");
         $("html").addClass("full-height");
         
     });
@@ -113,7 +127,7 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
             $("#makePoem").addClass("hidden");
             $("#makeHaiku").addClass("hidden");
             $("#myPoems").addClass("hidden");
-            $("#curateview").addClass("hidden");
+            $("#curebutt").addClass("hidden");
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
         });
@@ -168,9 +182,7 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
             });   
     });
 
-    $("#curateview").on("click", function (e) {
-        $("html").addClass("full-height");
-    })
+
 
  
    
