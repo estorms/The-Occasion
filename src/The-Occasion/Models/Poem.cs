@@ -41,6 +41,8 @@ namespace The_Occasion.Models
         public string Lines { get; set; }
         public ICollection<UserSelection> UserSelections { get; set; }
 
+        public string RhymeScheme { get; set; }
+
         
     }
 }
