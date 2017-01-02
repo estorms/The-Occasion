@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 using The_Occasion.Data;
 using The_Occasion.Models;
 using The_Occasion.Models.PoemViewModels;
+using The_Occasion.ExtensionMethods;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace The_Occasion.Controllers
 {
@@ -28,6 +30,8 @@ namespace The_Occasion.Controllers
         {
             return context.Author.Count(a => a.Name == name) > 0;
         }
+
+
 
         public PoemController(ApplicationDbContext ctx, UserManager<ApplicationUser> user)
         {
@@ -182,19 +186,9 @@ namespace The_Occasion.Controllers
 
             //var collectedworks = await (from poem in context.Poem join author in context.Author on poem.Author equals author.Name select poem).ToListAsync();
 
-            model.OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
-
-            for (var z = 0; z < model.OtherWorks.Count(); z++)
-            {
-                for (var y = 0; y < model.OtherWorks.Count(); y++)
-                {
-
-                    if (model.OtherWorks[z].Title == model.OtherWorks[y].Title)
-                    {
-                        model.OtherWorks.Remove(model.OtherWorks[z]);
-                    }
-                }
-            }
+            var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
+            var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
+            model.OtherWorks = OtherWorksUniqueTitles;
             return View(model);
         }
 
