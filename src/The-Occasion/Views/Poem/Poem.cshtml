@@ -9,7 +9,7 @@
 }
 
 
-<div class="row poemRow">
+<div class="row poemRow singlePoem">
 
 <h3 class="title">@Html.DisplayFor(model => model.Poem.Title)</h3>
 
@@ -30,7 +30,7 @@
 
     @if(Model.OtherWorks.Count == 0)
     {
-        <div class="small-font">No Other Works By this Poet Appear in The Database</div>
+        <div class="col-lg-12 small-font">No Other Works By this Poet Appear in The Database</div>
     }
 
     else {
@@ -44,8 +44,9 @@
     }
         @if (UserManager.GetUserName(User) != null)
         {
-        <div class="col-md-3 top-buffer"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>
-        <div class="col-md-3 top-buffer"><button id="Delete" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Delete From My Profile</button></div>
+        <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>
+        <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Delete From My Profile</button></div>
+        <div class="col-md-3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>
         }
         else
         {

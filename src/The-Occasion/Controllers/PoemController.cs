@@ -78,6 +78,7 @@ namespace The_Occasion.Controllers
             var user = await GetCurrentUserAsync();
             //identify all of the user selections by the user Id
             var userName = user.UserName;
+            var userFullName = user.FirstName + " " + user.LastName;
             var userSelections = await context.UserSelection.Where(u => u.User == user).ToListAsync();
             //grab all of the poems from the database
             var Poems = await context.Poem.ToListAsync();
@@ -95,16 +96,16 @@ namespace The_Occasion.Controllers
 
             foreach(var poem in model.UserPoems)
             {
-                if (poem.Author == userName && poem.FormId == 120)
+                if (poem.Author == userFullName && poem.FormId == 120)
                 {
                     model.UserGeneratedHaikus.Add(poem);
                 }
 
-                else if (poem.Author == userName && poem.FormId == 118)
+                else if (poem.Author == userFullName && poem.FormId == 118)
                 {
                     model.UserGeneratedSonnets.Add(poem);
                 }
-
+                
                 else
                 {
                     model.UserLikedPoems.Add(poem);
