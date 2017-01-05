@@ -46,6 +46,7 @@ namespace TheOccasion_Controllers
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             var user = await GetCurrentUserAsync();
             var userName = user.UserName;
+            var userFullName = user.FirstName + " " + user.LastName;
 
             //set some dummy properties on model.Poem so that View doesn't freak out
 
@@ -104,7 +105,7 @@ namespace TheOccasion_Controllers
             Poem myHaiku = new Poem();
 
             //myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
-            myHaiku.Author = userName;
+            myHaiku.Author = userFullName;
             //need to convert the below to string with stringbuilder as in sonnet and make other changes to razor to allow saving
             myHaiku.Lines = stringbuilder.ToString();
             myHaiku.FormId = 120;

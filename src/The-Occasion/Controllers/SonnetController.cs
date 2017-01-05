@@ -46,7 +46,7 @@ namespace TheOccasion_Controllers
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             var user = await GetCurrentUserAsync();
             var userName = user.UserName;
-
+            var userFullName = user.FirstName + " " + user.LastName;
 
             //get all the sonnets back from the database
             var sonnets = await context.Poem.Where(p => p.FormId == 118).ToListAsync();
@@ -95,7 +95,7 @@ namespace TheOccasion_Controllers
 
             mySonnet.Lines = stringbuilder.ToString();
             //mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
-            mySonnet.Author = userName;
+            mySonnet.Author = userFullName;
             //mySonnet.Lines = UserSonnet.ToString();
             mySonnet.FormId = 118;
             mySonnet.TopicId = 115;

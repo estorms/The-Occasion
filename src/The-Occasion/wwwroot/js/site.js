@@ -2,7 +2,8 @@
 
 var images = ['birds1.jpg', 'birds2.jpg', 'birds3.jpg', 'birds4.jpg', 'birds5.jpg', 'birds6.jpg'];
 var splashImg = images[Math.floor(Math.random() * images.length)];
-$("body").css({ "background-image": `url(/images/${splashImg})` });
+
+    $("body").css({ "background-image": `url(/images/${splashImg})` });
 
 
     $("#findButton").on("click", function (e) {
@@ -145,8 +146,8 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                $("body").css({ 'background-color': '#ffffff' });
-                $("body").css('background-image', 'none');
+                //$("body").css({ 'background-color': '#d9534f' });
+                $("body").css('background-image', ' url(/images/birds1.jpg)');
             });
     });
 
@@ -160,9 +161,9 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                //$("html").removeClass("full-height");
-                $("body").css({ 'background-color': '#ffffff' });
-                $("body").css('background-image', 'none');
+                $("html").removeClass("full-height");
+                //$("body").css({ 'background-color': '#d9534f' });
+                $("body").css('background-image', ' url(/images/birds1.jpg)');
             });
     });
 
@@ -177,10 +178,16 @@ $("body").css({ "background-image": `url(/images/${splashImg})` });
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
-                $("body").css({ 'background-color': '#ffffff' });
-                $("body").css('background-image', 'none');
+                //$("body").css({ 'background-color': '#d9534f' });
+                $("body").css('background-image', ' url(/images/birds1.jpg)');
             });   
     });
+
+    $('#myPoems').on("click", function (e) {
+        $("body").css('background-image', ' url(/images/birds1.jpg)');
+        console.log('saved poem link clicked');
+    });
+
 
 
 
