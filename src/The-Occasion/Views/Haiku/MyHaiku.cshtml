@@ -18,15 +18,15 @@
         <input class="form-control hidden" asp-for="Poem.MoodId" />
         <span class="hidden">@Model.Poem.MoodId</span>
         <input class="form-control hidden" asp-for="Poem.TopicId" /><span class="hidden">@Model.Poem.TopicId</span>
-
+        <div class="poem-input">
         <div class="col-lg-12">@Model.Line1</div>
         <div class="col-lg-12">@Model.Line2</div>
         <div class="col-lg-12">@Model.Line3</div>
-
+        </div>
         <input class="form-control hidden" asp-for="Poem.
-        Author"/><span style="font-style:italic; margin-top: 10px; display: inline-block"> Brought to you courtesy of your computer</span>
+        Author"/><span class="attribution"> Brought to you courtesy of your computer</span>
         <div class="saveUserButton text-center">
-            <input type="submit" class="btn btn-danger" id="SaveUserHaiku">
+            <input type="submit" class="btn btn-danger" id="SaveUserHaiku" value="Save">
         </div>
         </div>
     </form>

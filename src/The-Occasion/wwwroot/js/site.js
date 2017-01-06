@@ -186,10 +186,15 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             });   
     });
 
-    $('#myPoems').on("click", function (e) {
-        $("body").css('background-image', ' url(/images/birds1.jpg)');
-        console.log('saved poem link clicked');
-    });
+    //$("#makePoem").on("click", function (e) {
+    //    console.log('make poem clicked')
+    //    $("body").css('background-image', ' url(/images/birds1.jpg)');
+    //})
+
+    //$('#myPoems').on("click", function (e) {
+    //    $("body").css('background-image', ' url(/images/birds1.jpg)');
+    //    console.log('saved poem link clicked');
+    //});
 
 
 

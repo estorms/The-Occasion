@@ -127,3 +127,21 @@ a[data-title]:hover:after {
 .small-font {
     font-size: xx-small;
 }
+
+.log-off {
+    margin-top: 1.7vh;
+}
+
+.title-me {
+    margin: 2% 0 0 2%;
+}
+
+.poem-input {
+    margin-top: 1%;
+}
+
+.attribution {
+    display: inline-block;
+    font-style: italic;
+    margin: 1% 0 0 2%;
+}

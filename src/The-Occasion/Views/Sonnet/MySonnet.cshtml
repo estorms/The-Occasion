@@ -14,17 +14,18 @@
         <input class="form-control hidden" asp-for="Poem.MoodId" />
         <span class="hidden">@Model.Poem.MoodId</span>
         <input class="form-control hidden" asp-for="Poem.TopicId" /><span class="hidden">@Model.Poem.TopicId</span>
+        <div class="poem-input">
         @foreach (var line in Model.LinesArray)
         {
             <div class="col-md-12">@line</div>
         }
-
-        <div class="col-md-3">
+            </div>
+        
             <input class="form-control hidden" asp-for="Poem.
-        Author" /><span style="font-style:italic; margin-top: 10px; display: inline-block"> Brought to you courtesy of @Html.DisplayFor(model => model.Poem.Author)'s computer</span>
+        Author" /><span class="attribution"> Brought to you courtesy of @Html.DisplayFor(model => model.Poem.Author)'s computer</span>
     <div class="saveUserButton text-center">
-        <input type="submit" class="btn btn-danger" id="SaveUserSonnet">
+        <input type="submit" class="btn btn-danger" id="SaveUserSonnet" value="Save">
     </div>
     </div>
-</div>
+
     </form>
