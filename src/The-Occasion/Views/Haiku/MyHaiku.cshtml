@@ -6,11 +6,11 @@
 
 
 <form asp-action="SaveUserHaiku">
+        <div class="title-me"><input class="form-control" asp-for="Poem.Title" placeholder="Enter a Title to Save"></div>
     <div class="row poemRow">
-        <div class="col-md-3 top-buffer" style="font-weight: bolder">@Html.DisplayFor(model => model.Poem.Title)</div>
+        @*<div class="col-md-3 top-buffer" style="font-weight: bolder">@Html.DisplayFor(model => model.Poem.Title)</div>*@
     
 
-        <div class="title-me"><input class="form-control" asp-for="Poem.Title" placeholder="Enter a Title to Save"></div>
         <input class="form-control hidden" asp-for="Poem.Lines" />
         <span class="hidden">@Model.Poem.Lines</span>
         <input class="form-control hidden" asp-for="Poem.FormId" />

@@ -18,6 +18,7 @@
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body>
+    <div id="img-bg">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -55,7 +56,8 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    </div>
     @RenderSection("scripts", required: false)
+    </div>
+    </div>
 </body>
 </html>
