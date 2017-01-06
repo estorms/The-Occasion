@@ -13,9 +13,15 @@ namespace The_Occasion.Models.HomeViewModels
         public IEnumerable<Form> Form { get; set; }
         public IEnumerable<Mood> Mood { get; set; }
         public IEnumerable<Topic> Topic { get; set; }
+        public IEnumerable<Form>PickyForm { get; set; }
+        public IEnumerable<Mood>PickyMood { get; set; }
+        public IEnumerable<Topic>PickyTopic { get; set; }
         public List<SelectListItem> FormId { get; set; }
         public List<SelectListItem> MoodId { get; set; }
         public List<SelectListItem> TopicId { get; set; }
+        public List<SelectListItem> PickyFormId { get; set; }
+        public List<SelectListItem>PickyMoodId { get; set; }
+        public List<SelectListItem>PickyTopicId { get; set; }
         //public List<SelectListItem> AllQualifiers = new List<SelectListItem>();
 
         public HomeViewModel(ApplicationDbContext ctx)
@@ -65,10 +71,49 @@ namespace The_Occasion.Models.HomeViewModels
                 Value = "0"
             });
 
-            //this.AllQualifiers.Insert(0, new SelectListItem { Text = "Curate Your Choice", Value = "0" });
-            //this.AllQualifiers.InsertRange(1, TopicId);
-            //this.AllQualifiers.InsertRange(4, MoodId);
-            //this.AllQualifiers.InsertRange(8, FormId);
+            this.PickyFormId = ctx.Form
+                                    .OrderBy(f => f.FormName)
+                                    .AsEnumerable()
+                                    .Select(li => new SelectListItem
+                                    {
+                                        Text = li.FormName,
+                                        Value = li.FormId.ToString()
+                                    }).ToList();
+            this.PickyFormId.Insert(0, new SelectListItem
+            {
+                Text = "Your Picky Form",
+                Value = "0"
+            });
+
+            this.PickyMoodId = ctx.Mood
+                                    .OrderBy(m => m.MoodName)
+                                    .AsEnumerable()
+                                    .Select(li => new SelectListItem
+                                    {
+                                        Text = li.MoodName,
+                                        Value = li.MoodId.ToString()
+                                    }).ToList();
+
+            this.PickyMoodId.Insert(0, new SelectListItem
+            {
+                Text = "Your Picky Mood",
+                Value = "0"
+            });
+
+            this.PickyTopicId = ctx.Topic
+                                    .OrderBy(t => t.TopicName)
+                                    .AsEnumerable()
+                                    .Select(li => new SelectListItem
+                                    {
+                                        Text = li.TopicName,
+                                        Value = li.TopicId.ToString()
+                                    }).ToList();
+            this.PickyTopicId.Insert(0, new SelectListItem
+            {
+                Text = "Your Picky Topic",
+                Value = "0"
+            });
+
         }
         
     }
