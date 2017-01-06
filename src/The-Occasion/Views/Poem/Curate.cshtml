@@ -1,12 +1,10 @@
 @model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
-@{
-    ViewData["Title"] = "Picky, Picky";
-}
+
 
 
 <div class="row poemrow">
+<h3 class="title">Picky, Picky</h3>
     @if (Model.AllPoems.Count() > 0) {
-<h2 class="top-buffer">@ViewData["Title"]</h2>
     @foreach (var poem in Model.AllPoems)
     {
 

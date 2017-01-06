@@ -121,6 +121,10 @@ namespace TheOccasion_Controllers
             userselection.PoemId = newsonnet.PoemId;
             context.UserSelection.Add(userselection);
             await context.SaveChangesAsync();
+            Author author = new Author();
+            author.Name = poem.Author;
+            context.Author.Add(author);
+            await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
     }

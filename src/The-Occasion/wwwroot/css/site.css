@@ -43,13 +43,14 @@ textarea {
 
 
 .poemRow, .poemrow  {
-    margin-top: 4%;
+    margin-top: 1%;
     margin-left: 2%;
     margin-right: 3%;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 2px;
     padding-left: 5px;
     box-shadow: 2px 2px 3px 2px;
+    padding-bottom: 1%:
 }
 
 
@@ -106,6 +107,7 @@ a[data-title]:hover:after {
 
 .title {
     font-weight: bolder;
+    margin-left: 2%;
 }
 
 /* buttons and links extension to use brackets: [ click me ] */

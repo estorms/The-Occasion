@@ -8,17 +8,30 @@
     ViewData["Title"] = "The Occasion";
 }
 
-
+@*<form asp-action="UpdatePoem">*@
 <div class="row poemRow singlePoem">
 
+    <input class="form-control hidden" value="@Model.Poem.PoemId" id="poemId"/>
+    <div class = "hidden">@Model.Poem.PoemId</div>
     <h3 class="title">@Html.DisplayFor(model => model.Poem.Title)</h3>
+     
 
-    @*<div class="favorite text-center">*@
     @foreach (var line in Model.LinesArray)
     {
-        <div class="col-lg-12 lines">@line</div>
+      <div class="col-lg-12 lines"><input class="form-control hidden" id="linesDiv" value="@line" />
+         @line
+    @if (Model.Poem.Author == Model.UserFullName)
+    {
+            <input class="form-control hidden edit-input" placeholder="test worked" id="edit-input"><button class="btn-xs edit">Edit</button>
+    }
+        else
+        {
+        <span></span>
+        }
+    </div>
     }
     <div class="col-md-12 author lines top-buffer">@Html.DisplayFor(model => model.Poem.Author)</div>
+@*</form>*@ 
 
     @if (Model.Author != null)
     {
@@ -36,20 +49,21 @@
     else
     {
         <div class="col-lg-12 lines top-buffer">Other Works By This Author</div>
+    }
 
         @foreach (var poem in Model.OtherWorks)
         {
             <div class="col-lg-12 lines small-font"><a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a></div>
         }
 
-    }
     @if (UserManager.GetUserName(User) != null)
     {
         @*<div class="col-md-3 top-buffer"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>*@
         <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="btn btn-danger">Delete From My Profile</button></div>
               
+    <a class="btn btn-danger" id ="update">Update</a>
         <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Eh, Maybe I Do Want It. Save It Again, Please.</button></div>
-        <div class="col-md-3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>
+        @*<div class="col-md-3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>*@
     }
     else
     {
@@ -62,7 +76,9 @@
                 @*</div>*@
                 @*</div>*@
     }
-</div>
+    </div>
+ 
+
 
    
 

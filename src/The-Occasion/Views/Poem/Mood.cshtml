@@ -1,13 +1,13 @@
 ﻿@model The_Occasion.Models.PoemViewModels.AllPoemsViewModel
 <div class="row poemrow">
-<h3>Poems for Your Mood: @Model.MoodName</h3> 
+<h3 class="title">Poems for Your Mood: @Model.MoodName</h3> 
     </div>
 
    @foreach (var poem in Model.AllPoems)
    {
 
     <div class="row poemRow top-buffer">
-        <a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a><div>
+        <a asp-controller="Poem" asp-action="Poem" asp-route-id="@poem.PoemId" class="poem-link">@Html.DisplayFor(modelItem => poem.Title)</a><div>
             @Html.DisplayFor(modelItem => poem.Author)
     </div>
 </div>

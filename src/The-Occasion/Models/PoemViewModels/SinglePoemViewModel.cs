@@ -15,8 +15,10 @@ namespace The_Occasion.Models.PoemViewModels
 
         public List<Poem> OtherWorks = new List<Poem>();
 
-        public Author Author { get; set; }
+        
 
+        public Author Author { get; set; }
+        public string UserFullName { get; set; }
         public string Line1 { get; set; }
         public string Line2 { get; set; }
         public string Line3 { get; set; }
