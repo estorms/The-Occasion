@@ -21,9 +21,15 @@ namespace The_Occasion.Data
 
                 BigOleListOfPoems bigolelist = new BigOleListOfPoems();
                 var poems = bigolelist.GetPoems();
+                var authors = bigolelist.GetAuthors();
                 foreach(Poem poem in poems)
                 {
                     context.Poem.Add(poem);
+                }
+
+                foreach(Author author in authors)
+                {
+                    context.Author.Add(author);
                 }
                 context.SaveChanges();
                     }
