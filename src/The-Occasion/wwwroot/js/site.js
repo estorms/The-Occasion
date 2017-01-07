@@ -200,25 +200,19 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 newPoemArray.splice(i, 1, editedLinesArray[i]);
             }
         }
-        console.log(poemIdFromJQ);
-        console.log(existingLinesArray, "existing Lines Array");
-        console.log(editedLinesArray, "editing Lines Array");
-        console.log(newPoemArray, "newPoemArray");
-
-
-       //var lines = 
-        //console.log(poemIdFromJQ);
-        //console.log(linesFromJQ);
-        //var poem = {
-        //    PoemId : poemIdFromJQ,
-        //    Title: $(".title").html(),
-        //    Author: $(".author").html()
-             
-
-        //    }
-    
-        //updatePoem(poem);
+        var newPoemToString = newPoemArray.toString();
+        console.log(newPoemToString, "newPoemtoString");
+        var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+        console.log(newPoemRevisedString, "newPoemRevisedString");
+        var poem = {
+            PoemId : poemIdFromJQ,
+            Title: $(".title").html(),
+            Author: $(".author").html(),
+            Lines : newPoemRevisedString
+            }
+        updatePoem(poem);
     });
+
     $(".edit").on("click", function (e) {
         console.log('edit poem clicked');
         event.preventDefault();

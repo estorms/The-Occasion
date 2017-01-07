@@ -124,6 +124,7 @@ a[data-title]:hover:after {
 
 .lines {
     text-align: left;
+    margin-top: 1%;
 }
 
 .small-font {
@@ -146,4 +147,8 @@ a[data-title]:hover:after {
     display: inline-block;
     font-style: italic;
     margin: 1% 0 0 2%;
+}
+
+.edit {
+    float: right;
 }

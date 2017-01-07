@@ -220,12 +220,9 @@ namespace The_Occasion.Controllers
             author = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstOrDefaultAsync();
             model.Author = author;
             model.UserFullName = userFullName;
-
-            if (model.Poem == null)
-            {
-                return NotFound();
-            }
-
+            var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
+            var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
+            model.OtherWorks = OtherWorksUniqueTitles;
             return View(model);
         }
         [HttpGet]
