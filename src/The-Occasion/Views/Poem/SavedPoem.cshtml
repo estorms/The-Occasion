@@ -60,8 +60,15 @@
     {
         @*<div class="col-md-3 top-buffer"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>*@
         <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="btn btn-danger">Delete From My Profile</button></div>
-              
+      @if (Model.Poem.Author == Model.UserFullName)
+      {
     <div class="col-md-3"><a class="btn btn-danger" id ="update">Update</a></div>
+      }
+      else
+      {
+          <span></span>
+
+      }
         <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Eh, Maybe I Do Want It. Save It Again, Please.</button></div>
         @*<div class="col-md-3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>*@
     }
