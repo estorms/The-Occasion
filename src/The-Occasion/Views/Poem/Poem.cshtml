@@ -27,6 +27,12 @@
 <div class="col-md-12 lines top-buffer small-font">@Html.DisplayFor(model => model.Author.Bio)</div> 
         }
 
+        else
+        {
+            <span></span>
+
+        }
+
     @if(Model.OtherWorks.Count == 0)
     {
         <div class="col-lg-12 small-font">No Other Works By this Poet Appear in The Database</div>
