@@ -170,6 +170,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             });
     });
 
+
     $("#Moods_MoodId").on("change", function (e) {
         console.log("mood selected, this is its value", $(this).val());
         var chosenMood = $(this).val();
@@ -209,9 +210,14 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             Title: $(".title").html(),
             Author: $(".author").html(),
             Lines : newPoemRevisedString
-            }
-        updatePoem(poem);
+        }
+        updatePoem(poem).then(function () {
+            console.log('promise resolved, inside then')
+            window.location.href ="/Home/Index";
+        });
     });
+      
+   
 
     $(".edit").on("click", function (e) {
         console.log('edit poem clicked');
@@ -227,11 +233,13 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(poem)
-               
-            }).done((result) => {
-                console.log(result, "result");
+            }).done(function(result) {
+                resolve(result)
+            }).error(function (err) {
+                reject(err);
             })
-        });
+
+            })
     }
 
 
