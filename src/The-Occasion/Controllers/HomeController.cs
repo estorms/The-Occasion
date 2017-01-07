@@ -28,6 +28,9 @@ namespace The_Occasion.Controllers
             model.Form = await context.Form.ToListAsync();
             model.Mood = await context.Mood.ToListAsync();
             model.Topic = await context.Topic.ToListAsync();
+            model.PickyForm = await context.Form.ToListAsync();
+            model.PickyMood = await context.Mood.ToListAsync();
+            model.PickyTopic = await context.Topic.ToListAsync();
             return View(model);
 
         }

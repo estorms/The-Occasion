@@ -122,6 +122,8 @@ namespace TheOccasion_Controllers
         public async Task<IActionResult> SaveUserHaiku(Poem poem)
         {
             context.Poem.Add(poem);
+            Author author = new Author();
+            author.Name = poem.Author;
             await context.SaveChangesAsync();
             var user = await GetCurrentUserAsync();
             UserSelection userselection = new UserSelection();
@@ -129,6 +131,8 @@ namespace TheOccasion_Controllers
             var newhaiku = await context.Poem.OrderByDescending(p => p.PoemId).FirstOrDefaultAsync();
             userselection.PoemId = newhaiku.PoemId;
             context.UserSelection.Add(userselection);
+            await context.SaveChangesAsync();
+            context.Author.Add(author);
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }

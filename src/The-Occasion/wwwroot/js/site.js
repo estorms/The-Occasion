@@ -3,7 +3,7 @@
 var images = ['birds1.jpg', 'birds2.jpg', 'birds3.jpg', 'birds4.jpg', 'birds5.jpg', 'birds6.jpg'];
 var splashImg = images[Math.floor(Math.random() * images.length)];
 
-    $("body").css({ "background-image": `url(/images/${splashImg})` });
+    $("body").css({ "background-image": `url(../images/${splashImg})` });
 
 
     $("#findButton").on("click", function (e) {
@@ -133,7 +133,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             $("#hereBePoems").empty();
             $("#hereBePoems").append(result);
             $(".findselect").addClass("hidden");
-            $("body").css('background-image', ' url(/images/birds1.jpg)');
+            $("body").css('background-image', 'url(/images/birds1.jpg)');
         });
     });
 
@@ -150,7 +150,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 //$("body").css({ 'background-color': '#d9534f' });
-                $("body").css('background-image', ' url(/images/birds1.jpg)');
+                $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
 
@@ -166,7 +166,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $(".findselect").addClass("hidden");
                 //$("html").removeClass("full-height");
                 //$("body").css({ 'background-color': '#d9534f' });
-                $("body").css('background-image', ' url(/images/birds1.jpg)');
+                $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
 
@@ -182,25 +182,61 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
                 //$("body").css({ 'background-color': '#d9534f' });
-                $("body").css('background-image', ' url(/images/birds1.jpg)');
+                $("body").css('background-image', 'url(/images/birds1.jpg)');
             });   
     });
 
-    //$("#makePoem").on("click", function (e) {
-    //    console.log('make poem clicked')
-    //    $("body").css('background-image', ' url(/images/birds1.jpg)');
-    //})
 
-    //$('#myPoems').on("click", function (e) {
-    //    $("body").css('background-image', ' url(/images/birds1.jpg)');
-    //    console.log('saved poem link clicked');
-    //});
+    $("#update").on("click", function (e) {
+        var poemIdFromJQ = $("#poemId").val();
+        var existingLinesArray = $("input[id='linesDiv']")
+               .map(function () { return $(this).val(); }).get();
+        var editedLinesArray = $("input[id='edit-input']")
+               .map(function () { return $(this).val(); }).get();
+        var newPoemArray = existingLinesArray.slice();
 
+        for (var i = 0; i < editedLinesArray.length; i++) {
+            if (editedLinesArray[i] !== "") {
+                newPoemArray.splice(i, 1, editedLinesArray[i]);
+            }
+        }
+        var newPoemToString = newPoemArray.toString();
+        console.log(newPoemToString, "newPoemtoString");
+        var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+        console.log(newPoemRevisedString, "newPoemRevisedString");
+        var poem = {
+            PoemId : poemIdFromJQ,
+            Title: $(".title").html(),
+            Author: $(".author").html(),
+            Lines : newPoemRevisedString
+            }
+        updatePoem(poem);
+    });
 
+    $(".edit").on("click", function (e) {
+        console.log('edit poem clicked');
+        event.preventDefault();
+        $(this).prev().removeClass("hidden");
+        $(this).addClass("hidden");
+    });
+
+    function updatePoem(poem) {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "/Poem/UpdatePoem",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(poem)
+               
+            }).done((result) => {
+                console.log(result, "result");
+            })
+        });
+    }
 
 
  
    
 
   
-          
+         

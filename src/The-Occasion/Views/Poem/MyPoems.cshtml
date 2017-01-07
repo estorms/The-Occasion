@@ -1,7 +1,7 @@
 @model The_Occasion.Models.PoemViewModels.UserSelectionViewModel
 
 <div class="row poemRow top-buffer">
-    <h4>Poems You Like</h4>
+    <h4 class="title">Poems You Like</h4>
     @foreach (var poem in Model.UserLikedPoems)
     {
 
@@ -11,7 +11,7 @@
         </div>
     }
 
-    <h4>Haikus Your Computer Wrote For You</h4>
+    <h4 class="title">Haikus Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedHaikus)
     {
     <div class="col-md-12">
@@ -23,7 +23,7 @@
         </div>
     }
 
-    <h4>Sonnets Your Computer Wrote For You</h4>
+    <h4 class="title">Sonnets Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedSonnets)
     {
         <div class="col-md-12">

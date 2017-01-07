@@ -12,6 +12,8 @@ namespace The_Occasion.Models.PoemViewModels
         {
             var context = ctx;
         }
+
+        public string UserName { get; set; }
         public List<Poem> UserPoems = new List<Poem>();
 
         public List<Poem> UserGeneratedHaikus = new List<Poem>();

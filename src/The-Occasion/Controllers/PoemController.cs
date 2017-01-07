@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,12 @@ using The_Occasion.ExtensionMethods;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Internal;
+using System.Runtime.Serialization.Formatters;
+using System.IO;
+
 
 namespace The_Occasion.Controllers
 {
-
     public class PoemController : Controller
     {
 
@@ -26,7 +30,7 @@ namespace The_Occasion.Controllers
 
         private ApplicationDbContext context;
 
-        private bool _authorExists (string name)
+        private bool _authorExists(string name)
         {
             return context.Author.Count(a => a.Name == name) > 0;
         }
@@ -94,7 +98,7 @@ namespace The_Occasion.Controllers
                 }
             }
 
-            foreach(var poem in model.UserPoems)
+            foreach (var poem in model.UserPoems)
             {
                 if (poem.Author == userFullName && poem.FormId == 120)
                 {
@@ -105,12 +109,15 @@ namespace The_Occasion.Controllers
                 {
                     model.UserGeneratedSonnets.Add(poem);
                 }
-                
+
                 else
                 {
                     model.UserLikedPoems.Add(poem);
                 }
             }
+
+
+
             return View(model);
         }
 
@@ -162,13 +169,16 @@ namespace The_Occasion.Controllers
             {
                 return NotFound();
             }
-            
+
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
+            var user = await GetCurrentUserAsync();
+            var userFullName = user.FirstName + " " + user.LastName;
+            model.UserFullName = userFullName;
 
             if (_authorExists(SinglePoem.Author))
             {
@@ -204,12 +214,15 @@ namespace The_Occasion.Controllers
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
-
-            if (model.Poem == null)
-            {
-                return NotFound();
-            }
-
+            var user = await GetCurrentUserAsync();
+            var userFullName = user.FirstName + " " + user.LastName;
+            Author author = new Author();
+            author = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstOrDefaultAsync();
+            model.Author = author;
+            model.UserFullName = userFullName;
+            var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
+            var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
+            model.OtherWorks = OtherWorksUniqueTitles;
             return View(model);
         }
         [HttpGet]
@@ -278,6 +291,22 @@ namespace The_Occasion.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
 
+        }
+
+        [Authorize]
+        [HttpPost]
+
+        public async Task<IActionResult> UpdatePoem([FromBody] Poem poem)
+        {
+
+            
+            var poemToUpdate = await context.Poem.Where(p => p.PoemId == poem.PoemId).SingleOrDefaultAsync();
+            poemToUpdate.Author = poem.Author;
+            poemToUpdate.Title = poem.Title;
+            poemToUpdate.Lines = poem.Lines;
+            context.Poem.Update(poemToUpdate);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
