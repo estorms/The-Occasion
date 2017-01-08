@@ -36,6 +36,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
     $("#SaveBored").on("click", function (e) {
         console.log("save buttonbored clicked clicked");
+        console.log($(this).val())
         $.ajax({
             url: `Poem/SaveBored/${$(this).val()}`,
         method: "POST",
@@ -107,8 +108,9 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         });
     });
 
-        $("#DeleteBored").on("click", function (e) {
+    $("#DeleteBored").on("click", function (e) {
         console.log("delete bored button clicked");
+        console.log($(this).val());
         $.ajax({
             url: `/Poem/Delete/${$(this).val()}`,
             method: "DELETE"
@@ -213,7 +215,8 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         }
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
-            window.location.href ="/Home/Index";
+            //window.location.href ="/Home/Index";
+            window.location.reload(true);
         });
     });
       

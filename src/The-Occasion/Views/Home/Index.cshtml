@@ -14,22 +14,22 @@
 @if (@UserManager.GetUserName(User) != null)
 {
 
+<div class="CurateView text-center homebutton">
+    <a class="btn btn-danger" id="curebutt" data-title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
+</div>
+
+
+<div class="MakeAPoem text-center homebutton">
+    <a class="btn btn-danger" asp-controller="Haiku" asp-action="MyHaiku" id="makeHaiku" data-title="Feeling obscure but uncreative, are we?">Generate a Haiku</a>
+</div>
+<div class="MakeAPoem text-center homebutton">
+    <a class="btn btn-danger" asp-controller="Sonnet" asp-action="MySonnet" id="makePoem" data-title="It's possible your computer writes better poetry than you do. We'll build you a sonnet.">Generate a Sonnet</a>
+</div>
 <div class="WhatHaveIDone text-center homebutton">
     <a class="btn btn-danger" asp-controller="Poem" asp-action="MyPoems" id="myPoems"  data-title="Click to see all your saved poems!">What Have I Done?</a>
 </div>
 <div class="boredButton text-center homebutton">
     <a class="btn btn-danger" id="bored" data-title="That's sad. Let us choose a poem for you.">I'm Paralyzed by Ennui</a>
-</div>
-<div class="CurateView text-center homebutton">
-    <a class="btn btn-danger" id="curebutt" data-title="You're so demanding. We'll try to find a poem that meets your exact needs.">I'm Feeling Picky</a>
-</div>
-
-<div class="MakeAPoem text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Sonnet" asp-action="MySonnet" id="makePoem" data-title="It's possible your computer writes better poetry than you do. We'll build you a sonnet.">Generate a Sonnet</a>
-</div>
-
-<div class="MakeAPoem text-center homebutton">
-    <a class="btn btn-danger" asp-controller="Haiku" asp-action="MyHaiku" id="makeHaiku" data-title="Feeling obscure but uncreative, are we?">Generate a Haiku</a>
 </div>
 }
 <div class="row">

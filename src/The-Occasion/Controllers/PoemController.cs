@@ -259,12 +259,19 @@ namespace The_Occasion.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var user = await GetCurrentUserAsync();
-            var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
-            context.UserSelection.Remove(selectionToDelete);
-            await context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
-        }
+            try
+            {
+                var user = await GetCurrentUserAsync();
+                var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
+                context.UserSelection.Remove(selectionToDelete);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+            }
 
 
         [Authorize]
@@ -306,7 +313,7 @@ namespace The_Occasion.Controllers
             poemToUpdate.Lines = poem.Lines;
             context.Poem.Update(poemToUpdate);
             await context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            return Ok();
         }
     }
 }
