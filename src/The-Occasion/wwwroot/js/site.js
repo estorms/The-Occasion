@@ -203,6 +203,17 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         var editedLinesArray = $("input[id='edit-input']")
                .map(function () { return $(this).val(); }).get();
         var newPoemArray = existingLinesArray.slice();
+        //var editedTitleInput = $("input[id='edit-title-input']").val();
+        //console.log(editedTitleInput)
+        //var title;
+        //if (editedTitleInput !== "") {
+        //    title = editedTitleInput;
+        //    console.log(editedTitleInput)
+        //}
+
+        //else {
+        //    title= $(".title").html();
+        //}
 
         for (var i = 0; i < editedLinesArray.length; i++) {
             if (editedLinesArray[i] !== "") {
@@ -219,6 +230,8 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
+
+        console.log(poem, 'this is the new poem');
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
             //window.location.href ="/Home/Index";
@@ -235,6 +248,17 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $(this).addClass("hidden");
     });
 
+    //$("#myPoems").on("click", function (e) {
+    //    $('html').css('height', 'auto');
+    //});
+
+    //$(".edit-title").on("click", function (e) {
+    //    console.log('edit title clicked');
+    //    event.preventDefault();
+    //    $(this).prev().removeClass("hidden");
+    //    $(this).addClass("hidden");
+    //});
+
     function updatePoem(poem) {
         return new Promise(function (resolve, reject) {
             $.ajax({
@@ -250,6 +274,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
             })
     }
+
 
 
  

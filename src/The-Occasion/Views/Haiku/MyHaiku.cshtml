@@ -24,7 +24,7 @@
         <div class="col-lg-12">@Model.Line3</div>
         </div>
         <input class="form-control hidden" asp-for="Poem.
-        Author"/><span class="attribution"> Brought to you courtesy of your computer</span>
+        Author" /><span class="attribution"> Brought to you courtesy of @Html.DisplayFor(model => model.Poem.Author)'s computer</span>
         <div class="saveUserButton text-center">
             <input type="submit" class="btn btn-danger" id="SaveUserHaiku" value="Save">
         </div>

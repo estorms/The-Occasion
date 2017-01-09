@@ -152,6 +152,15 @@ a[data-title]:hover:after {
     margin: 1% 0 0 2%;
 }
 
-.edit {
+.edit., edit-title {
     float: right;
+}
+
+.line-saved {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.author-saved, .title-saved {
+    font-size: xx-small;
 }

@@ -87,13 +87,19 @@ namespace TheOccasion_Controllers
             StringBuilder stringbuilder = new StringBuilder();
             foreach (var line in UserSonnet)
             {
+
                 stringbuilder.Append(line);
                 stringbuilder.Append("@@");
             }
 
+               
+
+
+
             Poem mySonnet = new Poem();
 
             mySonnet.Lines = stringbuilder.ToString();
+            mySonnet.Lines = mySonnet.Lines.Substring(0, mySonnet.Lines.Length-2);
             //mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userFullName;
             //mySonnet.Lines = UserSonnet.ToString();
