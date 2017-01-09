@@ -116,7 +116,7 @@ namespace The_Occasion.Controllers
                 }
             }
 
-            model.UserLikedPoems = model.UserPoems.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
+            model.UserLikedPoems = model.UserLikedPoems.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
             model.UserGeneratedSonnets = model.UserGeneratedSonnets.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
             model.UserGeneratedHaikus = model.UserGeneratedHaikus.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
 
