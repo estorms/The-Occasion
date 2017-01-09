@@ -230,6 +230,8 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
+
+        console.log(poem, 'this is the new poem');
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
             //window.location.href ="/Home/Index";
