@@ -203,6 +203,17 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         var editedLinesArray = $("input[id='edit-input']")
                .map(function () { return $(this).val(); }).get();
         var newPoemArray = existingLinesArray.slice();
+        var editedTitleInput = $("input[id='edit-title-input']").val();
+        console.log(editedTitleInput)
+        var title;
+        if (editedTitleInput !== "") {
+            title = editedTitleInput;
+            console.log(editedTitleInput)
+        }
+
+        else {
+            title= $(".title").html();
+        }
 
         for (var i = 0; i < editedLinesArray.length; i++) {
             if (editedLinesArray[i] !== "") {
@@ -215,7 +226,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         console.log(newPoemRevisedString, "newPoemRevisedString");
         var poem = {
             PoemId : poemIdFromJQ,
-            Title: $(".title").html(),
+            Title: title,
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
@@ -234,6 +245,13 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $(this).prev().removeClass("hidden");
         $(this).addClass("hidden");
     });
+
+    //$(".edit-title").on("click", function (e) {
+    //    console.log('edit title clicked');
+    //    event.preventDefault();
+    //    $(this).prev().removeClass("hidden");
+    //    $(this).addClass("hidden");
+    //});
 
     function updatePoem(poem) {
         return new Promise(function (resolve, reject) {
