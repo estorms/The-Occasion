@@ -5,33 +5,33 @@
     @foreach (var poem in Model.UserLikedPoems)
     {
 
-        <div class="col-md-12">
-            <span class="title"><a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a></span>
-            <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
+        <div class="col-md-12 line-saved">
+            <span class="title-saved"><a class="title-saved" asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a></span>
+            <span class="author-saved">@Html.DisplayFor(modelItem => poem.Author)</span>
         </div>
     }
 
     <h4 class="title">Haikus Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedHaikus)
     {
-    <div class="col-md-12">
-        <span class="title">
+    <div class="col-md-12 line-saved">
+        <span class="title-saved">
             <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
         </span>
 
-        <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
+        <span class="author-saved">@Html.DisplayFor(modelItem => poem.Author)</span>
         </div>
     }
 
     <h4 class="title">Sonnets Your Computer Wrote For You</h4>
     @foreach (var poem in Model.UserGeneratedSonnets)
     {
-        <div class="col-md-12">
-        <span class="title">
+        <div class="col-md-12 line-saved">
+        <span class="title-saved">
             <a asp-controller="Poem" asp-action="SavedPoem" asp-route-id="@poem.PoemId">@Html.DisplayFor(modelItem => poem.Title)</a>
         </span>
             
-        <span class="author">@Html.DisplayFor(modelItem => poem.Author)</span>
+        <span class="author-saved">@Html.DisplayFor(modelItem => poem.Author)</span>
             </div>
     }
 </div>

@@ -248,6 +248,10 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $(this).addClass("hidden");
     });
 
+    //$("#myPoems").on("click", function (e) {
+    //    $('html').css('height', 'auto');
+    //});
+
     //$(".edit-title").on("click", function (e) {
     //    console.log('edit title clicked');
     //    event.preventDefault();
@@ -270,6 +274,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
             })
     }
+
 
 
  
