@@ -203,17 +203,17 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         var editedLinesArray = $("input[id='edit-input']")
                .map(function () { return $(this).val(); }).get();
         var newPoemArray = existingLinesArray.slice();
-        var editedTitleInput = $("input[id='edit-title-input']").val();
-        console.log(editedTitleInput)
-        var title;
-        if (editedTitleInput !== "") {
-            title = editedTitleInput;
-            console.log(editedTitleInput)
-        }
+        //var editedTitleInput = $("input[id='edit-title-input']").val();
+        //console.log(editedTitleInput)
+        //var title;
+        //if (editedTitleInput !== "") {
+        //    title = editedTitleInput;
+        //    console.log(editedTitleInput)
+        //}
 
-        else {
-            title= $(".title").html();
-        }
+        //else {
+        //    title= $(".title").html();
+        //}
 
         for (var i = 0; i < editedLinesArray.length; i++) {
             if (editedLinesArray[i] !== "") {
@@ -226,7 +226,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         console.log(newPoemRevisedString, "newPoemRevisedString");
         var poem = {
             PoemId : poemIdFromJQ,
-            Title: title,
+            Title: $(".title").html(),
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
