@@ -210,6 +210,8 @@ namespace The_Occasion.Controllers
 
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             Poem SinglePoem = await context.Poem.SingleOrDefaultAsync(p => p.PoemId == id);
+            UserSelection userSelection = await context.UserSelection.Where(u => u.PoemId == SinglePoem.PoemId).FirstAsync();
+            model.UserSelection = userSelection;
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
@@ -242,6 +244,44 @@ namespace The_Occasion.Controllers
         }
         [Authorize]
         [HttpPost]
+        //public async Task<IActionResult> Save([FromRoute] int id)
+        //{
+
+        //    var user = await GetCurrentUserAsync();
+        //    UserSelection userSelection = new UserSelection();
+        //    userSelection.User = user;
+        //    userSelection.PoemId = id;
+        //    var userFullName = user.FirstName + " " + user.LastName;
+        //    context.UserSelection.Add(userSelection);
+        //    await context.SaveChangesAsync();
+        //    var userSelectionReturned = await context.UserSelection.Where(u => u.UserSelectionId == userSelection.UserSelectionId).SingleOrDefaultAsync();
+        //    SavedPoemViewModel model = new SavedPoemViewModel(context);
+        //    model.UserSelection = await context.UserSelection.Where(u => u.UserSelectionId == userSelectionReturned.UserSelectionId).SingleOrDefaultAsync();
+        //    model.Poem = await context.Poem.Where(p => p.PoemId == userSelectionReturned.PoemId).SingleOrDefaultAsync();
+        //    string lineString = model.Poem.Lines;
+        //    var splitStrings = Regex.Split(lineString, "@@");
+        //    model.LinesArray = splitStrings;
+        //    model.UserFullName = userFullName;
+
+        //    if (_authorExists(model.Poem.Author))
+        //    {
+        //        Author poemAuthor = await context.Author.Where(a => a.Name == model.Poem.Author).FirstAsync();
+        //        model.Author = poemAuthor;
+        //    }
+
+        //    else
+        //    {
+        //        model.Author = null;
+        //    }
+
+        //    var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
+        //    var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
+        //    model.OtherWorks = OtherWorksUniqueTitles;
+        //    return View(model);
+        //}
+
+        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Save([FromRoute] int id)
         {
 
@@ -251,7 +291,7 @@ namespace The_Occasion.Controllers
             userSelection.PoemId = id;
             context.UserSelection.Add(userSelection);
             await context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            return Ok();
 
         }
 
@@ -262,7 +302,7 @@ namespace The_Occasion.Controllers
             try
             {
                 var user = await GetCurrentUserAsync();
-                var selectionToDelete = await context.UserSelection.Where(u => u.PoemId == id && u.User == user).SingleOrDefaultAsync();
+                var selectionToDelete = await context.UserSelection.Where(u => u.UserSelectionId == id).SingleOrDefaultAsync();
                 context.UserSelection.Remove(selectionToDelete);
                 await context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");

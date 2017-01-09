@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using The_Occasion.Models;
 
 namespace The_Occasion.ExtensionMethods
 {
