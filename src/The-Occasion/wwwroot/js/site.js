@@ -216,19 +216,8 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             }
         }
         var newPoemToString = newPoemArray.toString();
-        //console.log(newPoemToString, "newPoemtoString");
-        //var newPoemRevisedString = newPoemToString.replace(/,,/g, ",");
-        //console.log(newPoemRevisedString, 'after first split, double commas');
-        //var newPoemRevisedString = newPoemToString.replace(',,', ',');
-         var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
-        //console.log(newPoemRevisedString, 'after split, one comma');
-
-        //newPoemRevisedString = newPoemRevisedString.replace(/@@ @@/, "@@");
-        //console.log(newPoemRevisedString, "after third split, space btw ampersands")
-        //newPoemRevisedString = newPoemRevisedString.replace(/@@@@/g, "@@");
-        //newPoemRevisedString = newPoemRevisedString.replace(/@@ @@/g, "@@");
-        //newPoemRevisedString = newPoemRevisedString.replace(' ','');
-        //console.log("newpoemrevised string", newPoemRevisedString);
+        var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+       
         var poem = {
             PoemId : poemIdFromJQ,
             Title: $(".title").html(),
@@ -252,17 +241,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $(this).prev().removeClass("hidden");
         $(this).addClass("hidden");
     });
-
-    //$("#myPoems").on("click", function (e) {
-    //    $('html').css('height', 'auto');
-    //});
-
-    //$(".edit-title").on("click", function (e) {
-    //    console.log('edit title clicked');
-    //    event.preventDefault();
-    //    $(this).prev().removeClass("hidden");
-    //    $(this).addClass("hidden");
-    //});
 
     function updatePoem(poem) {
         return new Promise(function (resolve, reject) {
