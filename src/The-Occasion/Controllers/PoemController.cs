@@ -177,6 +177,7 @@ namespace The_Occasion.Controllers
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
             var splitStrings = Regex.Split(lineString, "@@");
+            //splitStrings = Regex.Replace(splitStrings)
             model.LinesArray = splitStrings;
             var user = await GetCurrentUserAsync();
             var userFullName = user.FirstName + " " + user.LastName;
@@ -216,14 +217,15 @@ namespace The_Occasion.Controllers
             model.UserSelection = userSelection;
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
-            var splitStrings = Regex.Split(lineString, "@@");
+           var splitStrings = Regex.Split(lineString, "@@");
+            
 
             if (splitStrings.Last() == "")
             {
                 splitStrings = splitStrings.Take(splitStrings.Count() - 1).ToArray();
             }
             model.LinesArray = splitStrings;
-            
+
             var user = await GetCurrentUserAsync();
             var userFullName = user.FirstName + " " + user.LastName;
             Author author = new Author();

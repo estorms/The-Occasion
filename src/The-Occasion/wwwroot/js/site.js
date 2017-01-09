@@ -198,10 +198,16 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
     $("#update").on("click", function (e) {
         var poemIdFromJQ = $("#poemId").val();
+        console.log("poemIdFromJQ", poemIdFromJQ);
+        
         var existingLinesArray = $("input[id='linesDiv']")
                .map(function () { return $(this).val(); }).get();
+                
+               console.log(existingLinesArray, "existing lines array")
+
         var editedLinesArray = $("input[id='edit-input']")
                .map(function () { return $(this).val(); }).get();
+        console.log("edited lines array", editedLinesArray);
         var newPoemArray = existingLinesArray.slice();
         //var editedTitleInput = $("input[id='edit-title-input']").val();
         //console.log(editedTitleInput)
@@ -222,8 +228,14 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         }
         var newPoemToString = newPoemArray.toString();
         console.log(newPoemToString, "newPoemtoString");
-        var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
-        console.log(newPoemRevisedString, "newPoemRevisedString");
+        var newPoemRevisedString = newPoemToString.replace(/,,/g, ",");
+        console.(newPoemRevisedString, 'after first split, double commas');
+        newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+        //newPoemRevisedString = newPoemRevisedString.replace(/@@@@/g, "@@");
+        //newPoemRevisedString = newPoemRevisedString.replace(/@@ @@/g, "@@");
+        //newPoemRevisedString = newPoemRevisedString.replace(' ','');
+        console.log("newpoemrevised string", newPoemRevisedString);
+        console.log(newPoemRevisedString, 'after second split, one comma');
         var poem = {
             PoemId : poemIdFromJQ,
             Title: $(".title").html(),
@@ -235,7 +247,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
             //window.location.href ="/Home/Index";
-            window.location.reload(true);
+            //window.location.reload(true);
         });
     });
       
