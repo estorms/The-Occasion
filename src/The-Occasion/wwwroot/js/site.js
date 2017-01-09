@@ -229,7 +229,7 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
             //window.location.href ="/Home/Index";
-            //window.location.reload(true);
+            window.location.reload(true);
         });
     });
       
