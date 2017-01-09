@@ -209,17 +209,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                .map(function () { return $(this).val(); }).get();
         console.log("edited lines array", editedLinesArray);
         var newPoemArray = existingLinesArray.slice();
-        //var editedTitleInput = $("input[id='edit-title-input']").val();
-        //console.log(editedTitleInput)
-        //var title;
-        //if (editedTitleInput !== "") {
-        //    title = editedTitleInput;
-        //    console.log(editedTitleInput)
-        //}
-
-        //else {
-        //    title= $(".title").html();
-        //}
 
         for (var i = 0; i < editedLinesArray.length; i++) {
             if (editedLinesArray[i] !== "") {
@@ -227,15 +216,19 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             }
         }
         var newPoemToString = newPoemArray.toString();
-        console.log(newPoemToString, "newPoemtoString");
-        var newPoemRevisedString = newPoemToString.replace(/,,/g, ",");
-        console.(newPoemRevisedString, 'after first split, double commas');
-        newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+        //console.log(newPoemToString, "newPoemtoString");
+        //var newPoemRevisedString = newPoemToString.replace(/,,/g, ",");
+        //console.log(newPoemRevisedString, 'after first split, double commas');
+        //var newPoemRevisedString = newPoemToString.replace(',,', ',');
+         var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
+        //console.log(newPoemRevisedString, 'after split, one comma');
+
+        //newPoemRevisedString = newPoemRevisedString.replace(/@@ @@/, "@@");
+        //console.log(newPoemRevisedString, "after third split, space btw ampersands")
         //newPoemRevisedString = newPoemRevisedString.replace(/@@@@/g, "@@");
         //newPoemRevisedString = newPoemRevisedString.replace(/@@ @@/g, "@@");
         //newPoemRevisedString = newPoemRevisedString.replace(' ','');
-        console.log("newpoemrevised string", newPoemRevisedString);
-        console.log(newPoemRevisedString, 'after second split, one comma');
+        //console.log("newpoemrevised string", newPoemRevisedString);
         var poem = {
             PoemId : poemIdFromJQ,
             Title: $(".title").html(),
