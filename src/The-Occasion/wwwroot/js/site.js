@@ -42,7 +42,10 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            $("#DeleteBored").removeClass("hidden");
+            //$("#DeleteBored").removeClass("hidden");
+            //$("#Save").addClass("hidden");
+            $("#ItsSaved2").removeClass("hidden");
+            $("#GoHome2").removeClass("hidden");
             $("#SaveBored").addClass("hidden");
         });
     });
@@ -57,7 +60,10 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         }).done((result) => {
             console.log("result", result);
             $("#Save").addClass("hidden");
-            $("#Delete").removeClass("hidden");
+            $("#ItsSaved").removeClass("hidden");
+            $("#GoHome").removeClass("hidden");
+            $("#SavedAgain").removeClass("hidden");
+            $("#GoHome3").removeClass("hidden");
            
         });
     });
