@@ -223,7 +223,6 @@ namespace The_Occasion.Controllers
                 splitStrings = splitStrings.Take(splitStrings.Count() - 1).ToArray();
             }
             model.LinesArray = splitStrings;
-
             
             var user = await GetCurrentUserAsync();
             var userFullName = user.FirstName + " " + user.LastName;
