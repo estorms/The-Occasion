@@ -157,7 +157,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
@@ -172,8 +171,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                //$("html").removeClass("full-height");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
@@ -190,7 +187,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });   
     });
@@ -198,6 +194,8 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
     $("#update").on("click", function (e) {
         var poemIdFromJQ = $("#poemId").val();
+        $("#update").addClass("hidden");
+        $("#GoHome3").removeClass("hidden");
         console.log("poemIdFromJQ", poemIdFromJQ);
         
         var existingLinesArray = $("input[id='linesDiv']")
@@ -224,11 +222,9 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
-
         console.log(poem, 'this is the new poem');
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
-            //window.location.href ="/Home/Index";
             window.location.reload(true);
         });
     });
