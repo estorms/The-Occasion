@@ -1,1 +1,166 @@
-body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;padding-right:15px}input,select,textarea{max-width:280px}.carousel-caption p{font-size:20px;line-height:1.4}.btn-bracketed::before{display:inline-block;content:"[";padding-right:.5em}.btn-bracketed::after{display:inline-block;content:"]";padding-left:.5em}.carousel-inner .item img[src$=".svg"]{width:100%}@media screen and (max-width:767px){.carousel-caption{display:none}}
+html {
+    height: 100%;
+
+}
+
+body {
+ 
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover !important;
+    height: 100% !important;
+    width: 100% !important;
+
+
+}
+
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+    width: 100%;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.full-height {
+    height: 100% !important;
+}
+
+
+.poemRow, .poemrow  {
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 3%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    padding-left: 5px;
+    box-shadow: 2px 2px 3px 2px;
+    padding-bottom: 1%;
+}
+
+.bottom-buffer {
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+
+.homebutton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+}
+
+.top-buffer {
+    margin-top: 4%;
+    margin-bottom: 10px
+}
+a:hover {
+  color: darkred;
+  position: relative;
+  text-decoration: none;
+}
+
+a[data-title]:hover:after {
+  content: attr(data-title);
+  padding: 4px 4px;
+  color: #333;
+  position: absolute;
+  font-size: xx-small;
+  left: 10vh;
+  top: 100%;
+  z-index: 10;
+  white-space: nowrap;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 4px #222;
+  -webkit-box-shadow: 0px 0px 4px #222;
+  box-shadow: 0px 0px 4px #222;
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+}
+.author {
+    font-style: italic;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.title {
+    font-weight: bolder;
+    margin-left: 2%;
+}
+
+/* buttons and links extension to use brackets: [ click me ] */
+.btn-bracketed::before {
+    display:inline-block;
+    content: "[";
+    padding-right: 0.5em;
+}
+.btn-bracketed::after {
+    display:inline-block;
+    content: "]";
+    padding-left: 0.5em;
+}
+
+.lines {
+    text-align: left;
+    margin-top: 1%;
+}
+
+.small-font {
+    font-size: xx-small;
+}
+
+.log-off {
+    margin-top: 1.7vh;
+}
+
+.title-me {
+    margin: 2% 0 0 2%;
+}
+
+.poem-input {
+    margin-top: 1%;
+}
+
+.attribution {
+    display: inline-block;
+    font-style: italic;
+    margin: 1% 0 0 2%;
+}
+
+.edit., edit-title {
+    float: right;
+}
+
+.line-saved {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.author-saved, .title-saved {
+    font-size: xx-small;
+}
