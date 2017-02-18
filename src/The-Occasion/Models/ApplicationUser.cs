@@ -16,6 +16,6 @@ namespace The_Occasion.Models
 
         public ICollection<UserSelection>UserSelections { get; set; }
 
-       
+      
     }
 }

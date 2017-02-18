@@ -16,12 +16,9 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
-        //$("html").addClass("full-height");    
     });
 
     $("#curebutt").on("click", function (e) {
-        //$("#hereBePoems").empty();
-    
         $(".picky").removeClass("hidden");
         $("#CurateMe").removeClass("hidden");
         $("#findButton").addClass("hidden");
@@ -30,7 +27,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $("#curebutt").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
-        //$("html").addClass("full-height");
         
     });
 
@@ -42,8 +38,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            //$("#DeleteBored").removeClass("hidden");
-            //$("#Save").addClass("hidden");
             $("#ItsSaved2").removeClass("hidden");
             $("#GoHome2").removeClass("hidden");
             $("#SaveBored").addClass("hidden");
@@ -228,6 +222,11 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             window.location.reload(true);
         });
     });
+
+    $('#loginLink').on("click", function (e) {
+        console.log("login link clicked");
+     
+    })
       
    
 
