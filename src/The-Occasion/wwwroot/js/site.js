@@ -16,12 +16,9 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
         $("#hereBePoems").empty();
-        //$("html").addClass("full-height");    
     });
 
     $("#curebutt").on("click", function (e) {
-        //$("#hereBePoems").empty();
-    
         $(".picky").removeClass("hidden");
         $("#CurateMe").removeClass("hidden");
         $("#findButton").addClass("hidden");
@@ -30,7 +27,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $("#curebutt").addClass("hidden");
         $("#makeHaiku").addClass("hidden");
         $("#myPoems").addClass("hidden");
-        //$("html").addClass("full-height");
         
     });
 
@@ -42,8 +38,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         method: "POST",
         contentType: 'application/json; charset=utf-8'
         }).done((result) => {
-            //$("#DeleteBored").removeClass("hidden");
-            //$("#Save").addClass("hidden");
             $("#ItsSaved2").removeClass("hidden");
             $("#GoHome2").removeClass("hidden");
             $("#SaveBored").addClass("hidden");
@@ -157,7 +151,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
@@ -172,8 +165,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").empty();
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
-                //$("html").removeClass("full-height");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });
     });
@@ -190,7 +181,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
                 $("#hereBePoems").append(result);
                 $(".findselect").addClass("hidden");
                 $("#myPoems").addClass("hidden");
-                //$("body").css({ 'background-color': '#d9534f' });
                 $("body").css('background-image', 'url(/images/birds1.jpg)');
             });   
     });
@@ -198,22 +188,19 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
 
     $("#update").on("click", function (e) {
         var poemIdFromJQ = $("#poemId").val();
+        $("#update").addClass("hidden");
+        $("#GoHome3").removeClass("hidden");
+        console.log("poemIdFromJQ", poemIdFromJQ);
+        
         var existingLinesArray = $("input[id='linesDiv']")
                .map(function () { return $(this).val(); }).get();
+                
+               console.log(existingLinesArray, "existing lines array")
+
         var editedLinesArray = $("input[id='edit-input']")
                .map(function () { return $(this).val(); }).get();
+        console.log("edited lines array", editedLinesArray);
         var newPoemArray = existingLinesArray.slice();
-        //var editedTitleInput = $("input[id='edit-title-input']").val();
-        //console.log(editedTitleInput)
-        //var title;
-        //if (editedTitleInput !== "") {
-        //    title = editedTitleInput;
-        //    console.log(editedTitleInput)
-        //}
-
-        //else {
-        //    title= $(".title").html();
-        //}
 
         for (var i = 0; i < editedLinesArray.length; i++) {
             if (editedLinesArray[i] !== "") {
@@ -221,23 +208,25 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
             }
         }
         var newPoemToString = newPoemArray.toString();
-        console.log(newPoemToString, "newPoemtoString");
         var newPoemRevisedString = newPoemToString.replace(/,/g, "@@");
-        console.log(newPoemRevisedString, "newPoemRevisedString");
+       
         var poem = {
             PoemId : poemIdFromJQ,
             Title: $(".title").html(),
             Author: $(".author").html(),
             Lines : newPoemRevisedString
         }
-
         console.log(poem, 'this is the new poem');
         updatePoem(poem).then(function () {
             console.log('promise resolved, inside then')
-            //window.location.href ="/Home/Index";
             window.location.reload(true);
         });
     });
+
+    $('#loginLink').on("click", function (e) {
+        console.log("login link clicked");
+     
+    })
       
    
 
@@ -247,17 +236,6 @@ var splashImg = images[Math.floor(Math.random() * images.length)];
         $(this).prev().removeClass("hidden");
         $(this).addClass("hidden");
     });
-
-    //$("#myPoems").on("click", function (e) {
-    //    $('html').css('height', 'auto');
-    //});
-
-    //$(".edit-title").on("click", function (e) {
-    //    console.log('edit title clicked');
-    //    event.preventDefault();
-    //    $(this).prev().removeClass("hidden");
-    //    $(this).addClass("hidden");
-    //});
 
     function updatePoem(poem) {
         return new Promise(function (resolve, reject) {

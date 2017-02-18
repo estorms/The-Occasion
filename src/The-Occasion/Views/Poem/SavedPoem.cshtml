@@ -21,7 +21,7 @@
     {
       <div class="col-lg-12 lines"><input class="form-control hidden" id="linesDiv" value="@line" />
          @line
-    @if (Model.Poem.Author == Model.UserFullName)
+    @if (Model.Poem.Author == Model.UserFullName && Model.Poem.FormId != 118)
     {
             <input class="form-control hidden edit-input" placeholder="Edit this line" id="edit-input"><button class="btn-xs edit">Edit</button>
     }
@@ -61,7 +61,7 @@
     {
         @*<div class="col-md-3 top-buffer"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>*@
         <div class="col-md-3"><button id="Delete" value="@Model.UserSelection.UserSelectionId" class="btn btn-danger">Delete From My Profile</button></div>
-      @if (Model.Poem.Author == Model.UserFullName)
+      @if (Model.Poem.Author == Model.UserFullName && Model.Poem.FormId != 118)
       {
     <div class="col-md-3"><a class="btn btn-danger" id ="update">Update</a></div>
       }
@@ -70,7 +70,7 @@
           <span></span>
 
       }
-        <div class="col-md-3 top-buffer hidden" id="SavedAgain">Your poem has been saved (yet again).</div>
+        <div class="col-md-3 top-buffer hidden" id="SavedAgain">Your poem has been saved (again).</div>
         <div class="col-md-3"><button id="Save" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Eh, Maybe I Do Want It. Save It Again, Please.</button></div>
         <div class="col-md-3 bottom-buffer hidden" id="GoHome3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>
     }

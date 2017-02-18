@@ -35,6 +35,10 @@ namespace The_Occasion.Controllers
             return context.Author.Count(a => a.Name == name) > 0;
         }
 
+        private bool _userExists()
+        {
+            return _userManager.GetUserName(User) != null;
+        }
 
 
         public PoemController(ApplicationDbContext ctx, UserManager<ApplicationUser> user)
@@ -179,9 +183,12 @@ namespace The_Occasion.Controllers
             var splitStrings = Regex.Split(lineString, "@@");
             model.LinesArray = splitStrings;
             var user = await GetCurrentUserAsync();
-            var userFullName = user.FirstName + " " + user.LastName;
-            model.UserFullName = userFullName;
+            if (_userExists())
+            {
 
+                var userFullName = user.FirstName + " " + user.LastName;
+                model.UserFullName = userFullName;
+            }
             if (_authorExists(SinglePoem.Author))
             {
                 Author poemAuthor = await context.Author.Where(a => a.Name == SinglePoem.Author).FirstAsync();
@@ -192,12 +199,6 @@ namespace The_Occasion.Controllers
             {
                 model.Author = null;
             };
-
-            //List<Poem> Excess = new List<Poem>();
-
-            //below simply matches poems from the poem table to authors from the author table...it's practice in using join/in/on/equals/select syntax, but there's a more efficient method available. Right here you're deliberately choosing excess logic for the exercise. You do this more readily by querying the poem table in the database by the name of the author already established above
-
-            //var collectedworks = await (from poem in context.Poem join author in context.Author on poem.Author equals author.Name select poem).ToListAsync();
 
             var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
             var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
@@ -216,14 +217,15 @@ namespace The_Occasion.Controllers
             model.UserSelection = userSelection;
             model.Poem = SinglePoem;
             string lineString = SinglePoem.Lines;
-            var splitStrings = Regex.Split(lineString, "@@");
+           var splitStrings = Regex.Split(lineString, "@@");
+            
 
             if (splitStrings.Last() == "")
             {
                 splitStrings = splitStrings.Take(splitStrings.Count() - 1).ToArray();
             }
             model.LinesArray = splitStrings;
-            
+
             var user = await GetCurrentUserAsync();
             var userFullName = user.FirstName + " " + user.LastName;
             Author author = new Author();
@@ -250,43 +252,6 @@ namespace The_Occasion.Controllers
             return View(model);
 
         }
-        //[Authorize]
-        //[HttpPost]
-        //public async Task<IActionResult> Save([FromRoute] int id)
-        //{
-
-        //    var user = await GetCurrentUserAsync();
-        //    UserSelection userSelection = new UserSelection();
-        //    userSelection.User = user;
-        //    userSelection.PoemId = id;
-        //    var userFullName = user.FirstName + " " + user.LastName;
-        //    context.UserSelection.Add(userSelection);
-        //    await context.SaveChangesAsync();
-        //    var userSelectionReturned = await context.UserSelection.Where(u => u.UserSelectionId == userSelection.UserSelectionId).SingleOrDefaultAsync();
-        //    SavedPoemViewModel model = new SavedPoemViewModel(context);
-        //    model.UserSelection = await context.UserSelection.Where(u => u.UserSelectionId == userSelectionReturned.UserSelectionId).SingleOrDefaultAsync();
-        //    model.Poem = await context.Poem.Where(p => p.PoemId == userSelectionReturned.PoemId).SingleOrDefaultAsync();
-        //    string lineString = model.Poem.Lines;
-        //    var splitStrings = Regex.Split(lineString, "@@");
-        //    model.LinesArray = splitStrings;
-        //    model.UserFullName = userFullName;
-
-        //    if (_authorExists(model.Poem.Author))
-        //    {
-        //        Author poemAuthor = await context.Author.Where(a => a.Name == model.Poem.Author).FirstAsync();
-        //        model.Author = poemAuthor;
-        //    }
-
-        //    else
-        //    {
-        //        model.Author = null;
-        //    }
-
-        //    var OtherWorks = await context.Poem.Where(p => p.Author == model.Poem.Author && p.Title != model.Poem.Title).ToListAsync();
-        //    var OtherWorksUniqueTitles = OtherWorks.DistinctBy(w => w.Title).OrderBy(w => w.Title).ToList();
-        //    model.OtherWorks = OtherWorksUniqueTitles;
-        //    return View(model);
-        //}
 
         [Authorize]
         [HttpPost]
@@ -338,7 +303,7 @@ namespace The_Occasion.Controllers
         public async Task<IActionResult> SaveBored([FromRoute] int id)
         {
 
-            var user = await GetCurrentUserAsync(); //qpwoeighqwe-234234
+            var user = await GetCurrentUserAsync(); 
             UserSelection userSelection = new UserSelection();
             userSelection.User = user;
             userSelection.PoemId = id;
