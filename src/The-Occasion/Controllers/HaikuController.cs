@@ -40,15 +40,13 @@ namespace TheOccasion_Controllers
         [HttpGet]
         public async Task<IActionResult> MyHaiku()
         {
-            //create a new instance of the single poem view model to hold the generated poem
-            //properties to include on single poem view model: 1.poem, 2. linesarray;
+
 
             SinglePoemViewModel model = new SinglePoemViewModel(context);
             var user = await GetCurrentUserAsync();
             var userName = user.UserName;
             var userFullName = user.FirstName + " " + user.LastName;
 
-            //set some dummy properties on model.Poem so that View doesn't freak out
 
             //get all the sonnets back from the database
             var haikus = await context.Poem.Where(p => p.FormId == 120 && (p.Author == "Anselm Hollo" || p.Author == "Udiah (Witness to Yah)")).ToListAsync();
@@ -57,7 +55,6 @@ namespace TheOccasion_Controllers
             List<string> HaikuSecondLines = new List<string>();
 
 
-            //for each sonnet in the list returned from the database, cycle through, split the lines up into individual arrays
             foreach (var haiku in haikus)
             {
                 var haikuLinesArray = Regex.Split(haiku.Lines, "@@");
@@ -81,11 +78,9 @@ namespace TheOccasion_Controllers
             for (int i = 0; i < 3; i++)
             {
                 int r = random.Next(HaikuLines.Count());
-                //when trying to make userHaiku a list, instead of an array, throws index out of bounds exception right here.
                 userHaiku[i] = HaikuLines[r];
             }
 
-            //userHaiku = userHaiku.Where((source, index) => index != 1).ToArray();
 
             model.Line1 = userHaiku[0];
             model.Line3 = userHaiku[2];
@@ -104,15 +99,12 @@ namespace TheOccasion_Controllers
 
             Poem myHaiku = new Poem();
 
-            //myHaiku.Title = "Your Computer Writes Better Poetry Than You Do";
             myHaiku.Author = userFullName;
-            //need to convert the below to string with stringbuilder as in sonnet and make other changes to razor to allow saving
             myHaiku.Lines = stringbuilder.ToString();
             myHaiku.FormId = 120;
             myHaiku.MoodId = 115;
             myHaiku.TopicId = 115;
             model.Poem = myHaiku;
-            //model.LinesArray = userHaiku;
 
             return View(model);
         }

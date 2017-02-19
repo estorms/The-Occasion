@@ -16,11 +16,8 @@
         <div class="col-md-12">@line</div>
     }
     <div class="col-md-6 author">@Html.DisplayFor(model => model.Poem.Author)</div>
-        @*<div class="col-md-3"><button id="SaveBored" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>*@
-        @*<div class="col-md-3"><a class="btn btn-danger" asp-controller="Home" asp-action="Index">Take Me Home</a></div>*@
     <div class="col-md-3 bottom-buffer"><button id="SaveBored" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>
     <div class="col-md-3"><button id="Delete" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Delete From My Profile</button></div>
     <div class="col-md-3 hidden bottom-buffer" id="ItsSaved2">Your Poem Has Been Saved!</div>
     <div class="col-md-3 bottom-buffer"><a class="btn btn-danger hidden" asp-controller="Home" asp-action="Index" id="GoHome2">Take Me Home</a></div>
-        @*<div class="col-md-3"><button id="DeleteBored" value="@Model.Poem.PoemId" class="hidden btn btn-danger">Delete From My Profile</button></div>*@
         </div>

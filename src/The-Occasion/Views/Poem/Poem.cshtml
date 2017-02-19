@@ -12,7 +12,6 @@
 
 <h3 class="title">@Html.DisplayFor(model => model.Poem.Title)</h3>
 
-    @*<div class="favorite text-center">*@
              @foreach (var line in Model.LinesArray)
              {
                 <div class="col-lg-12 lines">@line</div>
@@ -56,13 +55,10 @@
         }
         else
         {
-            @*<div class="row poemRow">*@
             <div class="col-md-12">
-                @*<div style="margin-top: 10px;">*@
             <a asp-controller="Account" asp-action="Register">Register</a><span> or </span> 
                 <a asp-controller="Account" asp-action="Login">Login</a><span> to Save This Poem to Your Account</span> 
                 </div>
-            @*</div>*@
         }
     </div>
  

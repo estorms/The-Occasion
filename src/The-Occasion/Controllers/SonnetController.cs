@@ -100,9 +100,7 @@ namespace TheOccasion_Controllers
 
             mySonnet.Lines = stringbuilder.ToString();
             mySonnet.Lines = mySonnet.Lines.Substring(0, mySonnet.Lines.Length-2);
-            //mySonnet.Title = "Your Computer Writes Better Poetry Than You Do";
             mySonnet.Author = userFullName;
-            //mySonnet.Lines = UserSonnet.ToString();
             mySonnet.FormId = 118;
             mySonnet.TopicId = 115;
             mySonnet.MoodId = 115;
