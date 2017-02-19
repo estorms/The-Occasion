@@ -3,8 +3,9 @@
 var images = ['birds1.jpg', 'birds2.jpg', 'birds3.jpg', 'birds4.jpg', 'birds5.jpg', 'birds6.jpg'];
 var splashImg = images[Math.floor(Math.random() * images.length)];
 
+if (!document.URL.includes("http://localhost:5000/Account") && !document.URL.includes("http://localhost:5000/Manage")) {
     $("body").css({ "background-image": `url(../images/${splashImg})` });
-
+}
 
     $("#findButton").on("click", function (e) {
         console.log("find button clicked");

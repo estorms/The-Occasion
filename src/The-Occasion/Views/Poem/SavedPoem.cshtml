@@ -8,14 +8,13 @@
     ViewData["Title"] = "The Occasion";
 }
 
-@*<form asp-action="UpdatePoem">*@
 <div class="row poemRow singlePoem">
 
     <input class="form-control hidden" value="@Model.Poem.PoemId" id="poemId"/>
     <div class = "hidden">@Model.Poem.PoemId</div>
     <div class="hidden" value="@Model.UserSelection.UserSelectionId" id="userSelectionId" /></div>
     <h3 class="title">@Html.DisplayFor(model => model.Poem.Title)</h3>
-     @*<input class="form-control hidden edit-title-input" placeholder="Edit the Title" id="edit-title-input"><button class="btn-xs edit-title">Edit</button>*@
+ 
 
     @foreach (var line in Model.LinesArray)
     {
@@ -32,7 +31,6 @@
     </div>
     }
     <div class="col-md-12 author lines top-buffer">@Html.DisplayFor(model => model.Poem.Author)</div>
-@*</form>*@ 
 
     @if (Model.Author != null)
     {
@@ -59,7 +57,6 @@
 
     @if (UserManager.GetUserName(User) != null)
     {
-        @*<div class="col-md-3 top-buffer"><button id="Save" value="@Model.Poem.PoemId" class="btn btn-danger">Save to My Profile</button></div>*@
         <div class="col-md-3"><button id="Delete" value="@Model.UserSelection.UserSelectionId" class="btn btn-danger">Delete From My Profile</button></div>
       @if (Model.Poem.Author == Model.UserFullName && Model.Poem.FormId != 118)
       {
@@ -76,14 +73,10 @@
     }
     else
     {
-        @*<div class="row poemRow">*@
         <div class="col-md-12">
-            @*<div style="margin-top: 10px;">*@
             <a asp-controller="Account" asp-action="Register">Register</a><span> or </span>
             <a asp-controller="Account" asp-action="Login">Login</a><span> to Save This Poem to Your Account</span>
         </div>
-                @*</div>*@
-                @*</div>*@
     }
  
 
